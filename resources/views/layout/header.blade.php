@@ -8,3 +8,4 @@
 </head>
 
 <body>
+<a href="/">Go Home</a>
