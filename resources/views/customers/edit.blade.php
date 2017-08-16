@@ -2,7 +2,7 @@
 
 @section('body')
 
-   	<h2>Create a Tenant</h2>
+   	<h2>Create a Customer</h2>
     <form role="form" method="POST" action="/customers/{{ $customer->id }}">
     	{{ method_field('PATCH') }}
         {{ csrf_field() }}
