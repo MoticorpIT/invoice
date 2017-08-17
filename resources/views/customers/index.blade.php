@@ -8,6 +8,8 @@
 			<li>phone1: {{ $customer->phone1 }}</li>
 			<li>location: {{ $customer->city }}, {{ $customer->state }}</li>
 		</ul>
+
+		My change is better
 	@endforeach
 
 	<h3>Gandy the Great</h3>
