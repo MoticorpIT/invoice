@@ -30,4 +30,5 @@
 	</ul>
 
 	<a href="/customers/{{ $customer->id }}/edit">Edit</a>
+	<a href="/customers">Back to Customers</a>
 @endsection
