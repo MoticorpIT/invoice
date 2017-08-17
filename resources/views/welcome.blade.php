@@ -4,6 +4,6 @@
 	<ul>
 		<li><a href="/customers">Customers</a></li>
 		<li><a href="/invoices">Invoices</a></li>
-		<li><a href="/products">Products</a></li>
+		<li><a href="/products">Product</a></li>
 	</ul>
 @endsection
