@@ -9,4 +9,6 @@
 			<li>location: {{ $customer->city }}, {{ $customer->state }}</li>
 		</ul>
 	@endforeach
+
+	<h3>Gandy the Great</h3>
 @endsection
