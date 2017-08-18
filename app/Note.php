@@ -4,13 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Note extends Model
+class Note extends ModelBase
 {
     public function user(){
     	return $this->belongsTo(User::class);
     }
 
-    public function time(){
-    	return $this->belongsTo(User::class);
-    }
 }
