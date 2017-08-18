@@ -42,6 +42,9 @@
 		</li>
 	</ul>
 
+	<a href="/customers/create">Add</a>
+	<br>
 	<a href="/customers/{{ $customer->id }}/edit">Edit</a>
+	<br>
 	<a href="/customers">Back to Customers</a>
 @endsection

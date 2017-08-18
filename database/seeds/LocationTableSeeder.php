@@ -12,9 +12,9 @@ class LocationTableSeeder extends Seeder
     public function run()
     {
         DB::table('locations')->insert(
-	[
-		[
-			'name' => 'Location 1',
+    [
+        [
+            'name' => 'Location 1',
             'contact_name' => 'Joe Shmoe',
             'street' => '123 somewhere ave.',
             'street2' => '',
@@ -23,10 +23,10 @@ class LocationTableSeeder extends Seeder
             'zip' => '29577',
             'phone' => '8433333333',
             'customer_id' => 3,
-	        'created_at' => date("Y-m-d H:i:s")
-		],
-		[
-	        'name' => 'Surfside Location',
+            'created_at' => date("Y-m-d H:i:s")
+        ],
+        [
+            'name' => 'Surfside Location',
             'contact_name' => 'Jon Snow',
             'street' => 'somewhere in ss',
             'street2' => 'unit 3',
@@ -35,10 +35,10 @@ class LocationTableSeeder extends Seeder
             'zip' => '29572',
             'phone' => '',
             'customer_id' => 3,
-	        'created_at' => date("Y-m-d H:i:s")
-		],
-		[
-	        'name' => 'Surfside Location',
+            'created_at' => date("Y-m-d H:i:s")
+        ],
+        [
+            'name' => 'Surfside Location',
             'contact_name' => 'Jon Snow',
             'street' => 'somewhere in ss',
             'street2' => 'unit 3',
@@ -47,10 +47,10 @@ class LocationTableSeeder extends Seeder
             'zip' => '29572',
             'phone' => '',
             'customer_id' => 1,
-	        'created_at' => date("Y-m-d H:i:s")
-		],
-		[
-	        'name' => 'Surfside Location',
+            'created_at' => date("Y-m-d H:i:s")
+        ],
+        [
+            'name' => 'Surfside Location',
             'contact_name' => 'Jon Snow',
             'street' => 'somewhere in ss',
             'street2' => 'unit 3',
@@ -59,10 +59,10 @@ class LocationTableSeeder extends Seeder
             'zip' => '29572',
             'phone' => '',
             'customer_id' => 2,
-	        'created_at' => date("Y-m-d H:i:s")
-		],
-		[
-	        'name' => 'Surfside Location',
+            'created_at' => date("Y-m-d H:i:s")
+        ],
+        [
+            'name' => 'Surfside Location',
             'contact_name' => 'Jon Snow',
             'street' => 'somewhere in ss',
             'street2' => 'unit 3',
@@ -71,9 +71,9 @@ class LocationTableSeeder extends Seeder
             'zip' => '29572',
             'phone' => '',
             'customer_id' => 4,
-	        'created_at' => date("Y-m-d H:i:s")
-		]
-	]
+            'created_at' => date("Y-m-d H:i:s")
+        ]
+    ]
 );
     }
 }

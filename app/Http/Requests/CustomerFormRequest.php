@@ -27,13 +27,8 @@ class CustomerFormRequest extends FormRequest
             'company' 		=> 'required',
 		    'contact_first' => 'required',
 		    'contact_last' 	=> 'required',
-		    'street' 		=> 'required',
-		    'city' 			=> 'required',
-		    'state' 		=> 'required',
-		    'zip' 			=> 'required',
 		    'phone1' 		=> 'required',
-		    'email' 		=> 'email',
-		    'active' 		=> 'required'
+		    'email' 		=> 'email'
         ];
     }
 }

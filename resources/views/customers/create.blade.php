@@ -2,7 +2,7 @@
 
 @section('body')
 
-   	<h2>Create a Tenant</h2>
+   	<h2>Create a Customer</h2>
     <form role="form" method="POST" action="/customers">
         {{ csrf_field() }}
         <div class="form-group">
@@ -16,31 +16,6 @@
         <div class="form-group">
             <label>Contact Last Name</label>
             <input name="contact_last" class="form-control" value="{{ old('contact_last') }}">
-        </div>
-        <div class="form-group">
-            <label>Street</label>
-            <input name="street" class="form-control" value="{{ old('street') }}">
-        </div>
-        <div class="form-group">
-            <label>City</label>
-            <input name="city" class="form-control" value="{{ old('city') }}">
-        </div>
-        <div class="form-group">
-	        <label>State</label>
-	        <select name="state" class="form-control" >
-	        	@foreach ($states as $k=>$v)
-	            	<option value="{{$k}}"
-					@if(old('state') == $k)
-						selected="selected"
-					@endif
-	            	>{{ $v }}</option>
-	            @endforeach	
-	        </select>
-
-	    </div>
-        <div class="form-group">
-            <label>Zip</label>
-            <input name="zip" class="form-control" value="{{ old('zip') }}">
         </div>
         <div class="form-group">
             <label>Email</label>
@@ -57,19 +32,6 @@
         <div class="form-group">
             <label>Fax</label>
             <input name="phone2" class="form-control" value="{{ old('fax') }}">
-        </div>
-        <div class="form-group">
-            <label>Current Status</label>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="active" id="optionsRadios1" value="1" checked>Active
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="active" id="optionsRadios2" value="0">Not Active
-                </label>
-            </div>
         </div>
         <div class="form-group">
         	<button type="submit" class="btn btn-primary">Submit Button</button>
