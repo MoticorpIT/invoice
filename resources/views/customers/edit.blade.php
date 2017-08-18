@@ -19,31 +19,6 @@
             <input name="contact_last" class="form-control" value="{{ $customer->contact_last }}">
         </div>
         <div class="form-group">
-            <label>Street</label>
-            <input name="street" class="form-control" value="{{ $customer->street }}">
-        </div>
-        <div class="form-group">
-            <label>City</label>
-            <input name="city" class="form-control" value="{{ $customer->city }}">
-        </div>
-        <div class="form-group">
-	        <label>State</label>
-	        <select name="state" class="form-control" >
-	        	@foreach ($states as $k=>$v)
-	            	<option value="{{$k}}"
-					@if($customer->state == $k)
-						selected="selected"
-					@endif
-	            	>{{ $v }}</option>
-	            @endforeach	
-	        </select>
-
-	    </div>
-        <div class="form-group">
-            <label>Zip</label>
-            <input name="zip" class="form-control" value="{{ $customer->zip }}">
-        </div>
-        <div class="form-group">
             <label>Email</label>
             <input name="email" class="form-control" value="{{ $customer->email }}">
         </div>
