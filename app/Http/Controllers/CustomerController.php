@@ -9,11 +9,14 @@ use App\Http\Requests\CustomerFormRequest;
 class CustomerController extends Controller
 {
 	
+    /* AUTHENTICATION */
 	public function __construct(){
 
 		$this->middleware('auth');
 
 	}
+
+
     /**
      * Display a listing of the resource.
      *
@@ -27,6 +30,7 @@ class CustomerController extends Controller
         return view('customers.index', compact('customers'));
     }
 
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -37,6 +41,7 @@ class CustomerController extends Controller
         return view('customers.create');
     }
 
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -51,6 +56,7 @@ class CustomerController extends Controller
         return redirect('customers')->with('message', 'Customer Added!');
     }
 
+    
     /**
      * Display the specified resource.
      *
@@ -62,6 +68,7 @@ class CustomerController extends Controller
         return view('customers.show', compact('customer'));
     }
 
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -74,6 +81,7 @@ class CustomerController extends Controller
         return view('customers.edit', compact('customer'));
     }
 
+    
     /**
      * Update the specified resource in storage.
      *
@@ -90,6 +98,7 @@ class CustomerController extends Controller
         return redirect('customers')->with('message', 'Customer Modified!');
     }
 
+    
     /**
      * Remove the specified resource from storage.
      *

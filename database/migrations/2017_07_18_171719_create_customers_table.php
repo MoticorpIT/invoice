@@ -22,7 +22,7 @@ class CreateCustomersTable extends Migration
 		    $table->string('phone2')->nullable();
 		    $table->string('fax')->nullable();
 		    $table->string('email')->nullable();
-		    $table->boolean('active');
+		    $table->boolean('active')->default(1);
 			$table->timestamps();
         });
     }
