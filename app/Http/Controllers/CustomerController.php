@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Location;
 use Illuminate\Http\Request;
 use App\Http\Requests\CustomerFormRequest;
 
@@ -53,15 +54,15 @@ class CustomerController extends Controller
 
 
     	$customer = new Customer(
-	    	['company' => $request->company],
-	    	['contact_first' => $request->contact_first],
-	    	['contact_last' => $request->contact_last],
-	    	['email' => $request->email],
-	    	['phone1' => $request->phone1],
-	    	['phone2' => $request->phone2],
-	    	['fax' => $request->fax],
-	    	['updated_at' => $request->updated_at],
-	    	['created_at' => $request->created_at]
+	    	['company' => $request->company,
+	    	'contact_first' => $request->contact_first,
+	    	'contact_last' => $request->contact_last,
+	    	'email' => $request->email,
+	    	'phone1' => $request->phone1,
+	    	'phone2' => $request->phone2,
+	    	'fax' => $request->fax,
+	    	'updated_at' => $request->updated_at,
+	    	'created_at' => $request->created_at]
 	    );
 	    $customer->save();
 
@@ -73,17 +74,17 @@ class CustomerController extends Controller
 
         //add location
         //$location = new App\Location($request->all());
-        $location = new App\Location(
-	    	['name' => $request->name],
-	    	['contact_name' => $request->contact_name],
-	    	['street' => $request->street],
-	    	['street2' => $request->street2],
-	    	['city' => $request->city],
-	    	['state' => $request->state],
-	    	['zip' => $request->zip],
-	    	['phone' => $request->phone],
-	    	['updated_at' => $request->updated_at],
-	    	['created_at' => $request->created_at]
+        $location = new Location(
+	    	['name' => $request->name,
+	    	'contact_name' => $request->contact_name,
+	    	'street' => $request->street,
+	    	'street2' => $request->street2,
+	    	'city' => $request->city,
+	    	'state' => $request->state,
+	    	'zip' => $request->zip,
+	    	'phone' => $request->phone,
+	    	'updated_at' => $request->updated_at,
+	    	'created_at' => $request->created_at]
 	    );
 		$customer->locations()->save($location);
 
