@@ -12,7 +12,7 @@
 		<li>active: {{ $customer->active }}</li>
 		<li><h3>Locations:</h3>
 			
-			@foreach($customer->locations as $location)
+			@foreach($customer->availableLocations as $location)
 			<ul>
 				<li>name: {{ $location->name }}</li>
 				<li>street: {{ $location->street }}</li>
@@ -22,6 +22,14 @@
 				<li>zip: {{ $location->zip }}</li>
 				<li>phone: {{ $location->phone }}</li>
 				<li>contact_name: {{ $location->contact_name }}</li>
+				<li>
+					<form action="/locations/{{  $location->id  }}" method="POST" >
+						{{ method_field('PATCH') }}
+        				{{ csrf_field() }}
+        				<input type="hidden" name="active" value="0">
+        				<input type="submit" name="submit" value="Remove Location" />
+					</form>
+				</li>
 			</ul>
 			<br>
 			@endforeach
