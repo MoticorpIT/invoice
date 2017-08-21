@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('chad', function () {
+    return view('chad.chad-file');
+});
+
 
 Route::resource('customers', 'CustomerController');
 Route::resource('invoices', 'InvoiceController');
