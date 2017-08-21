@@ -11,6 +11,13 @@
 					{{ $location->city }}, {{ $location->state }}
 				@endforeach
 			</li>
+			<li><a href="customers/{{  $customer->id  }}">View</a> | <a href="customers/{{  $customer->id  }}/edit">Edit</a></li>
 		</ul>
 	@endforeach
+@endsection
+
+@section('pageLinks')
+	<ul>
+		<li><a href="/customers/create">Add a New Customer</a></li>
+	</ul>
 @endsection

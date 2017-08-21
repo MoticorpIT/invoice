@@ -50,10 +50,45 @@ class CustomerController extends Controller
      */
     public function store(CustomerFormRequest $request)
     {
-        Customer::create($request->all());
 
-        //store page
-        return redirect('customers')->with('message', 'Customer Added!');
+
+    	$customer = new Customer(
+	    	['company' => $request->company],
+	    	['contact_first' => $request->contact_first],
+	    	['contact_last' => $request->contact_last],
+	    	['email' => $request->email],
+	    	['phone1' => $request->phone1],
+	    	['phone2' => $request->phone2],
+	    	['fax' => $request->fax],
+	    	['updated_at' => $request->updated_at],
+	    	['created_at' => $request->created_at]
+	    );
+	    $customer->save();
+
+    	//insert customer
+        //$customer = Customer::create($request->all());
+
+        //get insert id
+        $customerId = $customer->id;
+
+        //add location
+        //$location = new App\Location($request->all());
+        $location = new App\Location(
+	    	['name' => $request->name],
+	    	['contact_name' => $request->contact_name],
+	    	['street' => $request->street],
+	    	['street2' => $request->street2],
+	    	['city' => $request->city],
+	    	['state' => $request->state],
+	    	['zip' => $request->zip],
+	    	['phone' => $request->phone],
+	    	['updated_at' => $request->updated_at],
+	    	['created_at' => $request->created_at]
+	    );
+		$customer->locations()->save($location);
+
+        //customer show page
+        return redirect('customers/'.$customerId);
     }
 
     
