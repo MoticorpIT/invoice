@@ -79,5 +79,5 @@
 @endsection
 
 @section('pageLinks')
-	<h3>NEW CUSTOMER <span style="color:#888">> NEXT: ADD LOCATIONS</span></h3>
+	
 @endsection

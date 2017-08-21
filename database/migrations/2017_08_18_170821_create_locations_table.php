@@ -23,6 +23,7 @@ class CreateLocationsTable extends Migration
             $table->string('state');
             $table->string('zip');
             $table->string('phone')->nullable();
+            $table->string('active')->default(1);
             $table->integer('customer_id');
             $table->timestamps();
         });
