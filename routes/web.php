@@ -23,6 +23,7 @@ Route::get('chad', function () {
 Route::resource('customers', 'CustomerController');
 Route::resource('invoices', 'InvoiceController');
 Route::resource('products', 'ProductController');
+Route::resource('locations', 'LocationController');
 
 //break the routes out of the helper to kill registration
 //Auth::routes();
@@ -33,8 +34,8 @@ $this->post('login', 'Auth\LoginController@login');
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes... //these get commented out
-$this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-$this->post('register', 'Auth\RegisterController@register');
+//$this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+//$this->post('register', 'Auth\RegisterController@register');
 
 // Password Reset Routes...
 $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');

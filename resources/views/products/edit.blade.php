@@ -3,43 +3,35 @@
 @section('body')
 
    	<h2>Create a Customer</h2>
-    <form role="form" method="POST" action="/customers/{{ $customer->id }}">
+    <form role="form" method="POST" action="/products/{{ $product->id }}">
     	{{ method_field('PATCH') }}
         {{ csrf_field() }}
         <div class="form-group">
-            <label>Company Name</label>
-            <input name="company" class="form-control" value="{{ $customer->company }}">
+            <label>Product Name</label>
+            <input name="name" class="form-control" value="{{ $product->name }}">
         </div>
         <div class="form-group">
-            <label>Contact First Name</label>
-            <input name="contact_first" class="form-control" value="{{ $customer->contact_first }}">
+            <label>MSRP</label>
+            <input name="msrp" class="form-control" value="{{ $product->msrp }}">
         </div>
         <div class="form-group">
-            <label>Contact Last Name</label>
-            <input name="contact_last" class="form-control" value="{{ $customer->contact_last }}">
+            <label>Retailer Price</label>
+            <input name="retailer_price" class="form-control" value="{{ $product->retailer_price }}">
         </div>
         <div class="form-group">
-            <label>Email</label>
-            <input name="email" class="form-control" value="{{ $customer->email }}">
+            <label>Description</label>
+            <input name="description" class="form-control" value="{{ $product->description }}">
         </div>
         <div class="form-group">
-            <label>Phone</label>
-            <input name="phone1" class="form-control" value="{{ $customer->phone1 }}">
-        </div>
-        <div class="form-group">
-            <label>Phone 2</label>
-            <input name="phone2" class="form-control" value="{{ $customer->phone2 }}">
-        </div>
-        <div class="form-group">
-            <label>Fax</label>
-            <input name="fax" class="form-control" value="{{ $customer->fax }}">
+            <label>Short Description</label>
+            <input name="short_descript" class="form-control" value="{{ $product->short_descript }}">
         </div>
         <div class="form-group">
             <label>Current Status</label>
             <div class="radio">
                 <label>
                     <input type="radio" name="active" id="optionsRadios1" value="1" 
-                    @if ($customer->active == 1)
+                    @if ($product->active == 1)
                     	checked
                     @endif
                     >Active
@@ -48,11 +40,10 @@
             <div class="radio">
                 <label>
                     <input type="radio" name="active" id="optionsRadios2" value="0"
-                    @if ($customer->active != 1)
+                    @if ($product->active != 1)
                     	checked
                     @endif
                     >Not Active
-
                 </label>
             </div>
         </div>

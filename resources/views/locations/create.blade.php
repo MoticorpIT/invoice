@@ -2,39 +2,11 @@
 
 @section('body')
 	
-   	<h2>Create a Customer</h2>
+   	<h2>Add a Location</h2>
+   	<strong>Customer:</strong>
     <form role="form" method="POST" action="/customers">
         {{ csrf_field() }}
-        <div class="form-group">
-            <label>Company Name</label>
-            <input name="company" class="form-control" value="{{ old('company') }}">
-        </div>
-        <div class="form-group">
-            <label>Contact First Name</label>
-            <input name="contact_first" class="form-control" value="{{ old('contact_first') }}">
-        </div>
-        <div class="form-group">
-            <label>Contact Last Name</label>
-            <input name="contact_last" class="form-control" value="{{ old('contact_last') }}">
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input name="email" class="form-control" value="{{ old('email') }}">
-        </div>
-        <div class="form-group">
-            <label>Phone</label>
-            <input name="phone1" class="form-control" value="{{ old('phone1') }}">
-        </div>
-        <div class="form-group">
-            <label>Phone 2</label>
-            <input name="phone2" class="form-control" value="{{ old('phone2') }}">
-        </div>
-        <div class="form-group">
-            <label>Fax</label>
-            <input name="fax" class="form-control" value="{{ old('fax') }}">
-        </div>
-
-
+        <input type="hidden" name="customer_id" value="{{  $customer }}">
         <div class="form-group">
             <label>Location Name</label>
             <input name="name" class="form-control" value="{{ old('name') }}">
@@ -67,10 +39,9 @@
             <label>Phone</label>
             <input name="phone" class="form-control" value="{{ old('phone') }}">
         </div>
-
-        
         <div class="form-group">
-        	<button type="submit" class="btn btn-primary">Submit Button</button>
+        	<button type="submit" class="btn btn-primary">Finish</button>
+        	<button type="submit" class="btn btn-primary">Add another location</button>
         </div>
     </form>
 
@@ -79,5 +50,5 @@
 @endsection
 
 @section('pageLinks')
-	<h3>NEW CUSTOMER <span style="color:#888">> NEXT: ADD LOCATIONS</span></h3>
+	<h3>ADD LOCATIONS</h3>
 @endsection

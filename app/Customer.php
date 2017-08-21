@@ -10,4 +10,9 @@ class Customer extends ModelBase
     {
         return $this->hasMany(Note::class);
     }
+
+    public function locations()
+    {
+        return $this->hasMany(Location::class);
+    }
 }

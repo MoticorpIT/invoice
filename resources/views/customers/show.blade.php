@@ -9,12 +9,25 @@
 		<li>phone2: {{ $customer->phone2 }}</li>
 		<li>fax: {{ $customer->fax }}</li>
 		<li>email: {{ $customer->email }}</li>
-		<li>street: {{ $customer->street }}</li>
-		<li>city: {{ $customer->city }}</li>
-		<li>state: {{ $customer->state }}</li>
-		<li>zip: {{ $customer->zip }}</li>
 		<li>active: {{ $customer->active }}</li>
-		<li>
+		<li><h3>Locations:</h3>
+			
+			@foreach($customer->locations as $location)
+			<ul>
+				<li>name: {{ $location->name }}</li>
+				<li>street: {{ $location->street }}</li>
+				<li>street2: {{ $location->street2 }}</li>
+				<li>city: {{ $location->city }}</li>
+				<li>state: {{ $location->state }}</li>
+				<li>zip: {{ $location->zip }}</li>
+				<li>phone: {{ $location->phone }}</li>
+				<li>contact_name: {{ $location->contact_name }}</li>
+			</ul>
+			<br>
+			@endforeach
+			
+		</li>
+		<li><h3>Notes:</h3>
 			<ul>
 				@foreach($customer->notes as $note)
 					<li>
@@ -29,6 +42,12 @@
 		</li>
 	</ul>
 
-	<a href="/customers/{{ $customer->id }}/edit">Edit</a>
-	<a href="/customers">Back to Customers</a>
+@endsection
+
+@section('pageLinks')
+
+	<ul>
+		<li><a href="/customers/{{ $customer->id }}/edit">Edit</a></li>
+		<li><a href="/customers">Back to Customers</a></li>
+	</ul>
 @endsection

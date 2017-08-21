@@ -3,69 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Location;
 use Illuminate\Http\Request;
 use App\Http\Requests\CustomerFormRequest;
 
 class CustomerController extends Controller
 {
-	public $states = array(
-		    'AL'=>'Alabama',
-		    'AK'=>'Alaska',
-		    'AZ'=>'Arizona',
-		    'AR'=>'Arkansas',
-		    'CA'=>'California',
-		    'CO'=>'Colorado',
-		    'CT'=>'Connecticut',
-		    'DE'=>'Delaware',
-		    'DC'=>'District of Columbia',
-		    'FL'=>'Florida',
-		    'GA'=>'Georgia',
-		    'HI'=>'Hawaii',
-		    'ID'=>'Idaho',
-		    'IL'=>'Illinois',
-		    'IN'=>'Indiana',
-		    'IA'=>'Iowa',
-		    'KS'=>'Kansas',
-		    'KY'=>'Kentucky',
-		    'LA'=>'Louisiana',
-		    'ME'=>'Maine',
-		    'MD'=>'Maryland',
-		    'MA'=>'Massachusetts',
-		    'MI'=>'Michigan',
-		    'MN'=>'Minnesota',
-		    'MS'=>'Mississippi',
-		    'MO'=>'Missouri',
-		    'MT'=>'Montana',
-		    'NE'=>'Nebraska',
-		    'NV'=>'Nevada',
-		    'NH'=>'New Hampshire',
-		    'NJ'=>'New Jersey',
-		    'NM'=>'New Mexico',
-		    'NY'=>'New York',
-		    'NC'=>'North Carolina',
-		    'ND'=>'North Dakota',
-		    'OH'=>'Ohio',
-		    'OK'=>'Oklahoma',
-		    'OR'=>'Oregon',
-		    'PA'=>'Pennsylvania',
-		    'RI'=>'Rhode Island',
-		    'SC'=>'South Carolina',
-		    'SD'=>'South Dakota',
-		    'TN'=>'Tennessee',
-		    'TX'=>'Texas',
-		    'UT'=>'Utah',
-		    'VT'=>'Vermont',
-		    'VA'=>'Virginia',
-		    'WA'=>'Washington',
-		    'WV'=>'West Virginia',
-		    'WI'=>'Wisconsin',
-		    'WY'=>'Wyoming',
-		);
+	
+    /* AUTHENTICATION */
 	public function __construct(){
 
 		$this->middleware('auth');
 
 	}
+
+
     /**
      * Display a listing of the resource.
      *
@@ -79,6 +31,7 @@ class CustomerController extends Controller
         return view('customers.index', compact('customers'));
     }
 
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -86,10 +39,10 @@ class CustomerController extends Controller
      */
     public function create()
     {
-    	$states = $this->states;
-        return view('customers.create', compact('states'));
+        return view('customers.create');
     }
 
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -98,12 +51,48 @@ class CustomerController extends Controller
      */
     public function store(CustomerFormRequest $request)
     {
-        Customer::create($request->all());
 
-        //store page
-        return redirect('customers')->with('message', 'Customer Added!');
+
+    	$customer = new Customer(
+	    	['company' => $request->company,
+	    	'contact_first' => $request->contact_first,
+	    	'contact_last' => $request->contact_last,
+	    	'email' => $request->email,
+	    	'phone1' => $request->phone1,
+	    	'phone2' => $request->phone2,
+	    	'fax' => $request->fax,
+	    	'updated_at' => $request->updated_at,
+	    	'created_at' => $request->created_at]
+	    );
+	    $customer->save();
+
+    	//insert customer
+        //$customer = Customer::create($request->all());
+
+        //get insert id
+        $customerId = $customer->id;
+
+        //add location
+        //$location = new App\Location($request->all());
+        $location = new Location(
+	    	['name' => $request->name,
+	    	'contact_name' => $request->contact_name,
+	    	'street' => $request->street,
+	    	'street2' => $request->street2,
+	    	'city' => $request->city,
+	    	'state' => $request->state,
+	    	'zip' => $request->zip,
+	    	'phone' => $request->phone,
+	    	'updated_at' => $request->updated_at,
+	    	'created_at' => $request->created_at]
+	    );
+		$customer->locations()->save($location);
+
+        //customer show page
+        return redirect('customers/'.$customerId);
     }
 
+    
     /**
      * Display the specified resource.
      *
@@ -115,6 +104,7 @@ class CustomerController extends Controller
         return view('customers.show', compact('customer'));
     }
 
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -124,10 +114,10 @@ class CustomerController extends Controller
     public function edit($id)
     {
     	$customer = Customer::find($id);
-    	$states = $this->states;
-        return view('customers.edit', compact('states','customer'));
+        return view('customers.edit', compact('customer'));
     }
 
+    
     /**
      * Update the specified resource in storage.
      *
@@ -144,6 +134,7 @@ class CustomerController extends Controller
         return redirect('customers')->with('message', 'Customer Modified!');
     }
 
+    
     /**
      * Remove the specified resource from storage.
      *
