@@ -11,7 +11,7 @@ class ProductTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('customers')->insert(
+        DB::table('products')->insert(
 	        [
 	        	[
 	        		'name' => '30g Maeng Da',
@@ -28,6 +28,15 @@ class ProductTableSeeder extends Seeder
 				    'retailer_price' => '8.95',
 				    'description' => '30 grams of trainwreck powder',
 				    'short_descript' => '30g Trainwreck Powder',
+				    'active' => '1',
+		            'created_at' => date("Y-m-d H:i:s")
+	        	],
+	        	[
+		            'name' => '30g Bali',
+				    'msrp' => '24.95',
+				    'retailer_price' => '7.95',
+				    'description' => '30 grams of bali powder',
+				    'short_descript' => '30g Bali Powder',
 				    'active' => '1',
 		            'created_at' => date("Y-m-d H:i:s")
 	        	]

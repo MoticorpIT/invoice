@@ -1,8 +1,8 @@
 @extends('layout.master')
 
 @section('body')
+	<h2>{{ $product->name }}</h2>
 	<ul>
-		<li>Name: {{ $product->name }}</li>
 		<li>MSRP: {{ $product->msrp }}</li>
 		<li>Retailer Price: {{ $product->retailer_price }}</li>
 		<li>Description: {{ $product->description }}</li>
@@ -10,7 +10,11 @@
 		<li>Active: {{ $product->active }}</li>
 	</ul>
 
-	<a href="/products/{{ $product->id }}/edit">Edit</a>
+	<button>
+		<a href="/products/{{ $product->id }}/edit">Edit</a>
+	</button>
 	<br>
-	<a href="/products">Back to Products</a>
+	<button>
+		<a href="/products">Back to Products</a>
+	</button>
 @endsection
