@@ -42,9 +42,12 @@
 		</li>
 	</ul>
 
-	<a href="/customers/create">Add</a>
-	<br>
-	<a href="/customers/{{ $customer->id }}/edit">Edit</a>
-	<br>
-	<a href="/customers">Back to Customers</a>
+@endsection
+
+@section('pageLinks')
+
+	<ul>
+		<li><a href="/customers/{{ $customer->id }}/edit">Edit</a></li>
+		<li><a href="/customers">Back to Customers</a></li>
+	</ul>
 @endsection

@@ -43,7 +43,7 @@ class CustomerTableSeeder extends Seeder
 				    'phone2' => '555-712-2371',
 				    'fax' => '555-712-2024',
 				    'email' => 'joe@the-times.com',
-				    'active' => '0',
+				    'active' => '1',
 		            'created_at' => date("Y-m-d H:i:s")
 	        	],[
 		            'company' => 'Blue Times',

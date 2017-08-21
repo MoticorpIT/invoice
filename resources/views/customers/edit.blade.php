@@ -32,7 +32,7 @@
         </div>
         <div class="form-group">
             <label>Fax</label>
-            <input name="phone2" class="form-control" value="{{ $customer->fax }}">
+            <input name="fax" class="form-control" value="{{ $customer->fax }}">
         </div>
         <div class="form-group">
             <label>Current Status</label>
