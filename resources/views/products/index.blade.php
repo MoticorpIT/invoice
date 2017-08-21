@@ -13,5 +13,12 @@
 		</ul>
 		<hr />
 	@endforeach
-	<button><a href="products/create">Add Product</a></button>
+	
+@endsection
+
+
+@section('pageLinks')
+<ul>
+	<li><a href="products/create">Add Product</a></li>
+</ul>
 @endsection

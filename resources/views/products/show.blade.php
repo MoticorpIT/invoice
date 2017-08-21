@@ -10,11 +10,13 @@
 		<li>Active: {{ $product->active }}</li>
 	</ul>
 
-	<button>
-		<a href="/products/{{ $product->id }}/edit">Edit</a>
-	</button>
-	<br>
-	<button>
-		<a href="/products">Back to Products</a>
-	</button>
+	
+@endsection
+
+
+@section('pageLinks')
+<ul>
+	<li><a href="/products/{{ $product->id }}/edit">Edit</a></li>
+	<li><a href="/products">Back to Products</a></li>
+</ul>
 @endsection
