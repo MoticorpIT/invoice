@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+    /* AUTHENTICATION */
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,8 @@ class ProductController extends Controller
     public function index()
     {
         // Returns Products Index
-        return view('invoices.index');
+        $products = Product::where('active', 1)->get();
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -24,7 +32,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
@@ -35,7 +43,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Product::create($request-all());
+
+        // store page
+        return redirct('products')->with('message', 'Product Added!');
     }
 
     /**
@@ -44,9 +55,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -57,7 +68,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view('products.edit', compact('products'));
     }
 
     /**
@@ -69,7 +81,11 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::find($id);
+        $product->fill($request->toArray())->save();
+
+        //store page
+        return redirect('products')->with('message', 'Product Modified Sucessfully!');
     }
 
     /**

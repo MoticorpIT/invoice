@@ -13,7 +13,17 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        //
+        // create db table - PRODUCTS
+        schema::create('products', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->decimal('msrp');
+            $table->decimal('retailer_price');
+            $table->string('description');
+            $table->string('short_descript');
+            $table->boolean('active')->default(1);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +33,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('products');
     }
 }
