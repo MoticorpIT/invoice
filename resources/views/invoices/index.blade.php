@@ -15,7 +15,7 @@
 			<li>Total: {{ $invoice->total }}</li>
 			<li>Status_Id: {{ $invoice->status_id }}</li>
 			<li>Customer_Id: {{ $invoice->customers_id }}</li>
-			<li><a href="invoices/{{  $invoice->id  }}">View</a> | <a href="invoices/{{  $invoice->id  }}/edit">Edit</a></li>
+			<li><a href="/invoices/{{  $invoice->id  }}">View</a> | <a href="/invoices/{{  $invoice->id  }}/edit">Edit</a></li>
 		</ul>
 		<hr />
 	@endforeach

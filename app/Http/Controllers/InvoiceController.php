@@ -56,7 +56,7 @@ class InvoiceController extends Controller
      */
     public function show(Invoice $invoice)
     {
-        return view('invoice.show', compact('invoice'));
+        return view('invoices.show', compact('invoice'));
     }
 
     /**
