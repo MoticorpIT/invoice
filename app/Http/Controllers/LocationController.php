@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Location;
 use Illuminate\Http\Request;
+use App\Http\Requests\LocationFormRequest;
 
 class LocationController extends Controller
 {
@@ -130,9 +131,14 @@ class LocationController extends Controller
      * @param  \App\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Location $location)
+    public function update(LocationFormRequest $request, $id)
     {
-        //
+    	
+        $location = Location::find($id);
+	    $location->fill(['active' => $request->active])->save();
+
+        //store page
+        return redirect('customers/'.$location->customer_id)->with('message', 'Location Removed!');
     }
 
     /**

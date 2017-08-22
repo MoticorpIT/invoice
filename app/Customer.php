@@ -15,4 +15,9 @@ class Customer extends ModelBase
     {
         return $this->hasMany(Location::class);
     }
+
+    public function availableLocations()
+    {
+    	return $this->locations()->where('active', 1);
+    }
 }
