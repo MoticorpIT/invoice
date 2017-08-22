@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends ModelBase
 {
-    //
+    public function customer(){
+
+    	return $this->belongsTo('App\Customer');
+
+    }
 }

@@ -24,7 +24,7 @@ class CreateInvoicesTable extends Migration
             $table->decimal('sub_total');
             $table->decimal('total');
             $table->integer('status_id');
-            $table->integer('customers_id');
+            $table->integer('customer_id');
             $table->timestamps();
         });
     }

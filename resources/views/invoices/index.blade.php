@@ -31,11 +31,12 @@
 			<th>Add 2</th>
 			<th>Subtotal</th>
 			<th>Total</th>
-			<th>Status ID</th>
-			<th>Customers ID</th>
+			<th>Status</th>
+			<th>Customer</th>
 			<th>Actions</th>
 		</tr>
 		@foreach($invoices as $invoice)
+
 			<tr>
 				<td>{{ $invoice->due }}</td>
 				<td>${{ $invoice->shipping }}</td>
@@ -46,7 +47,7 @@
 				<td>${{ $invoice->sub_total }}</td>
 				<td>${{ $invoice->total }}</td>
 				<td>{{ $invoice->status_id }}</td>
-				<td>{{ $invoice->customers_id }}</td>
+				<td>{{ $invoice->customer->company }}</td>
 				<td><a href="/invoices/{{  $invoice->id  }}">View</a> | <a href="/invoices/{{  $invoice->id  }}/edit">Edit</a></td>
 			</tr>
 		@endforeach

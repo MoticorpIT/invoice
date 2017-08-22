@@ -21,7 +21,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::where('customers_id', '>', 0)->get();
+        $invoices = Invoice::where('customer_id', '>', 0)->get();
         return view('invoices.index', compact('invoices'));
     }
 
