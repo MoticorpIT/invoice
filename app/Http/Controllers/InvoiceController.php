@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Invoice;
 use Illuminate\Http\Request;
+use App\Http\Requests\InvoiceFormRequest;
 
 class InvoiceController extends Controller
 {
+
+    /* AUTHENTICATION */
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,8 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        return view('invoices.index');
+        $invoices = Invoice::where('customers_id', '>', 0)->get();
+        return view('invoices.index', compact('invoices'));
     }
 
     /**
@@ -24,7 +32,7 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('invoices.create');
     }
 
     /**
@@ -33,9 +41,11 @@ class InvoiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InvoiceFormRequest $request)
     {
-        //
+        Invoice::create($request->all());
+        // store page
+        return redirect('invoices')->with('message', 'Invoice Added!');
     }
 
     /**
@@ -44,9 +54,9 @@ class InvoiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Invoice $invoice)
     {
-        //
+        return view('invoice.show', compact('invoice'));
     }
 
     /**
@@ -57,7 +67,8 @@ class InvoiceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $invoice = Invoice::find($id);
+        return view('invoices.edit', compact('invoice'));
     }
 
     /**
@@ -69,7 +80,10 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $invoice = Invoice::find($id);
+        $invoice->fill($request->toArray())->save();
+        //store page
+        return redirect('invoices')->with('message', 'Invoice Modified!');
     }
 
     /**

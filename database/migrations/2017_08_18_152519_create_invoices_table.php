@@ -13,7 +13,20 @@ class CreateInvoicesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('invoices', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('due');
+            $table->decimal('shipping')->nullable();
+            $table->string('add_1_text')->nullable();
+            $table->decimal('add_1')->nullable();
+            $table->string('add_2_text')->nullable();
+            $table->decimal('add_2')->nullable();
+            $table->decimal('sub_total');
+            $table->decimal('total');
+            $table->integer('status_id');
+            $table->integer('customers_id');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +36,6 @@ class CreateInvoicesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('invoices');
     }
 }
