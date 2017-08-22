@@ -63,7 +63,7 @@
 <p>Notes:
 <ul>
 	<li>Customer vs customer_id :: in order for Create to work, a customer ID must be entered (a string will fail)</li>
-	<li>Customer/customer_id is also associated with the Edit page... which currently works as coded.</li>
+	<li>Customer/customer_id is also associated with the Edit page... which currently works but was adapted accordingly.</li>
 </ul>
 </p>
 <br>

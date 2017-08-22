@@ -24,6 +24,10 @@ class StatusTableSeeder extends Seeder
 	        	[
 		            'status' => 'Unpaid',
 		            'created_at' => date("Y-m-d H:i:s")
+	        	],
+	        	[
+		            'status' => 'Past Due',
+		            'created_at' => date("Y-m-d H:i:s")
 	        	]
 	        ]
 	    );
