@@ -6,7 +6,7 @@
    	<strong>Customer:</strong>
     <form role="form" method="POST" action="/customers">
         {{ csrf_field() }}
-        <input type="hidden" name="customer_id" value="{{  $customer }}">
+        <input type="hidden" name="customer_id" value="customer }}">
         <div class="form-group">
             <label>Location Name</label>
             <input name="name" class="form-control" value="{{ old('name') }}">
