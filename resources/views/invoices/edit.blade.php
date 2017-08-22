@@ -39,15 +39,43 @@
             <input name="total" class="form-control" value="{{ $invoice->total }}">
         </div>
         <div class="form-group">
-            <label>Status ID</label>
-            <input name="status_id" class="form-control" value="{{ $invoice->status_id }}">
+            <label>Status</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="status_id" id="optionsRadios1" value="1" 
+                    @if ($invoice->status->status == 'Quote')
+                        checked
+                    @endif
+                    >Quote
+                </label>
+                
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="status_id" id="optionsRadios2" value="2"
+                    @if ($invoice->status->status == 'Paid')
+                        checked
+                    @endif
+                    >Paid
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="status_id" id="optionsRadios3" value="3"
+                    @if ($invoice->status->status == 'Unpaid')
+                        checked
+                    @endif
+                    >Unpaid
+                </label>
+            </div>
         </div>
         <div class="form-group">
-            <label>Customer ID</label>
-            <input name="customers_id" class="form-control" value="{{ $invoice->customers_id }}">
+            <label>Customer</label>
+            <input name="customer_id" class="form-control" value="{{ $invoice->customer->id }}">
         </div>
         <div class="form-group">
         	<button type="submit" class="btn btn-primary">Submit Button</button>
+            <button><a href="/invoices">Cancel</a></button>
         </div>
     </form>
 

@@ -46,7 +46,7 @@
 				<td>${{ $invoice->add_2 }}</td>
 				<td>${{ $invoice->sub_total }}</td>
 				<td>${{ $invoice->total }}</td>
-				<td>{{ $invoice->status_id }}</td>
+				<td>{{ $invoice->status->status }}</td>
 				<td>{{ $invoice->customer->company }}</td>
 				<td><a href="/invoices/{{  $invoice->id  }}">View</a> | <a href="/invoices/{{  $invoice->id  }}/edit">Edit</a></td>
 			</tr>
@@ -61,6 +61,11 @@
 	<li><a href="invoices/create">Add invoice</a></li>
 </ul>
 <p>Notes:
+<ul>
+	<li>Customer vs customer_id :: in order for Create to work, a customer ID must be entered (a string will fail)</li>
+	<li>Customer/customer_id is also associated with the Edit page... which currently works as coded.</li>
+</ul>
+</p>
 <br>
 
 @endsection
