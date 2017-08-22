@@ -1,24 +1,56 @@
 @extends('layout.master')
 
 @section('body')
+	<style>
+	table {
+	    font-family: arial, sans-serif;
+	    border-collapse: collapse;
+	    width: 100%;
+	}
+
+	td, th {
+	    border: 1px solid #dddddd;
+	    text-align: left;
+	    padding: 8px;
+	}
+
+	tr:nth-child(even) {
+	    background-color: #dddddd;
+	}
+	</style>
+
 	<h2>Invoices</h2>
 
-	@foreach($invoices as $invoice)
-		<ul>
-			<li>Due: {{ $invoice->due }}</li>
-			<li>Shipping: ${{ $invoice->shipping }}</li>
-			<li>Add_1_Text: {{ $invoice->add_1_text }}</li>
-			<li>Add_1: {{ $invoice->add_1 }}</li>
-			<li>Add_2_Text: {{ $invoice->add_2_text }}</li>
-			<li>Add_2: {{ $invoice->add_2 }}</li>
-			<li>Subtotal: {{ $invoice->sub_total }}</li>
-			<li>Total: {{ $invoice->total }}</li>
-			<li>Status_Id: {{ $invoice->status_id }}</li>
-			<li>Customer_Id: {{ $invoice->customers_id }}</li>
-			<li><a href="/invoices/{{  $invoice->id  }}">View</a> | <a href="/invoices/{{  $invoice->id  }}/edit">Edit</a></li>
-		</ul>
-		<hr />
-	@endforeach
+	<table>
+		<tr>
+			<th>Due</th>
+			<th>Shipping</th>
+			<th>Add 1 Text</th>
+			<th>Add 1</th>
+			<th>Add 2 Text</th>
+			<th>Add 2</th>
+			<th>Subtotal</th>
+			<th>Total</th>
+			<th>Status ID</th>
+			<th>Customers ID</th>
+			<th>Actions</th>
+		</tr>
+		@foreach($invoices as $invoice)
+			<tr>
+				<td>{{ $invoice->due }}</td>
+				<td>${{ $invoice->shipping }}</td>
+				<td>{{ $invoice->add_1_text }}</td>
+				<td>${{ $invoice->add_1 }}</td>
+				<td>{{ $invoice->add_2_text }}</td>
+				<td>${{ $invoice->add_2 }}</td>
+				<td>${{ $invoice->sub_total }}</td>
+				<td>${{ $invoice->total }}</td>
+				<td>{{ $invoice->status_id }}</td>
+				<td>{{ $invoice->customers_id }}</td>
+				<td><a href="/invoices/{{  $invoice->id  }}">View</a> | <a href="/invoices/{{  $invoice->id  }}/edit">Edit</a></td>
+			</tr>
+		@endforeach
+	</table>
 	
 @endsection
 
@@ -27,4 +59,7 @@
 <ul>
 	<li><a href="invoices/create">Add invoice</a></li>
 </ul>
+<p>Notes:
+<br>
+
 @endsection
