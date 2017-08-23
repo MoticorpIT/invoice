@@ -152,9 +152,6 @@ if (!window.jQuery.ui) {
 
 <![endif]-->
 
-<!-- Demo purpose only -->
-<script src="js/demo.min.js"></script>
-
 <!-- MAIN APP JS FILE -->
 <script src="js/app.min.js"></script>
 
