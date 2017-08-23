@@ -51,20 +51,35 @@ class CustomerController extends Controller
      */
     public function store(CustomerFormRequest $request)
     {
+    	
+
+    	//CUSTOMER FORM
+    	if(isset($request->customer) && $request->customer){
+	    	$customer = new Customer(
+		    	['company' => $request->company,
+		    	'contact_first' => $request->contact_first,
+		    	'contact_last' => $request->contact_last,
+		    	'email' => $request->email,
+		    	'phone1' => $request->phone1,
+		    	'phone2' => $request->phone2,
+		    	'fax' => $request->fax,
+		    	'updated_at' => $request->updated_at,
+		    	'created_at' => $request->created_at]
+		    );
+
+		    $customer->save();
+
+	    }
+
+	    $customerId = $customer->id;
 
 
-    	$customer = new Customer(
-	    	['company' => $request->company,
-	    	'contact_first' => $request->contact_first,
-	    	'contact_last' => $request->contact_last,
-	    	'email' => $request->email,
-	    	'phone1' => $request->phone1,
-	    	'phone2' => $request->phone2,
-	    	'fax' => $request->fax,
-	    	'updated_at' => $request->updated_at,
-	    	'created_at' => $request->created_at]
-	    );
-	    $customer->save();
+	    //LOCATION FORM
+    	if(isset($request->location) && $request->location){
+
+    	}
+
+
 
     	//insert customer
         //$customer = Customer::create($request->all());
