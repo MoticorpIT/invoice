@@ -20,4 +20,9 @@ class Customer extends ModelBase
     {
     	return $this->locations()->where('active', 1);
     }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }
