@@ -68,6 +68,15 @@
                     >Unpaid
                 </label>
             </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="status_id" id="optionsRadios4" value="4"
+                    @if ($invoice->status->status == 'Past Due')
+                        checked
+                    @endif
+                    >Past Due
+                </label>
+            </div>
         </div>
         <div class="form-group">
             <label>Customer</label>
@@ -78,6 +87,13 @@
             <button><a href="/invoices">Cancel</a></button>
         </div>
     </form>
+
+    <div>
+        <h4>Notes:</h4>
+        <ul>
+            <li>Customer field shows customer_id and not the customer name - if customer name is shown, the form errors when submitted, as a string is being submitted and not the id (integer)</li>
+        </ul>
+    </div>
 
     @include('layout.validate')
 

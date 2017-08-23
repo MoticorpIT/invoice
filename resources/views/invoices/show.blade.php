@@ -4,9 +4,13 @@
 	<h2>Invoices</h2>
 
 		<ul>
-			<li>Customer: {{ $invoice->customer->company }}</li>
+			<li>Customer: <a href="/customers/{{ $invoice->customer->id }}">{{ $invoice->customer->company }}</a></li>
 			<li>Due: {{ $invoice->due }}</li>
-			<li>Status: {{ $invoice->status->status }}</li>
+			<li 
+				@if($invoice->status->status == 'Past Due')
+					style="color:red"
+				@endif
+			>Status: {{ $invoice->status->status }}</li>
 			<li>Shipping: ${{ $invoice->shipping }}</li>
 			<li>Add_1_Text: {{ $invoice->add_1_text }}</li>
 			<li>Add_1: ${{ $invoice->add_1 }}</li>

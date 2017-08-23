@@ -57,6 +57,12 @@
                     >Unpaid
                 </label>
             </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="status_id" id="optionsRadios4" value="4"
+                    >Past Due
+                </label>
+            </div>
         </div>
         <div class="form-group">
             <label>Customer</label>
