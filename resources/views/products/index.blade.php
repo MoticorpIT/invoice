@@ -10,6 +10,7 @@
 			<li>Retailer Price: ${{ $product->retailer_price }}</li>
 			<li>Description: {{ $product->description }}</li>
 			<li>Short Description: {{ $product->short_descript }}</li>
+			<li><a href="/products/{{  $product->id  }}">View</a> | <a href="/products/{{  $product->id  }}/edit">Edit</a></li>
 		</ul>
 		<hr />
 	@endforeach
