@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('home', function () {
     return view('welcome');
 });
 
@@ -29,8 +29,8 @@ Route::resource('locations', 'LocationController');
 //Auth::routes();
 
 // Authentication Routes...
-$this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
-$this->post('login', 'Auth\LoginController@login');
+$this->get('/', 'Auth\LoginController@showLoginForm')->name('login');
+$this->post('/', 'Auth\LoginController@login');
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes... //these get commented out
