@@ -85,10 +85,9 @@ class LocationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id = 2)
+    public function create($id)
     {
-    	dd($id);
-        return view('locations.create', compact('id'));
+        return view('locations.create');
     }
 
     /**
