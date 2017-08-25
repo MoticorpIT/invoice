@@ -6,23 +6,23 @@
 			padding-right: 12px;
 		}
 	</style>
-	<!-- widget grid -->
+	{{-- widget grid --}}
 	<section id="widget-grid" class="">
 	
-		<!-- row -->
+		{{-- row --}}
 		<div class="row">
 	
-			<!-- NEW WIDGET START -->
+			{{-- NEW WIDGET START --}}
 			<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	
-				<!-- Widget ID (each widget will need unique ID)-->
+				{{-- Widget ID (each widget will need unique ID)--}}
 				<div class="jarviswidget well jarviswidget-color-darken" id="wid-id-0" data-widget-sortable="false" data-widget-deletebutton="false" data-widget-editbutton="false" data-widget-colorbutton="false">
 	
-					<!-- widget div-->
+					{{-- widget div--}}
 					<div>
 	
-						<!-- widget content -->
-						<div class="widget-body no-padding">
+						{{-- widget content --}}
+						<div class="widget-body">
 	
 							<div class="widget-body-toolbar">
 	
@@ -63,7 +63,7 @@
 							<div class="padding-10">
 								<br>
 								<div class="pull-left">
-									<img src="/img/logo.png" width="150" height="32" alt="invoice logo">
+									<img src="/img/logo-blacknwhite.png" width="150" height="32" alt="invoice logo">
 	
 									<address>
 										<br>
@@ -88,11 +88,14 @@
 										<address>
 											<strong>{{ $invoice->customer->contact_first }} {{ $invoice->customer->contact_last }}</strong>
 											<br>
-											{{-- {{$invoice->customers->avilableLocations->street}} --}}
-											342 Mirlington Road,
+											@foreach($invoice->customer->locations as $location)
+											{{ $location->street }}
+											{{-- 342 Mirlington Road, --}}
 											<br>
-											Calfornia, CA 431464
+											{{ $location->city }}, {{ $location->state }} {{ $location->zip }}
+											{{-- Calfornia, CA 431464 --}}
 											<br>
+											@endforeach
 											<abbr title="Phone">P:</abbr> {{ $invoice->customer->phone1 }}
 										</address>
 									</div>
@@ -161,11 +164,11 @@
 										</tr>
 										<tr>
 											<td colspan="4" class="text-right">Subtotal:</td>
-											<td><strong>${{$invoice->sub_total}}</strong></td>
+											<td class="text-right"><strong>${{$invoice->sub_total}}</strong></td>
 										</tr>
 										<tr>
 											<td colspan="4" class="text-right">Shipping:</td>
-											<td><strong>${{$invoice->shipping}}</strong></td>
+											<td class="text-right"><strong>${{$invoice->shipping}}</strong></td>
 										</tr>
 									</tbody>
 								</table>
@@ -177,8 +180,7 @@
 											<div class="payment-methods">
 												<h5>Notes:</h5>
 												<ul>
-													<li>Need to pull in info from locations table too</li>
-													<li>Need invoice number added to invoice table</li>
+													<li>Need to add a way to pull in only the address for this invoice, not all for that customer</li>
 													<li>Need to add Notes to invoice table</li>
 													<li>Need to create table for line items and pull in data</li>
 													<li>Finalize subtotal, shipping, due section (make it math)</li>
@@ -188,7 +190,8 @@
 
 										<div class="col-sm-5">
 											<div class="invoice-sum-total pull-right pad-r-24">
-												<h3><strong>Total: <span class="text-success">${{$invoice->total}}</span></strong></h3>
+												<h3><strong>Total: <span class="text-success">${{$invoice->total}}</span></strong>
+												</h3>
 											</div>
 										</div>
 
@@ -205,17 +208,17 @@
 								</div>
 							</div>
 						</div>
-						<!-- end widget content -->
+						{{-- end widget content --}}
 					</div>
-					<!-- end widget div -->
+					{{-- end widget div --}}
 				</div>
-				<!-- end widget -->
+				{{-- end widget --}}
 			</article>
-			<!-- WIDGET END -->
+			{{-- WIDGET END --}}
 		</div>
-		<!-- end row -->
+		{{-- end row --}}
 	</section>
-	<!-- end widget grid -->
+	{{-- end widget grid --}}
 
 	{{-- <h2>Invoices</h2>
 

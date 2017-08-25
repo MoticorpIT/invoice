@@ -10,7 +10,7 @@
         </header>
 
         <div>            
-            <!-- widget content -->
+            {{-- widget content --}}
             <div class="widget-body no-padding">
                 <form id="checkout-form" class="smart-form" method="POST" action="/invoices">
                 {{ csrf_field() }}
@@ -212,13 +212,13 @@
                 </form>
 
             </div>
-            <!-- end widget content -->
+            {{-- end widget content --}}
             
         </div>
-        <!-- end widget div -->
+        {{-- end widget div --}}
         
     </div>
-    <!-- end widget -->
+    {{-- end widget --}}
 
 	<h2>Create a Invoice</h2>
     <form role="form" method="POST" action="/invoices">
