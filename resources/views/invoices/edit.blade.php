@@ -43,16 +43,25 @@
             <div class="radio">
                 <label>
                     <input type="radio" name="status_id" id="optionsRadios1" value="1" 
-                    @if ($invoice->status->status == 'Quote')
+                    @if ($invoice->status->status == 'Draft')
                         checked
                     @endif
-                    >Quote
+                    >Draft
                 </label>
                 
             </div>
             <div class="radio">
                 <label>
                     <input type="radio" name="status_id" id="optionsRadios2" value="2"
+                    @if ($invoice->status->status == 'Quote')
+                        checked
+                    @endif
+                    >Quote
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="status_id" id="optionsRadios3" value="3"
                     @if ($invoice->status->status == 'Paid')
                         checked
                     @endif
@@ -61,7 +70,16 @@
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="status_id" id="optionsRadios3" value="3"
+                    <input type="radio" name="status_id" id="optionsRadios4" value="4"
+                    @if ($invoice->status->status == 'Partial')
+                        checked
+                    @endif
+                    >Partial
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="status_id" id="optionsRadios4" value="5"
                     @if ($invoice->status->status == 'Unpaid')
                         checked
                     @endif
@@ -70,7 +88,7 @@
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="status_id" id="optionsRadios4" value="4"
+                    <input type="radio" name="status_id" id="optionsRadios4" value="6"
                     @if ($invoice->status->status == 'Past Due')
                         checked
                     @endif

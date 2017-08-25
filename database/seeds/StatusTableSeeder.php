@@ -14,7 +14,11 @@ class StatusTableSeeder extends Seeder
         DB::table('statuses')->insert(
 	        [
 	        	[
-	        		'status' => 'Quote',
+	        		'status' => 'Draft',
+		            'created_at' => date("Y-m-d H:i:s")
+	        	],
+	        	[
+		            'status' => 'Quote',
 		            'created_at' => date("Y-m-d H:i:s")
 	        	],
 	        	[
@@ -22,7 +26,11 @@ class StatusTableSeeder extends Seeder
 		            'created_at' => date("Y-m-d H:i:s")
 	        	],
 	        	[
-		            'status' => 'Unpaid',
+		            'status' => 'Partial',
+		            'created_at' => date("Y-m-d H:i:s")
+	        	],
+	        	[
+		            'status' => 'Unpaid', 
 		            'created_at' => date("Y-m-d H:i:s")
 	        	],
 	        	[

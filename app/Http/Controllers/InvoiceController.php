@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Invoice;
+use App\Customer;
 use Illuminate\Http\Request;
 use App\Http\Requests\InvoiceFormRequest;
 
@@ -10,7 +11,8 @@ class InvoiceController extends Controller
 {
 
     /* AUTHENTICATION */
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
@@ -32,13 +34,14 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        return view('invoices.create');
+        $customers = Customer::where('active', '=', 1)->get();
+        return view('invoices.create', compact('customers'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(InvoiceFormRequest $request)
@@ -51,7 +54,7 @@ class InvoiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show(Invoice $invoice)
@@ -62,7 +65,7 @@ class InvoiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -74,8 +77,8 @@ class InvoiceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -89,7 +92,7 @@ class InvoiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
