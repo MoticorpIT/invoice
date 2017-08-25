@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
-		<title> SmartAdmin </title>
+		<title> Invoice App </title>
 		<meta name="description" content="">
 		<meta name="author" content="">
 
@@ -829,4 +829,4 @@
 
 			<!-- MAIN CONTENT -->
 			<div id="content">
-        <a href="/">Go Home</a>
+        {{-- <a href="/">Go Home</a> --}}

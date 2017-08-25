@@ -27,8 +27,16 @@
 							<div class="widget-body-toolbar">
 	
 								<div class="row">
+
+									<div class="col-sm-2 pull-left">
+
+										<div class="btn-group">
+											<span class="btn btn-sm btn-primary">{{ $invoice->status->status }}</span>
+										</div>
 	
-									<div class="col-sm-12 text-align-right">
+									</div>
+	
+									<div class="col-sm-10 text-align-right">
 
 										<div class="btn-group">
 											<a href="/invoices/{{ $invoice->id }}" class="btn btn-sm btn-primary"> <i class="fa fa-dollar"></i> Pay </a>
@@ -90,9 +98,9 @@
 									</div>
 									<div class="col-sm-3">
 										<div>
-											<div>
+											<div class="font-md">
 												<strong>INVOICE NO :</strong>
-												<span class="pull-right"> #AA-454-4113-00 </span>
+												<span class="pull-right"> {{ $invoice->invoice_num }} </span>
 											</div>
 										</div>
 										<div>
