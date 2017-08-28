@@ -179,6 +179,9 @@
 										<div class="col-sm-7">
 											<div class="payment-methods">
 												<h5>Notes:</h5>
+												<p>
+													{{ $invoice->inv_note }}
+												</p>
 												<ul>
 													<li>Need to add a way to pull in only the address for this invoice, not all for that customer</li>
 													<li>Need to add Notes to invoice table</li>
