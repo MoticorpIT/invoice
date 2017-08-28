@@ -179,6 +179,11 @@
 										<div class="col-sm-7">
 											<div class="payment-methods">
 												<h5>Notes:</h5>
+												@foreach($invoice->inv_note as $note)
+												<ul>
+													<li>{{ $note }}</li>
+												</ul>
+												@endforeach
 												<ul>
 													<li>Need to add a way to pull in only the address for this invoice, not all for that customer</li>
 													<li>Need to add Notes to invoice table</li>

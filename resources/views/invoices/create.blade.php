@@ -30,7 +30,7 @@
 
                             <section class="col col-6">
                                 <label class="input"> <i class="icon-prepend fa fa-user"></i>
-                                    <input type="text" name="contact_first" placeholder="Contact Name">
+                                    <input type="text" name="contact_first" placeholder="{{ $customer->contact_first }}">
                                 </label>
                             </section>
 
@@ -141,10 +141,12 @@
                                 <label class="select">
                                     <select name="status">
                                         <option value="0" selected="" disabled="">Choose Status</option>
-                                        <option value="244">Aaland Islands</option>
-                                        <option value="1">Afghanistan</option>
-                                        <option value="2">Albania</option>
-                                        <option value="3">Algeria</option>
+                                        <option value="1" name="status_id" id="optionsSelects1">Draft</option>
+                                        <option value="2" name="status_id" id="optionsSelects2">Quote</option>
+                                        <option value="3" name="status_id" id="optionsSelects3">Paid</option>
+                                        <option value="4" name="status_id" id="optionsSelects4">Partial</option>
+                                        <option value="5" name="status_id" id="optionsSelects5">Unpaid</option>
+                                        <option value="6" name="status_id" id="optionsSelects6">Past Due</option>
                                     </select> <i></i>
                                 </label>
                             </section>
@@ -220,7 +222,7 @@
     </div>
     {{-- end widget --}}
 
-	<h2>Create a Invoice</h2>
+	{{-- <h2>Create a Invoice</h2>
     <form role="form" method="POST" action="/invoices">
         {{ csrf_field() }}
         <div class="form-group">
@@ -290,7 +292,7 @@
         	<button type="submit" class="btn btn-primary">Submit Button</button>
             <button><a href="/invoices">Cancel</a></button>
         </div>
-    </form>
+    </form> --}}
 
 	@include('layout.validate')
 
