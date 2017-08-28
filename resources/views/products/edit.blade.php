@@ -2,7 +2,7 @@
 
 @section('body')
 
-   	<h2>Create a Customer</h2>
+   	<h2>Create a Product</h2>
     <form role="form" method="POST" action="/products/{{ $product->id }}">
     	{{ method_field('PATCH') }}
         {{ csrf_field() }}

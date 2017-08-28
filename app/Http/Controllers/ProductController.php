@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Customer;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductFormRequest;
 
@@ -33,7 +34,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $products = Product::all();
+        return view('products.create', compact('products'));
     }
 
     /**
