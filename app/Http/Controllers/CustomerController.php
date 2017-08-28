@@ -42,6 +42,11 @@ class CustomerController extends Controller
         return view('customers.create');
     }
 
+    public function createLocation(Customer $customer)
+    {
+        return view('customers.createLocation', compact('customer'));
+    }
+
     
     /**
      * Store a newly created resource in storage.
@@ -52,29 +57,36 @@ class CustomerController extends Controller
     public function store(CustomerFormRequest $request)
     {
 
+    	//ADD
+    	
+    	//ADD LOCATION ONLY - GET ID FROM REQUEST
+    	if(isset($request->locationOnly) && $request->locationOnly){
 
-    	$customer = new Customer(
-	    	['company' => $request->company,
-	    	'contact_first' => $request->contact_first,
-	    	'contact_last' => $request->contact_last,
-	    	'email' => $request->email,
-	    	'phone1' => $request->phone1,
-	    	'phone2' => $request->phone2,
-	    	'fax' => $request->fax,
-	    	'updated_at' => $request->updated_at,
-	    	'created_at' => $request->created_at]
-	    );
-	    $customer->save();
+    		$customerId = $request->customerId;
 
-    	//insert customer
-        //$customer = Customer::create($request->all());
+    	//ADD CUSTOMER + LOCATION - GET ID FROM CUSTOMER INSERT
+    	} else {
 
-        //get insert id
-        $customerId = $customer->id;
+    		$customer = new Customer(
+		    	['company' => $request->company,
+		    	'contact_first' => $request->contact_first,
+		    	'contact_last' => $request->contact_last,
+		    	'email' => $request->email,
+		    	'phone1' => $request->phone1,
+		    	'phone2' => $request->phone2,
+		    	'fax' => $request->fax,
+		    	'updated_at' => $request->updated_at,
+		    	'created_at' => $request->created_at]
+		    );
 
-        //add location
-        //$location = new App\Location($request->all());
-        $location = new Location(
+    		$customer->save();
+    		//CUSTOMER ID
+    		$customerId = $customer->id;
+
+    	}
+
+    	//NEW LOCATION
+		$location = new Location(
 	    	['name' => $request->name,
 	    	'contact_name' => $request->contact_name,
 	    	'street' => $request->street,
@@ -86,9 +98,11 @@ class CustomerController extends Controller
 	    	'updated_at' => $request->updated_at,
 	    	'created_at' => $request->created_at]
 	    );
+
+		//SAVE LOCATION BASED ON MODEL RELATIONSHIP
 		$customer->locations()->save($location);
 
-        //customer show page
+        //CUSTOMER SHOW PAGE
         return redirect('customers/'.$customerId);
     }
 
