@@ -180,7 +180,7 @@
 											<div class="payment-methods">
 												<h5>Notes:</h5>
 												<p>
-													{{ $invoice->inv_note }}
+													{{ $invoice->notes }}
 												</p>
 												<ul>
 													<li>Need to add a way to pull in only the address for this invoice, not all for that customer</li>

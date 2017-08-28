@@ -13,4 +13,8 @@ class Invoice extends ModelBase
     public function status(){
     	return $this->belongsTo('App\Status');
     }
+
+    public function notes(){
+    	return $this->hasMany('App\Note');
+    }
 }
