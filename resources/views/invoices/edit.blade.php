@@ -6,6 +6,10 @@
     <form role="form" method="POST" action="/invoices/{{ $invoice->id }}">
     	{{ method_field('PATCH') }}
         {{ csrf_field() }}
+        <div class="form-group">
+            <label>Customer</label>
+            <input name="customer_id" class="form-control" value="{{ $invoice->customer->id }}">
+        </div>
 		<div class="form-group">
             <label>Due</label>
             <input name="due" class="form-control" value="{{ $invoice->due }}">
@@ -43,16 +47,25 @@
             <div class="radio">
                 <label>
                     <input type="radio" name="status_id" id="optionsRadios1" value="1" 
-                    @if ($invoice->status->status == 'Quote')
+                    @if ($invoice->status->status == 'Draft')
                         checked
                     @endif
-                    >Quote
+                    >Draft
                 </label>
                 
             </div>
             <div class="radio">
                 <label>
                     <input type="radio" name="status_id" id="optionsRadios2" value="2"
+                    @if ($invoice->status->status == 'Quote')
+                        checked
+                    @endif
+                    >Quote
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="status_id" id="optionsRadios3" value="3"
                     @if ($invoice->status->status == 'Paid')
                         checked
                     @endif
@@ -61,7 +74,16 @@
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="status_id" id="optionsRadios3" value="3"
+                    <input type="radio" name="status_id" id="optionsRadios4" value="4"
+                    @if ($invoice->status->status == 'Partial')
+                        checked
+                    @endif
+                    >Partial
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="status_id" id="optionsRadios4" value="5"
                     @if ($invoice->status->status == 'Unpaid')
                         checked
                     @endif
@@ -70,7 +92,7 @@
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="status_id" id="optionsRadios4" value="4"
+                    <input type="radio" name="status_id" id="optionsRadios4" value="6"
                     @if ($invoice->status->status == 'Past Due')
                         checked
                     @endif
@@ -79,8 +101,8 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Customer</label>
-            <input name="customer_id" class="form-control" value="{{ $invoice->customer->id }}">
+            <label>Note</label>
+            <input name="customer_id" class="form-control" value="{{ $invoice->inv_note }}">
         </div>
         <div class="form-group">
         	<button type="submit" class="btn btn-primary">Submit Button</button>

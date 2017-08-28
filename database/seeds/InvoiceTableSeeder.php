@@ -24,6 +24,8 @@ class InvoiceTableSeeder extends Seeder
 			        'total' => '1851.62',
 			        'status_id' => '1',
 			        'customer_id' => '2',
+			        'invoice_num' => '10001',
+			        'inv_note' => 'hey man nice shot',
 			        'created_at' => date("Y-m-d H:i:s")
 	        	],
 	        	[
@@ -37,6 +39,8 @@ class InvoiceTableSeeder extends Seeder
 			        'total' => '1821.62',
 			        'status_id' => '1',
 			        'customer_id' => '1',
+			        'invoice_num' => '10002',
+			        'inv_note' => 'hey man nice shot too',
 			        'created_at' => date("Y-m-d H:i:s")
 	        	],
 	        	[
@@ -50,6 +54,8 @@ class InvoiceTableSeeder extends Seeder
 			        'total' => '851.62',
 			        'status_id' => '1',
 			        'customer_id' => '2',
+			        'invoice_num' => '10003',
+			        'inv_note' => 'hey man nice shot three',
 			        'created_at' => date("Y-m-d H:i:s")
 	        	]
 	        ]

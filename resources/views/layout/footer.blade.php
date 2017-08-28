@@ -1,10 +1,10 @@
 </div>
-<!-- END MAIN CONTENT -->
+{{-- END MAIN CONTENT --}}
 
 </div>
-<!-- END MAIN PANEL -->
+{{-- END MAIN PANEL --}}
 
-<!-- PAGE FOOTER -->
+{{-- PAGE FOOTER --}}
 <div class="page-footer">
 <div class="row">
   <div class="col-xs-12 col-sm-6">
@@ -57,12 +57,12 @@
   </div>
 </div>
 </div>
-<!-- END PAGE FOOTER -->
+{{-- END PAGE FOOTER --}}
 
-<!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
+{{-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
 Note: These tiles are completely responsive,
 you can add as many as you like
--->
+--}}
 <div id="shortcut">
 <ul>
   <li>
@@ -85,14 +85,14 @@ you can add as many as you like
   </li>
 </ul>
 </div>
-<!-- END SHORTCUT AREA -->
+{{-- END SHORTCUT AREA --}}
 
-<!--================================================== -->
+{{--================================================== --}}
 
-<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+{{-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)--}}
 <script data-pace-options='{ "restartOnRequestAfter": true }' src="{{ asset('js/plugin/pace/pace.min.js') }}"></script>
 
-<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+{{-- Link to Google CDN's jQuery + jQueryUI; fall back to local --}}
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 if (!window.jQuery) {
@@ -107,75 +107,75 @@ if (!window.jQuery.ui) {
 }
 </script>
 
-<!-- IMPORTANT: APP CONFIG -->
+{{-- IMPORTANT: APP CONFIG --}}
 <script src="{{ asset('js/app.config.js') }}"></script>
 
-<!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
+{{-- JS TOUCH : include this plugin for mobile drag / drop touch events--}}
 <script src="{{ asset('js/plugin/jquery-touch/jquery.ui.touch-punch.min.js') }}"></script>
 
-<!-- BOOTSTRAP JS -->
+{{-- BOOTSTRAP JS --}}
 <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>
 
-<!-- CUSTOM NOTIFICATION -->
+{{-- CUSTOM NOTIFICATION --}}
 <script src="{{ asset('js/notification/SmartNotification.min.js') }}"></script>
 
-<!-- JARVIS WIDGETS -->
+{{-- JARVIS WIDGETS --}}
 <script src="{{ asset('js/smartwidgets/jarvis.widget.min.js') }}"></script>
 
-<!-- EASY PIE CHARTS -->
+{{-- EASY PIE CHARTS --}}
 <script src="{{ asset('js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js') }}"></script>
 
-<!-- SPARKLINES -->
+{{-- SPARKLINES --}}
 <script src="{{ asset('js/plugin/sparkline/jquery.sparkline.min.js') }}"></script>
 
-<!-- JQUERY VALIDATE -->
+{{-- JQUERY VALIDATE --}}
 <script src="{{ asset('js/plugin/jquery-validate/jquery.validate.min.js') }}"></script>
 
-<!-- JQUERY MASKED INPUT -->
+{{-- JQUERY MASKED INPUT --}}
 <script src="{{ asset('js/plugin/masked-input/jquery.maskedinput.min.js') }}"></script>
 
-<!-- JQUERY SELECT2 INPUT -->
+{{-- JQUERY SELECT2 INPUT --}}
 <script src="{{ asset('js/plugin/select2/select2.min.js') }}"></script>
 
-<!-- JQUERY UI + Bootstrap Slider -->
+{{-- JQUERY UI + Bootstrap Slider --}}
 <script src="{{ asset('js/plugin/bootstrap-slider/bootstrap-slider.min.js') }}"></script>
 
-<!-- browser msie issue fix -->
+{{-- browser msie issue fix --}}
 <script src="{{ asset('js/plugin/msie-fix/jquery.mb.browser.min.js') }}"></script>
 
-<!-- FastClick: For mobile devices -->
+{{-- FastClick: For mobile devices --}}
 <script src="{{ asset('js/plugin/fastclick/fastclick.min.js') }}"></script>
 
-<!--[if IE 8]>
+{{--[if IE 8]>
 
 <h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
 
-<![endif]-->
+<![endif]--}}
 
-<!-- MAIN APP JS FILE -->
+{{-- MAIN APP JS FILE --}}
 <script src="{{ asset('js/app.min.js') }}"></script>
 
-<!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
-<!-- Voice command : plugin -->
+{{-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT --}}
+{{-- Voice command : plugin --}}
 <script src="{{ asset('js/speech/voicecommand.min.js') }}"></script>
 
-<!-- SmartChat UI : plugin -->
+{{-- SmartChat UI : plugin --}}
 <script src="{{ asset('js/smart-chat-ui/smart.chat.ui.min.js') }}"></script>
 <script src="{{ asset('js/smart-chat-ui/smart.chat.manager.min.js') }}"></script>
 
-<!-- PAGE RELATED PLUGIN(S) -->
+{{-- PAGE RELATED PLUGIN(S) --}}
 
-<!-- Flot Chart Plugin: Flot Engine, Flot Resizer, Flot Tooltip -->
+{{-- Flot Chart Plugin: Flot Engine, Flot Resizer, Flot Tooltip --}}
 <script src="{{ asset('js/plugin/flot/jquery.flot.cust.min.js') }}"></script>
 <script src="{{ asset('js/plugin/flot/jquery.flot.resize.min.js') }}"></script>
 <script src="{{ asset('js/plugin/flot/jquery.flot.time.min.js') }}"></script>
 <script src="{{ asset('js/plugin/flot/jquery.flot.tooltip.min.js') }}"></script>
 
-<!-- Vector Maps Plugin: Vectormap engine, Vectormap language -->
+{{-- Vector Maps Plugin: Vectormap engine, Vectormap language --}}
 <script src="{{ asset('js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
 <script src="{{ asset('js/plugin/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 
-<!-- Full Calendar -->
+{{-- Full Calendar --}}
 <script src="{{ asset('js/plugin/moment/moment.min.js') }}"></script>
 <script src="{{ asset('js/plugin/fullcalendar/jquery.fullcalendar.min.js') }}"></script>
 
@@ -735,7 +735,7 @@ $(document).ready(function() {
 
 </script>
 
-<!-- Your GOOGLE ANALYTICS CODE Below -->
+{{-- Your GOOGLE ANALYTICS CODE Below --}}
 <script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
