@@ -20,6 +20,11 @@ Route::get('chad', function () {
 });
 
 
+Route::get('customers/{customer}/locations/create', 'LocationController@create');
+Route::post('customers/{customer}/locations', 'LocationController@store');
+Route::get('customers/{customer}/locations/{location}/edit', 'LocationController@edit');
+Route::post('customers/{customer}/locations/{location}', 'LocationController@update');
+
 Route::resource('customers', 'CustomerController');
 Route::resource('invoices', 'InvoiceController');
 Route::resource('products', 'ProductController');

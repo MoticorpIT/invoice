@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
 use App\Location;
 use Illuminate\Http\Request;
 use App\Http\Requests\LocationFormRequest;
@@ -76,8 +77,7 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $locations = Location::all();
-        return view('locations.index', compact('locations'));
+    	//
     }
 
     /**
@@ -85,9 +85,9 @@ class LocationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create(Customer $customer)
     {
-        return view('locations.create');
+        return view('locations.create', compact('customer'));
     }
 
     /**

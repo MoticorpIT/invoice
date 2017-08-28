@@ -42,6 +42,11 @@ class CustomerController extends Controller
         return view('customers.create');
     }
 
+    public function createLocation(Customer $customer)
+    {
+        return view('customers.createLocation', compact('customer'));
+    }
+
     
     /**
      * Store a newly created resource in storage.
@@ -51,11 +56,18 @@ class CustomerController extends Controller
      */
     public function store(CustomerFormRequest $request)
     {
-    	
 
-    	//CUSTOMER FORM
-    	if(isset($request->customer) && $request->customer){
-	    	$customer = new Customer(
+    	//ADD
+    	
+    	//ADD LOCATION ONLY - GET ID FROM REQUEST
+    	if(isset($request->locationOnly) && $request->locationOnly){
+
+    		$customerId = $request->customerId;
+
+    	//ADD CUSTOMER + LOCATION - GET ID FROM CUSTOMER INSERT
+    	} else {
+
+    		$customer = new Customer(
 		    	['company' => $request->company,
 		    	'contact_first' => $request->contact_first,
 		    	'contact_last' => $request->contact_last,
@@ -67,29 +79,14 @@ class CustomerController extends Controller
 		    	'created_at' => $request->created_at]
 		    );
 
-		    $customer->save();
-
-	    }
-
-	    $customerId = $customer->id;
-
-
-	    //LOCATION FORM
-    	if(isset($request->location) && $request->location){
+    		$customer->save();
+    		//CUSTOMER ID
+    		$customerId = $customer->id;
 
     	}
 
-
-
-    	//insert customer
-        //$customer = Customer::create($request->all());
-
-        //get insert id
-        $customerId = $customer->id;
-
-        //add location
-        //$location = new App\Location($request->all());
-        $location = new Location(
+    	//NEW LOCATION
+		$location = new Location(
 	    	['name' => $request->name,
 	    	'contact_name' => $request->contact_name,
 	    	'street' => $request->street,
@@ -101,9 +98,11 @@ class CustomerController extends Controller
 	    	'updated_at' => $request->updated_at,
 	    	'created_at' => $request->created_at]
 	    );
+
+		//SAVE LOCATION BASED ON MODEL RELATIONSHIP
 		$customer->locations()->save($location);
 
-        //customer show page
+        //CUSTOMER SHOW PAGE
         return redirect('customers/'.$customerId);
     }
 

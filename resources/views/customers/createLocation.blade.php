@@ -1,14 +1,17 @@
 @extends('layout.master')
 
-
 @section('body')
 	
-	{{ $customer }}
    	<h2>Add a Location</h2>
-   	<strong>Customer:</strong>
-    <form role="form" method="POST" action="/customers">
+
+	<ul>
+	   	<li>Customer: {{ $customer->company  }}</li>
+	   	<li>Contact: {{  $customer->contact_first  }} {{  $customer->contact_last  }}</li>
+	</ul>
+   	
+    <form role="form" method="POST" action="/customers/{{  $customer->id  }}/locations">
         {{ csrf_field() }}
-        <input type="hidden" name="customer_id" value="customer }}">
+        <input type="hidden" name="customerId" value="{{  $customer->id  }}">
         <div class="form-group">
             <label>Location Name</label>
             <input name="name" class="form-control" value="{{ old('name') }}">
@@ -41,9 +44,10 @@
             <label>Phone</label>
             <input name="phone" class="form-control" value="{{ old('phone') }}">
         </div>
+
+        
         <div class="form-group">
-        	<button type="submit" class="btn btn-primary">Finish</button>
-        	<button type="submit" class="btn btn-primary">Add another location</button>
+        	<button type="submit" class="btn btn-primary">Submit Button</button>
         </div>
     </form>
 
@@ -52,5 +56,5 @@
 @endsection
 
 @section('pageLinks')
-	<h3>ADD LOCATIONS</h3>
+	
 @endsection
