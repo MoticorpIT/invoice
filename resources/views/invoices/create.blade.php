@@ -200,7 +200,7 @@
 
                         <section>
                             <label class="textarea textarea-resizable">                                        
-                                <textarea rows="3" class="custom-scroll" name="notes" placeholder="Notes"></textarea> 
+                                <textarea rows="3" class="custom-scroll" name="inv_note" placeholder="Notes"></textarea> 
                             </label>
                         </section>
                     </fieldset>

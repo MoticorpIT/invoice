@@ -6,6 +6,10 @@
     <form role="form" method="POST" action="/invoices/{{ $invoice->id }}">
     	{{ method_field('PATCH') }}
         {{ csrf_field() }}
+        <div class="form-group">
+            <label>Customer</label>
+            <input name="customer_id" class="form-control" value="{{ $invoice->customer->id }}">
+        </div>
 		<div class="form-group">
             <label>Due</label>
             <input name="due" class="form-control" value="{{ $invoice->due }}">
@@ -97,8 +101,8 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Customer</label>
-            <input name="customer_id" class="form-control" value="{{ $invoice->customer->id }}">
+            <label>Note</label>
+            <input name="customer_id" class="form-control" value="{{ $invoice->inv_note }}">
         </div>
         <div class="form-group">
         	<button type="submit" class="btn btn-primary">Submit Button</button>
