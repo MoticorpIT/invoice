@@ -102,7 +102,7 @@
         </div>
         <div class="form-group">
             <label>Note</label>
-            <input name="customer_id" class="form-control" value="{{ $invoice->inv_note }}">
+            <input name="inv_note" class="form-control" value="{{ $invoice->inv_note }}">
         </div>
         <div class="form-group">
         	<button type="submit" class="btn btn-primary">Submit Button</button>

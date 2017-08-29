@@ -96,7 +96,9 @@
 								<br>
 								<div class="row">
 									<div class="col-sm-9">
-										<h4 class="semi-bold"><a href="/customers/{{ $invoice->customer->id }}">{{ $invoice->customer->company }}</a></h4>
+										<h4 class="semi-bold">
+											<a href="/customers/{{ $invoice->customer->id }}">{{ $invoice->customer->company }}</a>
+										</h4>
 										<address>
 											<strong>{{ $invoice->customer->contact_first }} {{ $invoice->customer->contact_last }}</strong>
 											<br>
@@ -110,20 +112,24 @@
 											@endforeach
 											<abbr title="Phone">P:</abbr> {{ $invoice->customer->phone1 }}
 										</address>
+
 									</div>
 									<div class="col-sm-3">
+
 										<div>
 											<div class="font-md">
 												<strong>INVOICE NO :</strong>
 												<span class="pull-right"> {{ $invoice->invoice_num }} </span>
 											</div>
 										</div>
+
 										<div>
 											<div class="font-md">
 												<strong>Created:</strong>
 												<span class="pull-right"> {{ $invoice->created_at->diffForHumans() }} </span>
 											</div>
 										</div>
+
 										<div>
 											<div class="font-md">
 												<strong>Due:</strong>
@@ -131,69 +137,80 @@
 											</div>
 										</div>
 										<br>
+
 										<div class="well well-sm  bg-color-darken txt-color-white no-border">
 											<div class="fa-lg">
 												Total Due :
 												<span class="pull-right"> ${{$invoice->total}} </span>
 											</div>
 										</div>
+
 										<br>
 										<br>
 									</div>
 								</div>
 								<table class="table table-hover">
 									<thead>
+
 										<tr>
 											<th class="text-center">QTY</th>
 											<th>ITEM</th>
-											<th>DESCRIPTION</th>
+											<th data-hide="phone,tablet">DESCRIPTION</th>
 											<th>PRICE</th>
 											<th>AMOUNT</th>
 										</tr>
+
 									</thead>
 									<tbody>
+
 										<tr>
 											<td class="text-center"><strong>1</strong></td>
 											<td><a href="javascript:void(0);">Print and Web Logo Design</a></td>
-											<td>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam xplicabo.</td>
+											<td data-hide="phone,tablet">Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam xplicabo.</td>
 											<td>$1,300.00</td>
 	
 											<td>$1,300.00</td>
 										</tr>
+
 										<tr>
 											<td class="text-center"><strong>1</strong></td>
 											<td><a href="javascript:void(0);">SEO Management</a></td>
-											<td>Sit voluptatem accusantium doloremque laudantium inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</td>
+											<td data-hide="phone,tablet">Sit voluptatem accusantium doloremque laudantium inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</td>
 											<td>$1,400.00</td>
 											<td>$1,400.00</td>
 										</tr>
+
 										<tr>
 											<td class="text-center"><strong>1</strong></td>
 											<td><a href="javascript:void(0);">Backend Support and Upgrade</a></td>
-											<td>Inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</td>
+											<td data-hide="phone,tablet">Inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</td>
 											<td>$1,700.00</td>
 											<td>$1,700.00</td>
 										</tr>
+
 										<tr>
 											<td colspan="4" class="text-right">Subtotal:</td>
 											<td class="text-right"><strong>${{$invoice->sub_total}}</strong></td>
 										</tr>
+
 										<tr>
 											<td colspan="4" class="text-right">Shipping:</td>
 											<td class="text-right"><strong>${{$invoice->shipping}}</strong></td>
 										</tr>
+
 									</tbody>
 								</table>
-	
 								<div class="invoice-footer">
 									<div class="row">
 
 										<div class="col-sm-7">
 											<div class="payment-methods">
 												<h5>Notes:</h5>
-												<p>
-													{{ $invoice->notes }}
-												</p>
+												<ul class="list-unstyled">
+													@foreach($invoice->notes as $note)
+														<li>{{ $note->note }}</li>
+													@endforeach
+												</ul>
 												<ul>
 													<li>Need to add a way to pull in only the address for this invoice, not all for that customer</li>
 													<li>Need to add Notes to invoice table</li>
@@ -211,7 +228,6 @@
 										</div>
 
 									</div>
-
 									<div class="row">
 
 										<div class="col-sm-12">
@@ -219,47 +235,14 @@
 										</div>
 
 									</div>
-
 								</div>
 							</div>
 						</div>
-						{{-- end widget content --}}
 					</div>
-					{{-- end widget div --}}
 				</div>
-				{{-- end widget --}}
 			</article>
-			{{-- WIDGET END --}}
 		</div>
-		{{-- end row --}}
 	</section>
-	{{-- end widget grid --}}
-
-	{{-- <h2>Invoices</h2>
-
-		<ul>
-			<li>Customer: <a href="/customers/{{ $invoice->customer->id }}">{{ $invoice->customer->company }}</a></li>
-			<li>Due: {{ $invoice->due }}</li>
-			<li 
-				@if($invoice->status->status == 'Past Due')
-					style="color:red"
-				@endif
-			>Status: {{ $invoice->status->status }}</li>
-			<li>Shipping: ${{ $invoice->shipping }}</li>
-			<li>Add_1_Text: {{ $invoice->add_1_text }}</li>
-			<li>Add_1: ${{ $invoice->add_1 }}</li>
-			<li>Add_2_Text: {{ $invoice->add_2_text }}</li>
-			<li>Add_2: ${{ $invoice->add_2 }}</li>
-			<li>Subtotal: ${{ $invoice->sub_total }}</li>
-			<li>Total: ${{ $invoice->total }}</li>
-		</ul> --}}
 	
 @endsection
 
-
-{{-- @section('pageLinks')
-<ul>
-	<li><a href="/invoices/{{  $invoice->id  }}/edit">Edit</a></li>
-	<li><a href="/invoices">Back to invoices</a></li>
-</ul>
-@endsection --}}
