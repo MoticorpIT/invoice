@@ -23,7 +23,7 @@ class ProductController extends Controller
     public function index()
     {
         // Returns Products Index
-        $products = Product::where('active', 1)->get();
+        $products = Product::all();
         return view('products.index', compact('products'));
     }
 

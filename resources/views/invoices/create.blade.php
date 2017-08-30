@@ -22,7 +22,7 @@
                                     <select>
                                         <option value="0">Choose Customer</option>
                                         @foreach($customers as $customer)
-                                            <option value="{{ $customer->id }}">{{ $customer->company }}</option>
+                                            <option name="company" value="{{ $customer->id }}">{{ $customer->company }}</option>
                                         @endforeach
                                     </select> <i></i>
                                 </label>

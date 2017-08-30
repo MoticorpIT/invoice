@@ -20,8 +20,9 @@ class CreateProductsTable extends Migration
             $table->decimal('msrp');
             $table->decimal('retailer_price');
             $table->decimal('distributor_price');
-            $table->string('description');
-            $table->string('short_descript');
+            $table->string('description')->nullable();
+            $table->string('short_descript')->nullable();
+            $table->string('category')->nullable();
             $table->boolean('active')->default(1);
             $table->timestamps();
         });

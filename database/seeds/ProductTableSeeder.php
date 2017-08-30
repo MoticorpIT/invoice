@@ -20,6 +20,7 @@ class ProductTableSeeder extends Seeder
 				    'distributor_price' => '3.95',
 				    'description' => '30 grams of maeng da powder',
 				    'short_descript' => '30g Maeng Da Powder',
+				    'category' => 'Powders',
 				    'active' => '1',
 		            'created_at' => date("Y-m-d H:i:s")
 	        	],
@@ -30,6 +31,7 @@ class ProductTableSeeder extends Seeder
 				    'distributor_price' => '3.95',
 				    'description' => '30 grams of trainwreck powder',
 				    'short_descript' => '30g Trainwreck Powder',
+				    'category' => 'Powders',
 				    'active' => '1',
 		            'created_at' => date("Y-m-d H:i:s")
 	        	],
@@ -40,6 +42,7 @@ class ProductTableSeeder extends Seeder
 				    'distributor_price' => '3.95',
 				    'description' => '30 grams of bali powder',
 				    'short_descript' => '30g Bali Powder',
+				    'category' => 'Powders',
 				    'active' => '1',
 		            'created_at' => date("Y-m-d H:i:s")
 	        	]
