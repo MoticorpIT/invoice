@@ -29,12 +29,12 @@ class CustomerFormRequest extends FormRequest
 		    'contact_last' 	=> 'required',
 		    'phone1' 		=> 'required',
 		    'email' 		=> 'email',
-		    'name' 			=> 'required',
-	    	'contact_name' 	=> 'required',
-	    	'street' 		=> 'required',
-	    	'city' 			=> 'required',
-	    	'state' 		=> 'required',
-	    	'zip' 			=> 'required'
+		    'name' 			=> 'sometimes|required',
+	    	'contact_name' 	=> 'sometimes|required',
+	    	'street' 		=> 'sometimes|required',
+	    	'city' 			=> 'sometimes|required',
+	    	'state' 		=> 'sometimes|required',
+	    	'zip' 			=> 'sometimes|required'
         ];
     }
 }

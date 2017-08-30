@@ -1,6 +1,7 @@
 @extends('layout.master')
 
 @section('body')
+
 	<ul>
 		<li>company: {{ $customer->company }}</li>
 		<li>contact_first: {{ $customer->contact_first }}</li>

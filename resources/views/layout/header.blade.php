@@ -829,4 +829,10 @@
 
 			{{-- MAIN CONTENT --}}
 			<div id="content">
+
+				@if(Session::has('message'))
+				    <div class="alert alert-info">
+				        {{ Session::get('message') }}
+				    </div>
+				@endif
         {{-- <a href="/">Go Home</a> --}}
