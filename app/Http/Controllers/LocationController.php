@@ -96,9 +96,10 @@ class LocationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LocationFormRequest $request, Customer $customer)
     {
-        //
+         Location::create($request->all());
+         return redirect('customers/'.$customer->id);
     }
 
     /**
@@ -118,9 +119,9 @@ class LocationController extends Controller
      * @param  \App\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function edit(Location $location)
+    public function edit(Customer $customer, Location $location)
     {
-        //
+        return view('locations.edit', compact('customer', 'location'));
     }
 
     /**
@@ -130,14 +131,10 @@ class LocationController extends Controller
      * @param  \App\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function update(LocationFormRequest $request, $id)
+    public function update(LocationFormRequest $request, $id, Location $location)
     {
-    	
-        $location = Location::find($id);
-	    $location->fill(['active' => $request->active])->save();
-
-        //store page
-        return redirect('customers/'.$location->customer_id)->with('message', 'Location Removed!');
+    	$location->update($request->all());
+    	return redirect('customers/'.$id)->with('message', 'Location Updated!');
     }
 
     /**
@@ -146,8 +143,11 @@ class LocationController extends Controller
      * @param  \App\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Location $location)
+    public function destroy($id, Location $location)
     {
-        //
+        $location->fill(['active' => 0])->save();
+
+        //store page
+        return redirect('customers/'.$id)->with('message', 'Location Removed!');
     }
 }

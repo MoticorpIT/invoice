@@ -42,11 +42,6 @@ class CustomerController extends Controller
         return view('customers.create');
     }
 
-    public function createLocation(Customer $customer)
-    {
-        return view('customers.createLocation', compact('customer'));
-    }
-
     
     /**
      * Store a newly created resource in storage.
