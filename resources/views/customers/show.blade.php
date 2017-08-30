@@ -23,13 +23,14 @@
 				<li>phone: {{ $location->phone }}</li>
 				<li>contact_name: {{ $location->contact_name }}</li>
 				<li>
-					<form action="/locations/{{  $location->id  }}" method="POST" >
-						{{ method_field('PATCH') }}
+					<form action="/customers/{{ $customer->id  }}/locations/{{  $location->id  }}" method="POST" >
+						{{ method_field('DELETE') }}
         				{{ csrf_field() }}
         				<input type="hidden" name="active" value="0">
         				<input type="submit" name="submit" value="Remove Location" />
 					</form>
 				</li>
+				<li><a href="/customers/{{ $customer->id  }}/locations/{{  $location->id  }}/edit">Edit Location</a></li>
 			</ul>
 			<br>
 			@endforeach
@@ -56,7 +57,7 @@
 
 	<ul>
 		<li><a href="/customers/{{ $customer->id }}/edit">Edit</a></li>
-		<li><a href="/locations/create/{{ $customer->id }}">Add Location</a></li>
+		<li><a href="/customers/{{ $customer->id }}/locations/create">Add Location</a></li>
 		<li><a href="/customers">Back to Customers</a></li>
 	</ul>
 @endsection
