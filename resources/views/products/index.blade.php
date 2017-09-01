@@ -64,7 +64,7 @@
 								        <thead>
 								        	<tr>
 								            	<th>Name</th>
-								            	<th>Category</th>
+								            	{{-- <th>Category</th> --}}
 							                    <th>MSRP</th>
 							                    <th>Retailer</th>
 							                    <th>Distributor</th>
@@ -105,7 +105,7 @@
 								        <thead>
 								        	<tr>
 								            	<th>Name</th>
-								            	<th>Category</th>
+								            	{{-- <th>Category</th> --}}
 							                    <th>MSRP</th>
 							                    <th>Retailer</th>
 							                    <th>Distributor</th>
@@ -119,7 +119,7 @@
 								            @foreach($products as $product)
 												<tr>
 													<td>{{ $product->name }}</td>
-													<td>{{ $product->category }}</td>
+													{{-- <td>{{ $product->category }}</td> --}}
 													<td>${{ $product->msrp }}</td>
 													<td>${{ $product->retailer_price }}</td>
 													<td>${{ $product->distributor_price }}</td>
@@ -138,7 +138,7 @@
 								        <thead>
 								        	<tr>
 								            	<th>Name</th>
-								            	<th>Category</th>
+								            	{{-- <th>Category</th> --}}
 							                    <th>MSRP</th>
 							                    <th>Retailer</th>
 							                    <th>Distributor</th>
@@ -152,7 +152,7 @@
 								            @foreach($products as $product)
 												<tr>
 													<td>{{ $product->name }}</td>
-													<td>{{ $product->category }}</td>
+													{{-- <td>{{ $product->category }}</td> --}}
 													<td>${{ $product->msrp }}</td>
 													<td>${{ $product->retailer_price }}</td>
 													<td>${{ $product->distributor_price }}</td>

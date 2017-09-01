@@ -59,7 +59,7 @@
 											<div class="col-md-7 col-sm-12 col-xs-12">
 												<h1 class="name">
 													<strong>{{ $product->name }}</strong>
-													<small>{{ $product->category }}</small>
+													{{-- <small>{{ $product->category }}</small> --}}
 												</h1>
 
 												<hr />

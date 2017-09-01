@@ -32,7 +32,7 @@
         </div>
         <div class="form-group">
             <label>Category</label>
-            <div class="radio">
+            {{-- <div class="radio">
                 <label>
                     <input type="radio" name="category" id="optionsRadios1" value="1" 
                     @if ($product->category == 'Powders')
@@ -58,7 +58,7 @@
                     @endif
                     >Extracts
                 </label>
-            </div>
+            </div> --}}
         </div>
         <div class="form-group">
             <label>Current Status</label>
