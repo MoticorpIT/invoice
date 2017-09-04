@@ -7,7 +7,7 @@
 			<li>contact: {{ $customer->contact_first }} {{ $customer->contact_last }}</li>
 			<li>phone1: {{ $customer->phone1 }}</li>
 			<li>location: 
-				@foreach($customer->locations as $location)
+				@foreach($customer->availableLocations as $location)
 					{{ $location->city }}, {{ $location->state }}
 				@endforeach
 			</li>
