@@ -15,6 +15,7 @@ class ProductTableSeeder extends Seeder
 	        [
 	        	[
 	        		'name' => '30g Maeng Da',
+	        		'slug' => str_slug('30g Maeng Da', '-'),
 				    'msrp' => '24.95',
 				    'retailer_price' => '7.95',
 				    'distributor_price' => '3.95',
@@ -25,6 +26,7 @@ class ProductTableSeeder extends Seeder
 	        	],
 	        	[
 		            'name' => '30g Trainwreck',
+		            'slug' => str_slug('30g Trainwreck', '-'),
 				    'msrp' => '29.95',
 				    'retailer_price' => '8.95',
 				    'distributor_price' => '3.95',
@@ -35,6 +37,7 @@ class ProductTableSeeder extends Seeder
 	        	],
 	        	[
 		            'name' => '30g Bali',
+		            'slug' => str_slug('30g Bali', '-'),
 				    'msrp' => '24.95',
 				    'retailer_price' => '7.95',
 				    'distributor_price' => '3.95',

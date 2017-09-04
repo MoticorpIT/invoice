@@ -59,6 +59,14 @@
 											<div class="col-md-7 col-sm-12 col-xs-12">
 												<h1 class="name">
 													<strong>{{ $product->name }}</strong>
+													<small class="text-capitalize">
+														@foreach($product->categories as $key => $category)
+															@if($key)
+																,
+															@endif
+															<a href="/products/categories/{{ $category->name }}">{{ $category->name }}</a>
+														@endforeach
+													</small>
 													{{-- <small>{{ $product->category }}</small> --}}
 												</h1>
 

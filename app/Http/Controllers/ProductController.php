@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Customer;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductFormRequest;
 
@@ -34,8 +35,9 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $categories = Category::all();
         $products = Product::all();
-        return view('products.create', compact('products'));
+        return view('products.create', compact('products', 'categories'));
     }
 
     /**
@@ -46,7 +48,22 @@ class ProductController extends Controller
      */
     public function store(ProductFormRequest $request)
     {
-        Product::create($request->all());
+        $product = new Product(
+            [
+                'name' => $request->name,
+                'slug' => str_slug($request->name, '-'),
+                'msrp' => $request->msrp,
+                'retailer_price' => $request->retailer_price,
+                'distributor_price' => $request->distributor_price,
+                'description' => $request->description,
+                'short_descript' => $request->short_descript
+            ]
+        );
+        // $request->slug = str_slug($request->name);
+        // dd($request->all());
+        // Product::create($request->all());
+
+        $product->save();
 
         // store page
         return redirect('products')->with('message', 'Product Added!');
@@ -69,10 +86,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        $product = Product::find($id);
-        return view('products.edit', compact('product'));
+        $categories = Category::all();
+        return view('products.edit', compact('product', 'categories'));
     }
 
     /**

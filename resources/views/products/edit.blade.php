@@ -32,10 +32,24 @@
         </div>
         <div class="form-group">
             <label>Category</label>
+
+            @foreach($product->categories as $category)
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="category" id="{{ $category->id }}" value="{{ $category->id }}" 
+                        @if ($product->categories == "powders")
+                            checked
+                        @endif
+                        >
+                        {{$category->name}}
+                    </label>
+                </div>
+            @endforeach
+            
             {{-- <div class="radio">
                 <label>
                     <input type="radio" name="category" id="optionsRadios1" value="1" 
-                    @if ($product->category == 'Powders')
+                    @if ($product->category == 'powders')
                         checked
                     @endif
                     >Powders
@@ -44,7 +58,7 @@
             <div class="radio">
                 <label>
                     <input type="radio" name="category" id="optionsRadios2" value="2"
-                    @if ($product->category == 'Capsules')
+                    @if ($product->category == 'capsules')
                         checked
                     @endif
                     >Capsules
@@ -53,12 +67,13 @@
             <div class="radio">
                 <label>
                     <input type="radio" name="category" id="optionsRadios3" value="3"
-                    @if ($product->category == 'Extracts')
+                    @if ($product->category == 'extracts')
                         checked
                     @endif
                     >Extracts
                 </label>
             </div> --}}
+
         </div>
         <div class="form-group">
             <label>Current Status</label>

@@ -28,9 +28,9 @@
                                     <label class="select">
                                         <select>
                                             <option name="category" value="0">Category</option>
-                                            <option name="category" value="1">Powders</option>
-                                            <option name="category" value="2">Capsules</option>
-                                            <option name="category" value="3">Extracts</option>
+                                            @foreach($categories as $category)
+                                                <option name="category" class="text-capitalize" value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
                                         </select> <i></i>
                                     </label>
                                 </section>
