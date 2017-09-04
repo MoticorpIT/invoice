@@ -10,4 +10,9 @@ class Category extends ModelBase
     {
     	return $this->belongsToMany(Product::class);
     }
+
+    public function getRouteKeyName()
+    {
+    	return 'name';
+    }
 }
