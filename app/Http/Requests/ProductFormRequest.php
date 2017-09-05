@@ -26,7 +26,7 @@ class ProductFormRequest extends FormRequest
         return [
             'name'            => 'required',
 		    'msrp'            => 'required',
-		    'retailer_price'  => 'required'
+		    'default_price'   => 'required'
         ];
     }
 }

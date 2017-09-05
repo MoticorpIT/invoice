@@ -19,8 +19,8 @@
                         <fieldset>
                             <div class="row">
                                 <section class="col col-8"> 
-                                    <label class="input"> <i class="icon-prepend fa fa-user"></i>
-                                        <input type="text" name="name" placeholder="Name" value="{{ old('name') }}"> 
+                                    <label class="input">
+                                        <input type="text" name="name" placeholder="Name*" value="{{ old('name') }}"> 
                                     </label>
                                 </section>
 
@@ -28,43 +28,32 @@
                                     <div class="inline-group">
                                         @foreach($categories as $category)
                                             <label class="checkbox text-capitalize">
-                                                <input type="checkbox" value="{{ $category->name }}">
+                                                <input type="checkbox" value="{{ $category->id }}" name="category[]">
                                                 <i></i>{{ $category->name }}
                                             </label>
                                         @endforeach
                                     </div>
                                 </section>
-
-                                {{-- <section class="col col-6">
-                                    <label class="select">
-                                        <select>
-                                            <option name="category" value="0">Category</option>
-                                            @foreach($categories as $category)
-                                                <option name="category" class="text-capitalize" value="{{ $category->id }}">{{ $category->name }}</option>
-                                            @endforeach
-                                        </select> <i></i>
-                                    </label>
-                                </section> --}}
                             </div>
                         </fieldset>
 
                         <fieldset>
                             <div class="row">
                                 <section class="col col-4">
-                                    <label class="input"> <i class="icon-prepend fa fa-user"></i>
-                                        <input type="text" name="msrp" placeholder="MSPR" value="{{ old('msrp') }}">
+                                    <label class="input">
+                                        <input type="text" name="msrp" placeholder="MSRP*" value="{{ old('msrp') }}">
                                     </label>
                                 </section>
 
                                 <section class="col col-4">
-                                    <label class="input"> <i class="icon-prepend fa fa-user"></i>
-                                        <input type="text" name="retailer_price" placeholder="Retailer Price" value="{{ old('retailer_price') }}">
+                                    <label class="input">
+                                        <input type="text" name="default_price" placeholder="Price*" value="{{ old('default_price') }}">
                                     </label>
                                 </section>
 
                                 <section class="col col-4">
-                                    <label class="input"> <i class="icon-prepend fa fa-user"></i>
-                                        <input type="text" name="distributor_price" placeholder="Distributor Price" value="{{ old('distributor_price') }}">
+                                    <label class="input">
+                                        <input type="text" name="pack_size" placeholder="Pack Size" value="{{ old('pack_size') }}">
                                     </label>
                                 </section>
                             </div>

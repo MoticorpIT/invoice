@@ -20,7 +20,7 @@ class ProductTableSeeder extends Seeder
 		            'msrp' => '24.95',
 		            'pack_size' => '3',
 		            'description' => '30 grams of maeng da kratom powder',
-		            'short_descript' => '30g Maeng Da Powder',
+		            'short_descript' => '30g Maeng Da Powder - 3 Pack',
 		            'active' => '1',
 		            'created_at' => date("Y-m-d H:i:s")
 	        	],[
@@ -30,7 +30,7 @@ class ProductTableSeeder extends Seeder
 		            'msrp' => '24.95',
 		            'pack_size' => '3',
 		            'description' => '30 grams of trainwreck kratom powder',
-		            'short_descript' => '30g Trainwreck Powder',
+		            'short_descript' => '30g Trainwreck Powder - 3 Pack',
 		            'active' => '1',
 		            'created_at' => date("Y-m-d H:i:s")
 	        	],[
@@ -40,7 +40,7 @@ class ProductTableSeeder extends Seeder
 		            'msrp' => '24.95',
 		            'pack_size' => '3',
 		            'description' => '30 grams of bali kratom powder',
-		            'short_descript' => '30g Bali Powder',
+		            'short_descript' => '30g Bali Powder - 3 Pack',
 		            'active' => '1',
 		            'created_at' => date("Y-m-d H:i:s")
 	        	]

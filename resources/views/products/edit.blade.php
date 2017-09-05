@@ -21,7 +21,7 @@
                     <!-- widget div-->
                     <div>
                         <div class="widget-body no-padding">
-                            <form class="smart-form" role="form" method="POST" action="/products/{{ $product->id }}">
+                            <form class="smart-form" role="form" method="POST" action="/products/{{ $product->slug }}">
 
                                 {{ method_field('PATCH') }}
                                 {{ csrf_field() }}
@@ -40,13 +40,13 @@
                                             <div class="inline-group">
                                                 @foreach($categories as $category)
                                                     <label class="checkbox text-capitalize">
-                                                        <input type="checkbox" value="{{ $category->name }}"
+                                                        <input type="checkbox" value="{{ $category->id }}"
                                                          @foreach ($product->categories as $associatedCat)
-                                                            @if ($associatedCat->name == $category->name)
+                                                            @if ($associatedCat->id == $category->id)
                                                                 checked="checked"
                                                             @endif
                                                         @endforeach
-                                                        ><i></i>{{ $category->name }}
+                                                        name="category[]"><i></i>{{ $category->name }}
                                                     </label>
                                                 @endforeach
                                             </div>
@@ -57,6 +57,13 @@
                                 <fieldset>
                                     <div class="row">
                                         <section class="col col-4">
+                                            <label class="label">Default Price</label>
+                                            <label class="input">
+                                                <input type="text" name="default_price" value="{{ $product->default_price }}">
+                                            </label>
+                                        </section>
+
+                                        <section class="col col-4">
                                             <label class="label">MSRP</label>
                                             <label class="input">
                                                 <input type="text" name="msrp" value="{{ $product->msrp }}">
@@ -64,16 +71,9 @@
                                         </section>
 
                                         <section class="col col-4">
-                                            <label class="label">Retailer Price</label>
+                                            <label class="label">Pack Size</label>
                                             <label class="input">
-                                                <input type="text" name="retailer_price" value="{{ $product->retailer_price }}">
-                                            </label>
-                                        </section>
-
-                                        <section class="col col-4">
-                                            <label class="label">Distributor Price</label>
-                                            <label class="input">
-                                                <input type="text" name="distributor_price" value="{{ $product->distributor_price }}">
+                                                <input type="text" name="pack_size" value="{{ $product->pack_size }}">
                                             </label>
                                         </section>
                                     </div>

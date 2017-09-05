@@ -57,7 +57,7 @@
 					<div>
 						<div class="widget-body no-padding">
 							<div class="tab-content padding-10">
-								
+
 								{{-- TAB 1 --}}
 								<div class="tab-pane fade in active" id="hr1">
 									<table id="datatable_fixed_column" class="table table-striped table-bordered" width="100%">
@@ -80,7 +80,7 @@
 													<td class="text-capitalize">
 														@foreach($product->categories as $key => $category)
 															@if($key)
-																,
+																,&nbsp;
 															@endif
 															{{ $category->name }}
 														@endforeach
@@ -97,8 +97,8 @@
 																<i class="fa fa-lg fa-eye" style="color:green"></i>
 															@endif
 														</a> | 
-														<a href="/products/{{  $product->id  }}">View</a> | 
-														<a href="/products/{{  $product->id  }}/edit">Edit</a>
+														<a href="/products/{{$product->slug}}">View</a> | 
+														<a href="/products/{{$product->slug}}/edit">Edit</a>
 													</td>
 												</tr>
 											@endforeach
@@ -208,8 +208,6 @@
 					<footer>
 						<ul>
 							<li>categories in product.edit add-to instead of modify</li>
-							<li>need product.edit category field 'name' to update to dif table</li>
-							<li>make product.edit active/inactive checkbox toggle - dont break category</li>
 						</ul>
 					</footer>
 				</div>

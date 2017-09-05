@@ -45,28 +45,28 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductFormRequest $request, $id)
+    public function store(ProductFormRequest $request)
     {
-        // $product = new Product(
-        //     [
-        //         'name' => $request->name,
-        //         'slug' => str_slug($request->name, '-'),
-        //         'msrp' => $request->msrp,
-        //         'retailer_price' => $request->retailer_price,
-        //         'distributor_price' => $request->distributor_price,
-        //         'description' => $request->description,
-        //         'short_descript' => $request->short_descript
-        //     ]
-        // );
-        // // $request->slug = str_slug($request->name);
-        // // dd($request->all());
+        $product = new Product(
+            [
+                'name' => $request->name,
+                'slug' => str_slug($request->name, '-'),
+                'msrp' => $request->msrp,
+                'default_price' => $request->default_price,
+                'pack_size' => $request->pack_size,
+                'description' => $request->description,
+                'short_descript' => $request->short_descript
+            ]
+        );
+
+
+
         // // Product::create($request->all());
 
-        // $product->save();
-        $catId = Category::select('id')->get();
-        $product = Product::find($id);
+        $product->save();
 
-        $product->categories()->attach($catId);
+        $product->categories()->attach($request->category);
+
 
         // store page
         return redirect('products')->with('message', 'Product Added!');
@@ -103,14 +103,22 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductFormRequest $request, $id)
+    public function update(ProductFormRequest $request, Product $product)
     {
 
-        $catId = Category::select('id')->get();
-        $product = Product::find($id);
-        // $product->fill($request->toArray())->save();
+        $product->update(
+            [
+                'name' => $request->name,
+                'slug' => str_slug($request->name, '-'),
+                'msrp' => $request->msrp,
+                'default_price' => $request->default_price,
+                'pack_size' => $request->pack_size,
+                'description' => $request->description,
+                'short_descript' => $request->short_descript
+            ]
+        );
 
-        $product->categories()->sync($catId);
+        $product->categories()->sync($request->category);
 
         //store page
         return redirect('products')->with('message', 'Product Modified Sucessfully!');
