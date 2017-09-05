@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends ModelBase
+class Category extends ModelBase
 {
-    public function categories()
+    public function products()
     {
-    	return $this->belongsToMany(Category::class);
+    	return $this->belongsToMany(Product::class);
     }
 
     public function getRouteKeyName()

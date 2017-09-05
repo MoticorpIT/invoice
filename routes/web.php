@@ -31,6 +31,8 @@ Route::resource('invoices', 'InvoiceController');
 Route::resource('products', 'ProductController');
 Route::resource('locations', 'LocationController');
 
+Route::get('products/categories/{category}', 'CategoryController@index');
+
 //break the routes out of the helper to kill registration
 //Auth::routes();
 
