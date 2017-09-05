@@ -13,6 +13,6 @@ class Category extends ModelBase
 
     public function getRouteKeyName()
     {
-    	return 'name';
+    	return 'slug';
     }
 }

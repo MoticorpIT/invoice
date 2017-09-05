@@ -18,13 +18,24 @@
                     {{ csrf_field() }}
                         <fieldset>
                             <div class="row">
-                                <section class="col col-6"> 
+                                <section class="col col-8"> 
                                     <label class="input"> <i class="icon-prepend fa fa-user"></i>
-                                        <input type="text" name="name" placeholder="Name">
+                                        <input type="text" name="name" placeholder="Name" value="{{ old('name') }}"> 
                                     </label>
                                 </section>
 
-                                <section class="col col-6">
+                                <section class="col col-4">
+                                    <div class="inline-group">
+                                        @foreach($categories as $category)
+                                            <label class="checkbox text-capitalize">
+                                                <input type="checkbox" value="{{ $category->name }}">
+                                                <i></i>{{ $category->name }}
+                                            </label>
+                                        @endforeach
+                                    </div>
+                                </section>
+
+                                {{-- <section class="col col-6">
                                     <label class="select">
                                         <select>
                                             <option name="category" value="0">Category</option>
@@ -33,7 +44,7 @@
                                             @endforeach
                                         </select> <i></i>
                                     </label>
-                                </section>
+                                </section> --}}
                             </div>
                         </fieldset>
 
@@ -41,19 +52,19 @@
                             <div class="row">
                                 <section class="col col-4">
                                     <label class="input"> <i class="icon-prepend fa fa-user"></i>
-                                        <input type="text" name="msrp" placeholder="MSPR">
+                                        <input type="text" name="msrp" placeholder="MSPR" value="{{ old('msrp') }}">
                                     </label>
                                 </section>
 
                                 <section class="col col-4">
                                     <label class="input"> <i class="icon-prepend fa fa-user"></i>
-                                        <input type="text" name="retailer_price" placeholder="Retailer Price">
+                                        <input type="text" name="retailer_price" placeholder="Retailer Price" value="{{ old('retailer_price') }}">
                                     </label>
                                 </section>
 
                                 <section class="col col-4">
                                     <label class="input"> <i class="icon-prepend fa fa-user"></i>
-                                        <input type="text" name="distributor_price" placeholder="Distributor Price">
+                                        <input type="text" name="distributor_price" placeholder="Distributor Price" value="{{ old('distributor_price') }}">
                                     </label>
                                 </section>
                             </div>
@@ -62,13 +73,13 @@
                         <fieldset>
                             <section>
                                 <label class="textarea">                                        
-                                    <textarea rows="1" name="short_descript" class="custom-scroll" placeholder="Short Description"></textarea> 
+                                    <textarea rows="1" name="short_descript" class="custom-scroll" placeholder="Short Description" value="{{ old('short_descript') }}"></textarea> 
                                 </label>
                             </section>
 
                             <section>
                                 <label class="textarea textarea-resizable">                                         
-                                    <textarea rows="3" name="description" class="custom-scroll" placeholder="Description"></textarea> 
+                                    <textarea rows="3" name="description" class="custom-scroll" placeholder="Description" value="{{ old('description') }}"></textarea> 
                                 </label>
                             </section>
                         </fieldset>

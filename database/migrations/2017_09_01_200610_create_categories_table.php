@@ -23,9 +23,9 @@ class CreateCategoriesTable extends Migration
         });
 
         Schema::create('category_product', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('product_id');
             $table->integer('category_id');
-            $table->primary(['product_id', 'category_id']);
         });
     }
 

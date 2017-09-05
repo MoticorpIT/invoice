@@ -18,9 +18,9 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
-            $table->decimal('msrp');
-            $table->decimal('retailer_price');
-            $table->decimal('distributor_price');
+            $table->decimal('default_price');
+            $table->decimal('msrp')->nullable();
+            $table->string('pack_size');
             $table->string('description')->nullable();
             $table->string('short_descript')->nullable();
             $table->boolean('active')->default(1);

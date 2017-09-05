@@ -23,7 +23,6 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // Returns Products Index
         $products = Product::all();
         return view('products.index', compact('products'));
     }
@@ -46,24 +45,28 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductFormRequest $request)
+    public function store(ProductFormRequest $request, $id)
     {
-        $product = new Product(
-            [
-                'name' => $request->name,
-                'slug' => str_slug($request->name, '-'),
-                'msrp' => $request->msrp,
-                'retailer_price' => $request->retailer_price,
-                'distributor_price' => $request->distributor_price,
-                'description' => $request->description,
-                'short_descript' => $request->short_descript
-            ]
-        );
-        // $request->slug = str_slug($request->name);
-        // dd($request->all());
-        // Product::create($request->all());
+        // $product = new Product(
+        //     [
+        //         'name' => $request->name,
+        //         'slug' => str_slug($request->name, '-'),
+        //         'msrp' => $request->msrp,
+        //         'retailer_price' => $request->retailer_price,
+        //         'distributor_price' => $request->distributor_price,
+        //         'description' => $request->description,
+        //         'short_descript' => $request->short_descript
+        //     ]
+        // );
+        // // $request->slug = str_slug($request->name);
+        // // dd($request->all());
+        // // Product::create($request->all());
 
-        $product->save();
+        // $product->save();
+        $catId = Category::select('id')->get();
+        $product = Product::find($id);
+
+        $product->categories()->attach($catId);
 
         // store page
         return redirect('products')->with('message', 'Product Added!');
@@ -91,6 +94,7 @@ class ProductController extends Controller
         $categories = Category::all();
         return view('products.edit', compact('product', 'categories'));
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -101,8 +105,12 @@ class ProductController extends Controller
      */
     public function update(ProductFormRequest $request, $id)
     {
+
+        $catId = Category::select('id')->get();
         $product = Product::find($id);
-        $product->fill($request->toArray())->save();
+        // $product->fill($request->toArray())->save();
+
+        $product->categories()->sync($catId);
 
         //store page
         return redirect('products')->with('message', 'Product Modified Sucessfully!');

@@ -14,36 +14,34 @@ class ProductTableSeeder extends Seeder
         DB::table('products')->insert(
 	        [
 	        	[
-	        		'name' => '30g Maeng Da',
-	        		'slug' => str_slug('30g Maeng Da', '-'),
-				    'msrp' => '24.95',
-				    'retailer_price' => '7.95',
-				    'distributor_price' => '3.95',
-				    'description' => '30 grams of maeng da powder',
-				    'short_descript' => '30g Maeng Da Powder',
-				    'active' => '1',
+		            'name' => '30g Maeng Da',
+		            'slug' => str_slug('30g Maeng Da', '-'),
+		            'default_price' => '7.95',
+		            'msrp' => '24.95',
+		            'pack_size' => '3',
+		            'description' => '30 grams of maeng da kratom powder',
+		            'short_descript' => '30g Maeng Da Powder',
+		            'active' => '1',
 		            'created_at' => date("Y-m-d H:i:s")
-	        	],
-	        	[
+	        	],[
 		            'name' => '30g Trainwreck',
 		            'slug' => str_slug('30g Trainwreck', '-'),
-				    'msrp' => '29.95',
-				    'retailer_price' => '8.95',
-				    'distributor_price' => '3.95',
-				    'description' => '30 grams of trainwreck powder',
-				    'short_descript' => '30g Trainwreck Powder',
-				    'active' => '1',
+		            'default_price' => '7.95',
+		            'msrp' => '24.95',
+		            'pack_size' => '3',
+		            'description' => '30 grams of trainwreck kratom powder',
+		            'short_descript' => '30g Trainwreck Powder',
+		            'active' => '1',
 		            'created_at' => date("Y-m-d H:i:s")
-	        	],
-	        	[
+	        	],[
 		            'name' => '30g Bali',
 		            'slug' => str_slug('30g Bali', '-'),
-				    'msrp' => '24.95',
-				    'retailer_price' => '7.95',
-				    'distributor_price' => '3.95',
-				    'description' => '30 grams of bali powder',
-				    'short_descript' => '30g Bali Powder',
-				    'active' => '1',
+		            'default_price' => '7.95',
+		            'msrp' => '24.95',
+		            'pack_size' => '3',
+		            'description' => '30 grams of bali kratom powder',
+		            'short_descript' => '30g Bali Powder',
+		            'active' => '1',
 		            'created_at' => date("Y-m-d H:i:s")
 	        	]
 	        ]

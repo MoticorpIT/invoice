@@ -57,17 +57,17 @@
 					<div>
 						<div class="widget-body no-padding">
 							<div class="tab-content padding-10">
-
+								
 								{{-- TAB 1 --}}
 								<div class="tab-pane fade in active" id="hr1">
 									<table id="datatable_fixed_column" class="table table-striped table-bordered" width="100%">
 								        <thead>
 								        	<tr>
 								            	<th>Name</th>
-								            	<th>Category</th>
+								            	<th>Categories</th>
+							                    <th>Price</th>
 							                    <th>MSRP</th>
-							                    <th>Retailer</th>
-							                    <th>Distributor</th>
+							                    <th>Size</th>
 							                    <th>Description</th>
 							                    <th>Actions</th>
 								            </tr>
@@ -85,10 +85,10 @@
 															{{ $category->name }}
 														@endforeach
 													</td>
+													<td>${{ $product->default_price }}</td>
 													<td>${{ $product->msrp }}</td>
-													<td>${{ $product->retailer_price }}</td>
-													<td>${{ $product->distributor_price }}</td>
-													<td>{{ $product->description }}</td>
+													<td>{{ $product->pack_size }} /pk</td>
+													<td>{{ $product->short_descript }}</td>
 													<td>
 														<a href="/products">
 															@if($product->active == 0)
@@ -112,12 +112,11 @@
 								        <thead>
 								        	<tr>
 								            	<th>Name</th>
-								            	{{-- <th>Category</th> --}}
+								            	<th>Categories</th>
+							                    <th>Price</th>
 							                    <th>MSRP</th>
-							                    <th>Retailer</th>
-							                    <th>Distributor</th>
+							                    <th>Size</th>
 							                    <th>Description</th>
-							                    <th>Active</th>
 							                    <th>Actions</th>
 								            </tr>
 								        </thead>
@@ -126,13 +125,29 @@
 								            @foreach($products as $product)
 												<tr>
 													<td>{{ $product->name }}</td>
-													{{-- <td>{{ $product->category }}</td> --}}
+													<td class="text-capitalize">
+														@foreach($product->categories as $key => $category)
+															@if($key)
+																,
+															@endif
+															{{ $category->name }}
+														@endforeach
+													</td>
+													<td>${{ $product->default_price }}</td>
 													<td>${{ $product->msrp }}</td>
-													<td>${{ $product->retailer_price }}</td>
-													<td>${{ $product->distributor_price }}</td>
-													<td>{{ $product->description }}</td>
-													<td>{{ $product->active }}</td>
-													<td><a href="/products/{{  $product->id  }}">View</a> | <a href="/products/{{  $product->id  }}/edit">Edit</a></td>
+													<td>{{ $product->pack_size }} /pk</td>
+													<td>{{ $product->short_descript }}</td>
+													<td>
+														<a href="/products">
+															@if($product->active == 0)
+																<i class="fa fa-lg fa-eye-slash" style="color:red"></i>
+															@else
+																<i class="fa fa-lg fa-eye" style="color:green"></i>
+															@endif
+														</a> | 
+														<a href="/products/{{  $product->id  }}">View</a> | 
+														<a href="/products/{{  $product->id  }}/edit">Edit</a>
+													</td>
 												</tr>
 											@endforeach
 								        </tbody>
@@ -145,12 +160,11 @@
 								        <thead>
 								        	<tr>
 								            	<th>Name</th>
-								            	{{-- <th>Category</th> --}}
+								            	<th>Categories</th>
+							                    <th>Price</th>
 							                    <th>MSRP</th>
-							                    <th>Retailer</th>
-							                    <th>Distributor</th>
+							                    <th>Size</th>
 							                    <th>Description</th>
-							                    <th>Active</th>
 							                    <th>Actions</th>
 								            </tr>
 								        </thead>
@@ -159,13 +173,29 @@
 								            @foreach($products as $product)
 												<tr>
 													<td>{{ $product->name }}</td>
-													{{-- <td>{{ $product->category }}</td> --}}
+													<td class="text-capitalize">
+														@foreach($product->categories as $key => $category)
+															@if($key)
+																,
+															@endif
+															{{ $category->name }}
+														@endforeach
+													</td>
+													<td>${{ $product->default_price }}</td>
 													<td>${{ $product->msrp }}</td>
-													<td>${{ $product->retailer_price }}</td>
-													<td>${{ $product->distributor_price }}</td>
-													<td>{{ $product->description }}</td>
-													<td>{{ $product->active }}</td>
-													<td><a href="/products/{{  $product->id  }}">View</a> | <a href="/products/{{  $product->id  }}/edit">Edit</a></td>
+													<td>{{ $product->pack_size }} /pk</td>
+													<td>{{ $product->short_descript }}</td>
+													<td>
+														<a href="/products">
+															@if($product->active == 0)
+																<i class="fa fa-lg fa-eye-slash" style="color:red"></i>
+															@else
+																<i class="fa fa-lg fa-eye" style="color:green"></i>
+															@endif
+														</a> | 
+														<a href="/products/{{  $product->id  }}">View</a> | 
+														<a href="/products/{{  $product->id  }}/edit">Edit</a>
+													</td>
 												</tr>
 											@endforeach
 								        </tbody>
@@ -175,6 +205,13 @@
 							</div>
 						</div>
 					</div>
+					<footer>
+						<ul>
+							<li>categories in product.edit add-to instead of modify</li>
+							<li>need product.edit category field 'name' to update to dif table</li>
+							<li>make product.edit active/inactive checkbox toggle - dont break category</li>
+						</ul>
+					</footer>
 				</div>
 			</article>
 		</div>
