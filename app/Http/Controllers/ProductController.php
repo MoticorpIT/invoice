@@ -106,12 +106,12 @@ class ProductController extends Controller
                 'default_price' => $request->default_price,
                 'pack_size' => $request->pack_size,
                 'description' => $request->description,
-                'short_descript' => $request->short_descript
+                'short_descript' => $request->short_descript,
+                'active' => $request->active
             ]
         );
         $product->categories()->sync($request->category);
         //store page
-        dd($product);
         return redirect('products')->with('message', 'Product Modified Sucessfully!');
     }
 

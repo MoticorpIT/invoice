@@ -23,7 +23,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::where('customer_id', '>', 0)->get();
+        $invoices = Invoice::all();
         return view('invoices.index', compact('invoices'));
     }
 
@@ -68,9 +68,8 @@ class InvoiceController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Invoice $invoice)
     {
-        $invoice = Invoice::find($id);
         return view('invoices.edit', compact('invoice'));
     }
 

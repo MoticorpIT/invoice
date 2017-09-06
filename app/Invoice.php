@@ -17,4 +17,17 @@ class Invoice extends ModelBase
     public function notes(){
     	return $this->hasMany('App\Note');
     }
+
+    public function term(){
+    	return $this->belongsTo('App\Term');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'inv_number';
+    }
 }

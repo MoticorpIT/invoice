@@ -102,14 +102,14 @@
                                             <label class="radio">
                                                 <input type="radio" name="active" id="optionsRadios1" value="1"
                                                 @if ($product->active == 1)
-                                                    checked
+                                                    checked="checked"
                                                 @endif
                                                 ><i style="top:9px;"></i>Active
                                             </label>
                                             <label class="radio">
                                                 <input type="radio" name="active" id="optionsRadios2" value="0"
                                                 @if ($product->active != 1)
-                                                    checked
+                                                    checked="checked"
                                                 @endif
                                                 ><i style="top:9px;"></i>Inactive
                                             </label>

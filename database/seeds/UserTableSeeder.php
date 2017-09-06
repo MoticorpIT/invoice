@@ -16,17 +16,20 @@ class UserTableSeeder extends Seeder
 	        	[
 	        		'name' => 'Yosi B.',
 				    'email' => 'yosi@moticorp.com',
-				    'password' => bcrypt('password')
+				    'password' => bcrypt('password'),
+				    'mobile' => '843-555-1234'
 	        	],
 	        	[
 		            'name' => 'Joey B.',
 				    'email' => 'joey@moticorp.com',
-				    'password' => bcrypt('password')
+				    'password' => bcrypt('password'),
+				    'mobile' => '843-777-9876'
 	        	],
 	        	[
 		            'name' => 'Chad C.',
 				    'email' => 'chad@moticorp.com',
-				    'password' => bcrypt('password')
+				    'password' => bcrypt('password'),
+				    'mobile' => '843-555-4321'
 	        	]
 	        ]
 	    );
