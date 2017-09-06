@@ -3,9 +3,8 @@
 @section('body')
 
     <div id="widget-grid">
-    <h2>Create a Product</h2>
 
-        <div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+        <div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false" data-widget-togglebutton="false">
             <header>
                 <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
                 <h2>New Product </h2>             
@@ -74,10 +73,8 @@
                         </fieldset>
 
                         <footer>
-                            <button type="submit" class="btn btn-primary">
-                                Save
-                            </button>
-                            <a href="/products" class="btn btn-warning">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="button" class="btn btn-default" onclick="window.history.back();">Cancel</button>
                         </footer>
                     </form>
 

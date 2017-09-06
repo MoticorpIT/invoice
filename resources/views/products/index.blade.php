@@ -17,20 +17,6 @@
 	}
 	</style>
 
-	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-		<h1 class="page-title txt-color-blueDark">
-			<!-- PAGE HEADER -->
-			<i class="fa-fw fa fa-tags"></i> 
-				Products
-		</h1>
-	</div>
-	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4 pull-right text-right">
-		<div class="btn btn-labeled btn-success">
-			<span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span>
-			<a href="/products/create">Add Product</a>
-		</div>
-	</div>
-
 	{{-- widget grid --}}
 	<section id="widget-grid">
 	
@@ -205,13 +191,30 @@
 							</div>
 						</div>
 					</div>
-					<footer>
-						<ul>
-							<li>categories in product.edit add-to instead of modify</li>
-						</ul>
-					</footer>
 				</div>
 			</article>
+		</div>
+		<div class="row center-block">
+			<div class="btn btn-labeled btn-success" style="margin-top:10px;">
+				<span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span>
+				<a href="/products/create">Add New Product</a>
+			</div>
+			<div class="btn btn-labeled btn-success" style="margin-top:10px;">
+				<span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span>
+				<a href="/products">View All Products</a>
+			</div>
+			<div class="btn btn-labeled btn-success" style="margin-top:10px;">
+				<span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span>
+				<a href="/products/categories/powders">View Powder Products</a>
+			</div>
+			<div class="btn btn-labeled btn-success" style="margin-top:10px;">
+				<span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span>
+				<a href="/products/categories/capsules">View Capsule Products</a>
+			</div>
+			<div class="btn btn-labeled btn-success" style="margin-top:10px;">
+				<span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span>
+				<a href="/products/categories/extracts">View Extract Products</a>
+			</div>
 		</div>
 	</section>
 	
