@@ -58,18 +58,11 @@ class ProductController extends Controller
                 'short_descript' => $request->short_descript
             ]
         );
-
-
-
-        // // Product::create($request->all());
-
         $product->save();
-
         $product->categories()->attach($request->category);
-
-
         // store page
         return redirect('products')->with('message', 'Product Added!');
+        // // Product::create($request->all());
     }
 
     /**
@@ -105,7 +98,6 @@ class ProductController extends Controller
      */
     public function update(ProductFormRequest $request, Product $product)
     {
-
         $product->update(
             [
                 'name' => $request->name,
@@ -117,10 +109,9 @@ class ProductController extends Controller
                 'short_descript' => $request->short_descript
             ]
         );
-
         $product->categories()->sync($request->category);
-
         //store page
+        dd($product);
         return redirect('products')->with('message', 'Product Modified Sucessfully!');
     }
 
