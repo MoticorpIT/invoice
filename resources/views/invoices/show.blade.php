@@ -51,15 +51,19 @@
 									<div class="col-sm-10 text-align-right">
 
 										<div class="btn-group">
-											<a href="/invoices/{{ $invoice->id }}" class="btn btn-sm btn-primary"> <i class="fa fa-dollar"></i> Pay </a>
+											<a href="/invoices" class="btn btn-sm btn-primary"> <i class="fa fa-arrow-left"></i> Back </a>
 										</div>
 
 										<div class="btn-group">
-											<a href="/invoices/{{ $invoice->id }}" class="btn btn-sm btn-primary"> <i class="fa fa-send"></i> Send </a>
+											<a href="/invoices/{{ $invoice->inv_number }}" class="btn btn-sm btn-primary"> <i class="fa fa-dollar"></i> Pay </a>
+										</div>
+
+										<div class="btn-group">
+											<a href="/invoices/{{ $invoice->inv_number }}" class="btn btn-sm btn-primary"> <i class="fa fa-send"></i> Send </a>
 										</div>
 	
 										<div class="btn-group">
-											<a href="/invoices/{{ $invoice->id }}/edit" class="btn btn-sm btn-primary"> <i class="fa fa-edit"></i> Edit </a>
+											<a href="/invoices/{{ $invoice->inv_number }}/edit" class="btn btn-sm btn-primary"> <i class="fa fa-edit"></i> Edit </a>
 										</div>
 	
 										<div class="btn-group">
@@ -77,7 +81,7 @@
 								<div class="pull-left">
 									<img src="/img/logo-blacknwhite.png" width="150" height="32" alt="invoice logo">
 	
-									<address>
+									<address style="font-size:1.3em;margin-bottom:0;">
 										<br>
 										<strong>Fire Wholesale</strong>
 										<br>
@@ -88,7 +92,7 @@
 										<abbr title="Phone">P:</abbr> (843) 481-3473
 									</address>
 								</div>
-								<div class="pull-right">
+								<div class="pull-right" style="margin-top:-30px;">
 									<h1 class="font-400">invoice</h1>
 								</div>
 								<div class="clearfix"></div>
@@ -96,19 +100,17 @@
 								<br>
 								<div class="row">
 									<div class="col-sm-9">
-										<h4 class="semi-bold">
+										<h4 class="semi-bold" style="font-size:2em;">
 											<a href="/customers/{{ $invoice->customer->id }}">{{ $invoice->customer->company }}</a>
 										</h4>
-										<address>
+										<address style="font-size:1.3em;">
 											<strong>{{ $invoice->customer->contact_first }} {{ $invoice->customer->contact_last }}</strong>
 											<br>
 											@foreach($invoice->customer->locations as $location)
-											{{ $location->street }}
-											{{-- 342 Mirlington Road, --}}
-											<br>
-											{{ $location->city }}, {{ $location->state }} {{ $location->zip }}
-											{{-- Calfornia, CA 431464 --}}
-											<br>
+												{{ $location->street }}
+												<br>
+												{{ $location->city }}, {{ $location->state }} {{ $location->zip }}
+												<br>
 											@endforeach
 											<abbr title="Phone">P:</abbr> {{ $invoice->customer->phone1 }}
 										</address>
@@ -119,14 +121,14 @@
 										<div>
 											<div class="font-md">
 												<strong>INVOICE NO :</strong>
-												<span class="pull-right"> {{ $invoice->invoice_num }} </span>
+												<span class="pull-right"> {{ $invoice->inv_number }} </span>
 											</div>
 										</div>
 
 										<div>
 											<div class="font-md">
 												<strong>Created:</strong>
-												<span class="pull-right"> {{ $invoice->created_at->diffForHumans() }} </span>
+												<span class="pull-right"> {{ $invoice->created_at->format('d-m-y') }} </span>
 											</div>
 										</div>
 
@@ -134,6 +136,12 @@
 											<div class="font-md">
 												<strong>Due:</strong>
 												<span class="pull-right"> {{$invoice->due}} </span>
+											</div>
+										</div>
+										<div>
+											<div class="font-md">
+												<strong>Terms:</strong>
+												<span class="pull-right"> {{$invoice->term->name}} </span>
 											</div>
 										</div>
 										<br>
@@ -163,13 +171,22 @@
 									</thead>
 									<tbody>
 
+										{{-- @foreach ($line_items as $line_item)
+											<tr>
+												<td class="text-center"><strong>{{ $line_item->qty }}</strong></td>
+												<td><a href="javascript:void(0);">{{ $line_item->name }}</a></td>
+												<td data-hide="phone,tablet">{{ $line_item->description }}</td>
+												<td>{{ $line_item->price }}</td>
+												<td>{{ $line_item->price * $line_item->qty }}</td>
+											</tr>
+										@endforeach --}}
+
 										<tr>
 											<td class="text-center"><strong>1</strong></td>
 											<td><a href="javascript:void(0);">Print and Web Logo Design</a></td>
 											<td data-hide="phone,tablet">Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam xplicabo.</td>
 											<td>$1,300.00</td>
-	
-											<td>$1,300.00</td>
+											<?php $price = 10; $qty = 2; echo '<td>$'.$price * $qty.'</td>'; ?>
 										</tr>
 
 										<tr>
@@ -190,7 +207,7 @@
 
 										<tr>
 											<td colspan="4" class="text-right">Subtotal:</td>
-											<td class="text-right"><strong>${{$invoice->sub_total}}</strong></td>
+											<td class="text-right"><strong>${{$invoice->subtotal}}</strong></td>
 										</tr>
 
 										<tr>
@@ -210,12 +227,6 @@
 													@foreach($invoice->notes as $note)
 														<li>{{ $note->note }}</li>
 													@endforeach
-												</ul>
-												<ul>
-													<li>Need to add a way to pull in only the address for this invoice, not all for that customer</li>
-													<li>Need to add Notes to invoice table</li>
-													<li>Need to create table for line items and pull in data</li>
-													<li>Finalize subtotal, shipping, due section (make it math)</li>
 												</ul>
 											</div>
 										</div>

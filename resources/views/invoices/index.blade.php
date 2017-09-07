@@ -94,9 +94,9 @@
 													<td>{{ $invoice->customer->company }}</td>
 													<td>{{ $invoice->term->name }}</td>
 													<td>{{ $invoice->due }}</td>
-													<td>{{ $invoice->created_at }}</td>
+													<td>{{ $invoice->created_at->format('d-m-y') }}</td>
 													<td>{{ $invoice->user->name }}</td>
-													<td>$1500{{-- {{ $invoice->invoice_amounts->total }} --}}</td>
+													<td>${{ $invoice->total }}</td>
 													<td><a href="/invoices/{{  $invoice->inv_number  }}">View</a> | <a href="/invoices/{{  $invoice->inv_number  }}/edit">Edit</a></td>
 												</tr>
 											@endforeach
