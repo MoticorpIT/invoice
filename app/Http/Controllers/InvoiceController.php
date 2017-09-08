@@ -7,6 +7,7 @@ use App\Customer;
 use App\Term;
 use App\Status;
 use App\Location;
+use App\LineItem;
 use Illuminate\Http\Request;
 use App\Http\Requests\InvoiceFormRequest;
 

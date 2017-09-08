@@ -6,26 +6,33 @@ use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends ModelBase
 {
+    // 
     public function customer(){
-    	return $this->belongsTo('App\Customer');
+    	return $this->belongsTo(Customer::class);
     }
 
     public function status(){
-    	return $this->belongsTo('App\Status');
+    	return $this->belongsTo(Status::class);
     }
 
     public function notes(){
-    	return $this->hasMany('App\Note');
+    	return $this->hasMany(Note::class);
     }
 
     public function term(){
-    	return $this->belongsTo('App\Term');
+    	return $this->belongsTo(Term::class);
     }
 
     public function user(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
+    public function line_items()
+    {
+        return $this->hasMany(LineItem::class);
+    }
+
+    // URL RE-WRITE (replaces ID with Invoice Number in URL)
     public function getRouteKeyName()
     {
         return 'inv_number';

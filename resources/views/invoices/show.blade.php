@@ -7,17 +7,6 @@
 		}
 	</style>
 
-	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-		<h1 class="page-title txt-color-blueDark">
-			
-			<!-- PAGE HEADER -->
-			<i class="fa-fw fa fa-pencil-square-o"></i> 
-				Invoice
-			<span>>  
-				Details
-			</span>
-		</h1>
-	</div>
 	{{-- widget grid --}}
 	<section id="widget-grid" class="">
 	
@@ -94,6 +83,12 @@
 								</div>
 								<div class="pull-right" style="margin-top:-30px;">
 									<h1 class="font-400">invoice</h1>
+									<div>
+										<div class="font-md">
+											<strong>Ship:</strong>
+											<span class="pull-right"> Overnight </span>
+										</div>
+									</div>
 								</div>
 								<div class="clearfix"></div>
 								<br>
@@ -120,7 +115,7 @@
 
 										<div>
 											<div class="font-md">
-												<strong>INVOICE NO :</strong>
+												<strong>Invoice No:</strong>
 												<span class="pull-right"> {{ $invoice->inv_number }} </span>
 											</div>
 										</div>
@@ -149,7 +144,7 @@
 										<div class="well well-sm  bg-color-darken txt-color-white no-border">
 											<div class="fa-lg">
 												Total Due :
-												<span class="pull-right"> ${{$invoice->total}} </span>
+												<span class="pull-right"> ${{ number_format($invoice->total, 2, ".", ",") }} </span>
 											</div>
 										</div>
 
@@ -164,55 +159,43 @@
 											<th class="text-center">QTY</th>
 											<th>ITEM</th>
 											<th data-hide="phone,tablet">DESCRIPTION</th>
-											<th>PRICE</th>
-											<th>AMOUNT</th>
+											<th class="text-right">PRICE</th>
+											<th class="text-right">AMOUNT</th>
 										</tr>
 
 									</thead>
 									<tbody>
-
-										{{-- @foreach ($line_items as $line_item)
+										@foreach($invoice->line_items as $line)
 											<tr>
-												<td class="text-center"><strong>{{ $line_item->qty }}</strong></td>
-												<td><a href="javascript:void(0);">{{ $line_item->name }}</a></td>
-												<td data-hide="phone,tablet">{{ $line_item->description }}</td>
-												<td>{{ $line_item->price }}</td>
-												<td>{{ $line_item->price * $line_item->qty }}</td>
+												<td class="text-center">
+													<strong>{{ $line->qty }}</strong>
+												</td>
+												<td>
+													{{ $line->name }}
+												</td>
+												<td data-hide="phone,tablet">
+													{{ $line->description }}
+												</td>
+												<td class="text-right">${{ $line->price }}</td>
+												<td class="text-right">
+													${{ number_format($line->price * $line->qty, 2, ".", ",") }}
+												</td>
 											</tr>
-										@endforeach --}}
+										@endforeach
 
 										<tr>
-											<td class="text-center"><strong>1</strong></td>
-											<td><a href="javascript:void(0);">Print and Web Logo Design</a></td>
-											<td data-hide="phone,tablet">Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam xplicabo.</td>
-											<td>$1,300.00</td>
-											<?php $price = 10; $qty = 2; echo '<td>$'.$price * $qty.'</td>'; ?>
+											<td colspan="4" class="text-right"><strong>Subtotal:</strong></td>
+											<td class="text-right"><strong>${{ number_format($invoice->subtotal, 2, ".", ",") }}</strong></td>
 										</tr>
 
 										<tr>
-											<td class="text-center"><strong>1</strong></td>
-											<td><a href="javascript:void(0);">SEO Management</a></td>
-											<td data-hide="phone,tablet">Sit voluptatem accusantium doloremque laudantium inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</td>
-											<td>$1,400.00</td>
-											<td>$1,400.00</td>
+											<td colspan="4" class="text-right"><strong>Shipping:</strong></td>
+											<td class="text-right"><strong>${{ number_format($invoice->shipping, 2, ".", ",") }}</strong></td>
 										</tr>
 
 										<tr>
-											<td class="text-center"><strong>1</strong></td>
-											<td><a href="javascript:void(0);">Backend Support and Upgrade</a></td>
-											<td data-hide="phone,tablet">Inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</td>
-											<td>$1,700.00</td>
-											<td>$1,700.00</td>
-										</tr>
-
-										<tr>
-											<td colspan="4" class="text-right">Subtotal:</td>
-											<td class="text-right"><strong>${{$invoice->subtotal}}</strong></td>
-										</tr>
-
-										<tr>
-											<td colspan="4" class="text-right">Shipping:</td>
-											<td class="text-right"><strong>${{$invoice->shipping}}</strong></td>
+											<td colspan="4" class="text-right"><strong>Tax:</strong></td>
+											<td class="text-right"><strong>${{ number_format($invoice->shipping, 2, ".", ",") }}</strong></td>
 										</tr>
 
 									</tbody>
@@ -233,7 +216,7 @@
 
 										<div class="col-sm-5">
 											<div class="invoice-sum-total pull-right pad-r-24">
-												<h3><strong>Total: <span class="text-success">${{$invoice->total}}</span></strong>
+												<h3><strong>Total: <span class="text-success">${{ number_format($invoice->total, 2, ".", ",") }}</span></strong>
 												</h3>
 											</div>
 										</div>
