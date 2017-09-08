@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Status extends ModelBase
+class Payment extends Model
 {
     public function invoice(){
-    	return $this->belongsTo(Invoice::class);
+        return $this->belongsTo(Invoice::class);
     }
 }

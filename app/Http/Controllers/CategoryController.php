@@ -9,6 +9,7 @@ class CategoryController extends Controller
 {
     public function index(Category $category) {
     	$products = $category->products;
-    	return view('products.index', compact('products'));
+    	$categories = Category::all();
+    	return view('products.index', compact('products', 'categories'));
     }
 }

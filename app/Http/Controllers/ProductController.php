@@ -11,27 +11,21 @@ use App\Http\Requests\ProductFormRequest;
 class ProductController extends Controller
 {
 
-    /* AUTHENTICATION */
+    // FORM AUTHENTICATION
     public function __construct(){
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    // INDEX - VIEW ALL
     public function index()
     {
-        $products = Product::all();
+        $products = Product::orderBy('created_at', 'DESC')->get();
         return view('products.index', compact('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    // CREATE
     public function create()
     {
         $categories = Category::all();
@@ -39,14 +33,11 @@ class ProductController extends Controller
         return view('products.create', compact('products', 'categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
+    // SAVE AFTER CREATE
     public function store(ProductFormRequest $request)
     {
+        // CREATE NEW PRODUCT
         $product = new Product(
             [
                 'name' => $request->name,
@@ -59,53 +50,35 @@ class ProductController extends Controller
             ]
         );
 
-
-
-        // // Product::create($request->all());
-
+        // SAVE PRODUCT WITH RELATED CATEGORY
         $product->save();
-
         $product->categories()->attach($request->category);
-
-
-        // store page
+        
+        //PRODUCTS INDEX PAGE
         return redirect('products')->with('message', 'Product Added!');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
+    // SHOW
     public function show(Product $product)
     {
         return view('products.show', compact('product'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    // EDIT
     public function edit(Product $product)
     {
         $categories = Category::all();
         return view('products.edit', compact('product', 'categories'));
     }
-    
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    // STORE AFTER EDITING
     public function update(ProductFormRequest $request, Product $product)
     {
-
+        // CREATE UPDATED PRODUCT
         $product->update(
             [
                 'name' => $request->name,
@@ -114,22 +87,20 @@ class ProductController extends Controller
                 'default_price' => $request->default_price,
                 'pack_size' => $request->pack_size,
                 'description' => $request->description,
-                'short_descript' => $request->short_descript
+                'short_descript' => $request->short_descript,
+                'active' => $request->active
             ]
         );
 
+        // SAVE UPDATED PRODUCT W RELATED CATEOGRIES
         $product->categories()->sync($request->category);
 
-        //store page
+        // PRODUCT SHOW PAGE
         return redirect('products')->with('message', 'Product Modified Sucessfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    // DELETE / DEACTIVATE
     public function destroy($id)
     {
         //

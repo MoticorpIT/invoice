@@ -21,7 +21,7 @@
                     <!-- widget div-->
                     <div>
                         <div class="widget-body no-padding">
-                            <form class="smart-form" role="form" method="POST" action="/products/{{ $product->slug }}">
+                            <form class="smart-form form-horizontal" role="form" method="POST" action="/products/{{ $product->slug }}">
 
                                 {{ method_field('PATCH') }}
                                 {{ csrf_field() }}
@@ -46,7 +46,7 @@
                                                                 checked="checked"
                                                             @endif
                                                         @endforeach
-                                                        name="category[]"><i></i>{{ $category->name }}
+                                                        name="category[]"><i style="top:9px;"></i>{{ $category->name }}
                                                     </label>
                                                 @endforeach
                                             </div>
@@ -99,19 +99,19 @@
                                     <section>
                                         <label class="label">Status</label>
                                         <div class="inline-group">
-                                            <label class="checkbox">
-                                                <input type="checkbox" name="active" value="1" 
+                                            <label class="radio">
+                                                <input type="radio" name="active" id="optionsRadios1" value="1"
                                                 @if ($product->active == 1)
                                                     checked="checked"
                                                 @endif
-                                                ><i></i>Active
+                                                ><i style="top:9px;"></i>Active
                                             </label>
-                                            <label class="checkbox">
-                                                <input type="checkbox" name="active" value="0"
+                                            <label class="radio">
+                                                <input type="radio" name="active" id="optionsRadios2" value="0"
                                                 @if ($product->active != 1)
                                                     checked="checked"
                                                 @endif
-                                                ><i></i>Inactive
+                                                ><i style="top:9px;"></i>Inactive
                                             </label>
                                         </div>
                                     </section>
@@ -119,109 +119,16 @@
     
                                 <footer>
                                     <button type="submit" class="btn btn-primary">Save</button>
-                                    <button type="button" class="btn btn-default" onclick="window.history.back();">Back</button>
+                                    <button type="button" class="btn btn-default" onclick="window.history.back();">Cancel</button>
                                 </footer>
+
                             </form>
-    
                         </div>
-                        <!-- end widget content -->
-    
                     </div>
-                    <!-- end widget div -->
-    
                 </div>
-                <!-- end widget -->
-    
             </article>
-            <!-- END COL -->
-    
         </div>
-    
-        <!-- END ROW -->
-    
     </section>
-    <!-- end widget grid -->
-
-   	{{-- <h2>Edit a Product</h2>
-    <form class="smart-form" role="form" method="POST" action="/products/{{ $product->id }}">
-    	{{ method_field('PATCH') }}
-        {{ csrf_field() }}
-        
-        <div class="form-group">
-            <label class="label">Product Name</label>
-            <input name="name" class="form-control input-xs" value="{{ $product->name }}">
-        </div>
-        
-        <div class="form-group">
-            <label class="label">MSRP</label>
-            <input name="msrp" class="form-control input-xs" value="{{ $product->msrp }}">
-        </div>
-        
-        <div class="form-group">
-            <label class="label">Retailer Price</label>
-            <input name="retailer_price" class="form-control input-xs" value="{{ $product->retailer_price }}">
-        </div>
-        
-        <div class="form-group">
-            <label class="label">Distributor Price</label>
-            <input name="distributor_price" class="form-control input-xs" value="{{ $product->distributor_price }}">
-        </div>
-        
-        <div class="form-group">
-            <label class="label">Description</label>
-            <input name="description" class="form-control input-xs" value="{{ $product->description }}">
-        </div>
-        
-        <div class="form-group">
-            <label class="label">Short Description</label>
-            <input name="short_descript" class="form-control input-xs" value="{{ $product->short_descript }}">
-        </div>
-
-        <div class="form-group">
-            <label class="label">Category</label>
-            <label class="select text-capitalize" multiple title="Category">
-                <select>
-                    @foreach($categories as $category)
-                        <option name="category" value="{{ $category->id }}" 
-                            @foreach ($product->categories as $associatedCat)
-                                @if ($associatedCat->name == $category->name)
-                                    checked
-                                @endif
-                            @endforeach
-                            >{{ $category->name }}
-                        </option>
-                    @endforeach
-                </select> <i></i>
-            </label>
-        </div>
-        
-        <div class="form-group">
-            <label class="label">Current Status</label>
-            <div class="radio">
-                <label class="label">
-                    <input type="radio" name="active" id="optionsRadios1" value="1" 
-                    @if ($product->active == 1)
-                    	checked
-                    @endif
-                    >Active
-                </label>
-            </div>
-            <div class="radio">
-                <label class="label">
-                    <input type="radio" name="active" id="optionsRadios2" value="0"
-                    @if ($product->active != 1)
-                    	checked
-                    @endif
-                    >Not Active
-                </label>
-            </div>
-        </div>
-        
-        <div class="form-group">
-        	<button type="submit" class="btn btn-primary">Submit Button</button>
-            <a href="/products/{{ $product->id }}" class="btn btn-warning">Cancel</a>
-        </div>
-    </form> --}}
 
     @include('layout.validate')
 

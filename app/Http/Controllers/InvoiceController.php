@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Invoice;
 use App\Customer;
+use App\Term;
+use App\Status;
+use App\ShipMethod;
+use App\Payment;
+use App\Location;
+use App\LineItem;
 use Illuminate\Http\Request;
 use App\Http\Requests\InvoiceFormRequest;
 
@@ -23,7 +29,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::where('customer_id', '>', 0)->get();
+        $invoices = Invoice::all();
         return view('invoices.index', compact('invoices'));
     }
 
@@ -34,8 +40,11 @@ class InvoiceController extends Controller
      */
     public function create()
     {
+        $locations = Location::where('active', '=', 1)->get();
         $customers = Customer::where('active', '=', 1)->get();
-        return view('invoices.create', compact('customers'));
+        $statuses = Status::all();
+        $terms = Term::all();
+        return view('invoices.create', compact('customers', 'locations', 'statuses', 'terms'));
     }
 
     /**
@@ -68,10 +77,11 @@ class InvoiceController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Invoice $invoice)
     {
-        $invoice = Invoice::find($id);
-        return view('invoices.edit', compact('invoice'));
+        $statuses = Status::all();
+        $terms = Term::all();
+        return view('invoices.edit', compact('invoice', 'terms', 'statuses'));
     }
 
     /**
@@ -81,12 +91,29 @@ class InvoiceController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Invoice $invoice)
     {
-        $invoice = Invoice::find($id);
-        $invoice->fill($request->toArray())->save();
+        $invoice->update(
+            [
+                'due' => $request->due,
+                'inv_number' => $request->inv_number,
+                'user_id' => $request->user_id,
+                'term_id' => $request->term_id,
+                'status_id' => $request->status_id,
+                'customer_id' => $request->customer_id,
+                'subtotal' => $request->subtotal,
+                'shipping' => $request->shipping,
+                'total' => $request->total
+            ]
+        );
+        $invoice->sync($request->toArray())->save();
         //store page
-        return redirect('invoices')->with('message', 'Invoice Modified!');
+        return redirect('invoices/{{$invoice->inv_number}}')->with('message', 'Invoice Modified!');
+
+        // $invoice = Invoice::find($id);
+        // $invoice->fill($request->toArray())->save();
+        // // store page
+        // return redirect('invoices')->with('message', 'Invoice Modified!');
     }
 
     /**

@@ -30,7 +30,7 @@
 									</div>
 									<div class="col-sm-10 text-align-right">
 										<div class="btn-group">
-											<a href="/products/{{ $product->slug }}/edit" class="btn btn-sm btn-primary"> <i class="fa fa-edit"></i> Edit </a>
+											<a href="/products/{{ $product->slug }}/edit" class="btn btn-sm btn-primary"> <i class="fa fa-pencil"></i> Edit </a>
 										</div>
 										<div class="btn-group">
 											<a href="/products/create" class="btn btn-sm btn-success"> <i class="fa fa-plus"></i> Create New </a>
@@ -42,14 +42,14 @@
 								<!-- product -->
 								<div class="product-content product-wrap clearfix product-deatil">
 									<div class="row">
-											<div class="col-md-5 col-sm-12 col-xs-12 ">
+											<div class="col-md-4 col-sm-12 col-xs-12 ">
 												<div class="product-image"> 
-													<div class="item" style="width:380px; height:480px; background-color:gray;">
-														<img src="#" alt="">
+													<div class="item" style="width:284px; height:384px; background-color:gray;">
+														<img src="#" alt=""><p class="text-center">Pictures are not included in the table</p>
 													</div>
 												</div>
 											</div>
-											<div class="col-md-7 col-sm-12 col-xs-12">
+											<div class="col-md-8 col-sm-12 col-xs-12">
 												<h1 class="name">
 													<strong>{{ $product->name }}</strong>
 													<small class="text-capitalize" style="margin-top: 10px;">
@@ -92,21 +92,21 @@
 
 												<div class="description">
 													<div class="row">
-														<h3>Product Description</h3>
-														<p>{{ $product->description }}</p>
-													</div>
-													<div class="row">
 														<h3>Product Short Description</h3>
 						 								<p>{{ $product->short_descript }}</p>
 						 							</div>
+													<div class="row">
+														<h3>Product Description</h3>
+														<p>{{ $product->description }}</p>
+													</div>
 												</div>
 
 												<hr />
 
 												<div class="row">
 													<div class="col-sm-12 col-md-6 col-lg-6">
-														<a href="/products/{{$product->slug}}/edit" class="btn btn-success btn-lg">Edit Product</a>
-														<a href="/products" class="btn btn-warning btn-lg">Cancel</a>
+														<a href="/products/{{$product->slug}}/edit" class="btn btn-primary">Edit Product</a>
+														<a href="/products" class="btn btn-default">Cancel</a>
 													</div>
 												</div>
 											</div>
