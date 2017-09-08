@@ -66,35 +66,35 @@
 							</div>
 	
 							<div class="padding-10">
-								<br>
-								<div class="pull-left">
-									<img src="/img/logo-blacknwhite.png" width="150" height="32" alt="invoice logo">
-	
-									<address style="font-size:1.3em;margin-bottom:0;">
-										<br>
-										<strong>Fire Wholesale</strong>
-										<br>
-										706 Seaboard Street,
-										<br>
-										Myrtle Beach, SC 29577
-										<br>
-										<abbr title="Phone">P:</abbr> (843) 481-3473
-									</address>
-								</div>
-								<div class="pull-right" style="margin-top:-30px;">
-									<h1 class="font-400">invoice</h1>
-									<div>
-										<div class="font-md">
-											<strong>Ship:</strong>
-											<span class="pull-right"> Overnight </span>
+								<div class="row">
+									<div class="col-md-9 col-sm-12">
+										<img src="/img/logo-blacknwhite.png" width="150" height="32" alt="invoice logo">
+		
+										<address style="font-size:1.3em;margin-bottom:0;">
+											<br>
+											<strong>Fire Wholesale</strong>
+											<br>
+											706 Seaboard Street,
+											<br>
+											Myrtle Beach, SC 29577
+											<br>
+											<abbr title="Phone">P:</abbr> (843) 481-3473
+										</address>
+									</div>
+									<div class="col-md-3 col-sm-12">
+										<h1 class="font-400" style="margin-bottom:0px">invoice</h1>
+										<div>
+											<div class="font-md">
+												<span style="font-size:1.5em">{{ $invoice->inv_number }}</span>
+											</div>
 										</div>
 									</div>
 								</div>
-								<div class="clearfix"></div>
-								<br>
+								{{-- <div class="clearfix"></div> 
+								<br>--}}
 								<br>
 								<div class="row">
-									<div class="col-sm-9">
+									<div class="col-md-9 col-sm-12">
 										<h4 class="semi-bold" style="font-size:2em;">
 											<a href="/customers/{{ $invoice->customer->id }}">{{ $invoice->customer->company }}</a>
 										</h4>
@@ -111,22 +111,19 @@
 										</address>
 
 									</div>
-									<div class="col-sm-3">
-
+									<div class="col-md-3 col-sm-12">
 										<div>
 											<div class="font-md">
-												<strong>Invoice No:</strong>
-												<span class="pull-right"> {{ $invoice->inv_number }} </span>
+												<strong>Shipping:</strong>
+												<span class="pull-right"> {{ $invoice->ship_method->name }} </span>
 											</div>
 										</div>
-
 										<div>
 											<div class="font-md">
 												<strong>Created:</strong>
 												<span class="pull-right"> {{ $invoice->created_at->format('d-m-y') }} </span>
 											</div>
 										</div>
-
 										<div>
 											<div class="font-md">
 												<strong>Due:</strong>
@@ -140,14 +137,12 @@
 											</div>
 										</div>
 										<br>
-
-										<div class="well well-sm  bg-color-darken txt-color-white no-border">
+										<div class="well well-sm bg-color-darken txt-color-white no-border">
 											<div class="fa-lg">
 												Total Due :
 												<span class="pull-right"> ${{ number_format($invoice->total, 2, ".", ",") }} </span>
 											</div>
 										</div>
-
 										<br>
 										<br>
 									</div>

@@ -32,6 +32,10 @@ class Invoice extends ModelBase
         return $this->hasMany(LineItem::class);
     }
 
+    public function ship_method(){
+        return $this->belongsTo(ShipMethod::class);
+    }
+
     // URL RE-WRITE (replaces ID with Invoice Number in URL)
     public function getRouteKeyName()
     {

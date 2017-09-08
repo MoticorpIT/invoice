@@ -6,6 +6,7 @@ use App\Invoice;
 use App\Customer;
 use App\Term;
 use App\Status;
+use App\ShipMethod;
 use App\Location;
 use App\LineItem;
 use Illuminate\Http\Request;

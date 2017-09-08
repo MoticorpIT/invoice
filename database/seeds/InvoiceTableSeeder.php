@@ -21,6 +21,7 @@ class InvoiceTableSeeder extends Seeder
 					'total' => '1900.00',
 					'user_id' => '1',
 					'term_id' => '1',
+					'ship_method_id' => "3",
 					'status_id' => '1',
 					'customer_id' => '1',
 					'created_at' => date("Y-m-d H:i:s")
@@ -33,6 +34,7 @@ class InvoiceTableSeeder extends Seeder
 					'total' => '1700.00',
 					'user_id' => '2',
 					'term_id' => '4',
+					'ship_method_id' => "2",
 					'status_id' => '2',
 					'customer_id' => '3',
 					'created_at' => date("Y-m-d H:i:s")
@@ -45,6 +47,7 @@ class InvoiceTableSeeder extends Seeder
 					'total' => '1279.00',
 					'user_id' => '1',
 					'term_id' => '2',
+					'ship_method_id' => "3",
 					'status_id' => '3',
 					'customer_id' => '3',
 					'created_at' => date("Y-m-d H:i:s")
@@ -56,6 +59,7 @@ class InvoiceTableSeeder extends Seeder
 					'total' => '2124.32',
 					'user_id' => '1',
 					'term_id' => '3',
+					'ship_method_id' => "1",
 					'status_id' => '2',
 					'customer_id' => '1',
 					'created_at' => date("Y-m-d H:i:s")
