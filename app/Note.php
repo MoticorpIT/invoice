@@ -9,5 +9,4 @@ class Note extends ModelBase
     public function user(){
     	return $this->belongsTo(User::class);
     }
-
 }

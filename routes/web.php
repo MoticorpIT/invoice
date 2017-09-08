@@ -18,6 +18,7 @@ Route::get('home', function () {
 Route::get('chad', function () {
     return view('chad.chad-file');
 });
+Route::get('joey', function () { return view('chad.joey-file');} );
 
 
 Route::get('customers/{customer}/locations/create', 'LocationController@create');

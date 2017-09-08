@@ -139,7 +139,7 @@
 										<br>
 										<div class="well well-sm bg-color-darken txt-color-white no-border">
 											<div class="fa-lg">
-												Total Due :
+												Balance Due :
 												<span class="pull-right"> ${{ number_format($invoice->total, 2, ".", ",") }} </span>
 											</div>
 										</div>
@@ -182,16 +182,24 @@
 											<td colspan="4" class="text-right"><strong>Subtotal:</strong></td>
 											<td class="text-right"><strong>${{ number_format($invoice->subtotal, 2, ".", ",") }}</strong></td>
 										</tr>
-
 										<tr>
 											<td colspan="4" class="text-right"><strong>Shipping:</strong></td>
 											<td class="text-right"><strong>${{ number_format($invoice->shipping, 2, ".", ",") }}</strong></td>
 										</tr>
-
 										<tr>
 											<td colspan="4" class="text-right"><strong>Tax:</strong></td>
 											<td class="text-right"><strong>${{ number_format($invoice->shipping, 2, ".", ",") }}</strong></td>
 										</tr>
+										@foreach($invoice->payments as $payment)
+											<tr>
+												<td colspan="4" class="text-right"><strong>Payment:</strong></td>
+												<td class="text-right">
+													<strong>
+														-${{ number_format($payment->amount, 2, ".", ",") }}
+													</strong>
+												</td>
+											</tr>
+										@endforeach
 
 									</tbody>
 								</table>
