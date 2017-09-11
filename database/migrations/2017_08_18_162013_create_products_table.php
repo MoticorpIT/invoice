@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('pack_size');
             $table->string('description')->nullable();
             $table->string('short_descript')->nullable();
+            $table->string('upc')->nullable();
             $table->boolean('active')->default(1);
             $table->timestamps();
         });
