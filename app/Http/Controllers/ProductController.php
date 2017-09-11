@@ -45,6 +45,7 @@ class ProductController extends Controller
                 'msrp' => $request->msrp,
                 'default_price' => $request->default_price,
                 'pack_size' => $request->pack_size,
+                'upc' => $request->upc,
                 'description' => $request->description,
                 'short_descript' => $request->short_descript
             ]
@@ -86,6 +87,7 @@ class ProductController extends Controller
                 'msrp' => $request->msrp,
                 'default_price' => $request->default_price,
                 'pack_size' => $request->pack_size,
+                'upc' => $request->upc,
                 'description' => $request->description,
                 'short_descript' => $request->short_descript,
                 'active' => $request->active

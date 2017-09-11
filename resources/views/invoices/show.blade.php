@@ -83,10 +83,7 @@
 								{{-- CUSTOMER CONTACT + INVOICE DETAILS --}}
 								<div class="row" style=" margin:20px 0;">
 									{{-- CUSTOMER CONTACT INFO --}}
-									<div class="col-md-8 col-sm-12">
-										{{-- <h4 class="semi-bold" style="font-size:2em;">
-											<a href="/customers/{{ $invoice->customer->id }}">{{ $invoice->customer->company }}</a>
-										</h4> --}}
+									<div class="col-md-9 col-sm-12">
 										<address style="font-size:1.3em;margin-bottom:0;">
 											<a href="/customers/{{ $invoice->customer->id }}"><strong>{{ $invoice->customer->company }}</strong></a>
 											<br>
@@ -103,7 +100,7 @@
 									</div>
 
 									{{-- INVOICE DETAILS --}}
-									<div class="col-md-4 col-sm-12">
+									<div class="col-md-3 col-sm-12">
 										<div>
 											<div class="font-md">
 												<strong>Shipping:</strong>
@@ -201,9 +198,9 @@
 														</td>
 													</tr>
 												@endforeach
-												<tr>
-													<td colspan="4" class="text-right"><strong>Total:</strong></td>
-													<td class="text-right"><strong>${{ number_format($invoice->shipping, 2, ".", ",") }}</strong></td>
+												<tr class="well well-sm bg-color-darken txt-color-white no-border">
+													<td colspan="4" class="text-right fa-lg">Balance:</td>
+													<td class="text-right fa-lg">${{ number_format($invoice->shipping, 2, ".", ",") }}</td>
 												</tr>
 											</tbody>
 										</table>

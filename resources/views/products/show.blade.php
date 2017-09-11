@@ -61,6 +61,7 @@
 														@endforeach
 													</small>
 												</h1>
+												<p style="margin-top:10px;"><strong>UPC:</strong> {{ $product->upc }}</p>
 
 												<hr />
 											
@@ -90,13 +91,15 @@
 												<div class="clearfix"></div>
 												<hr />
 
-												<div class="description">
-													<div class="row">
-														<h3>Product Short Description</h3>
+												<div class="row">
+													<div class="col-md-12">
+														<h4><strong>Product Short Description</strong></h4>
 						 								<p>{{ $product->short_descript }}</p>
 						 							</div>
-													<div class="row">
-														<h3>Product Description</h3>
+					 							</div>
+												<div class="row">
+													<div class="col-md-12">
+														<h4><strong>Product Description</strong></h4>
 														<p>{{ $product->description }}</p>
 													</div>
 												</div>
