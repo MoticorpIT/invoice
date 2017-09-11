@@ -38,6 +38,10 @@ class Invoice extends ModelBase
     public function payments() {
         return $this->hasMany(Payment::class);
     }
+    
+    public function tracking_nums() {
+        return $this->hasMany(TrackingNum::class);
+    }
 
     // URL RE-WRITE (replaces ID with Invoice Number in URL)
     public function getRouteKeyName() {

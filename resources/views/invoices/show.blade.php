@@ -83,7 +83,7 @@
 								{{-- CUSTOMER CONTACT + INVOICE DETAILS --}}
 								<div class="row" style=" margin:20px 0;">
 									{{-- CUSTOMER CONTACT INFO --}}
-									<div class="col-md-9 col-sm-12">
+									<div class="col-md-8 col-sm-12">
 										{{-- <h4 class="semi-bold" style="font-size:2em;">
 											<a href="/customers/{{ $invoice->customer->id }}">{{ $invoice->customer->company }}</a>
 										</h4> --}}
@@ -103,7 +103,7 @@
 									</div>
 
 									{{-- INVOICE DETAILS --}}
-									<div class="col-md-3 col-sm-12">
+									<div class="col-md-4 col-sm-12">
 										<div>
 											<div class="font-md">
 												<strong>Shipping:</strong>
@@ -195,12 +195,16 @@
 													<tr>
 														<td colspan="4" class="text-right"><strong>Payment:</strong></td>
 														<td class="text-right">
-															<strong>
-																-${{ number_format($payment->amount, 2, ".", ",") }}
+															<strong style="color:red;">
+																(${{ number_format($payment->amount, 2, ".", ",") }})
 															</strong>
 														</td>
 													</tr>
 												@endforeach
+												<tr>
+													<td colspan="4" class="text-right"><strong>Total:</strong></td>
+													<td class="text-right"><strong>${{ number_format($invoice->shipping, 2, ".", ",") }}</strong></td>
+												</tr>
 											</tbody>
 										</table>
 									</div>
@@ -213,6 +217,17 @@
 												@endforeach
 											</ul>
 										</div>
+									</div>
+								</div>
+
+								{{-- TRACKING INFO --}}
+								<div class="row" style=" margin:20px 0;">
+									<div class="col-md-12">
+										<strong>Tracking:</strong>
+										<br>
+										@foreach($invoice->tracking_nums as $tracking)
+											<span> {{$tracking->track_num}} </span>
+										@endforeach
 									</div>
 								</div>
 
