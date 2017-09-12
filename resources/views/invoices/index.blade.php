@@ -89,15 +89,34 @@
 								        <tbody>
 								            @foreach($invoices as $invoice)
 												<tr>
-													<td>{{ $invoice->status->status }}</td>
-													<td>{{ $invoice->inv_number }}</td>
-													<td>{{ $invoice->customer->company }}</td>
+													<td
+														@if($invoice->status->id == 6)
+															class="bg-danger">
+														@elseif($invoice->status->id == 5 || $invoice->status->id == 4)
+															class="bg-warning">
+														@elseif($invoice->status->id == 3)
+															class="bg-default">
+														@else
+															class="bg-success">
+														@endif
+														{{ $invoice->status->status }}
+													</td>
+													<td>
+														<a href="/invoices/{{ $invoice->inv_number }}">
+															{{ $invoice->inv_number }}
+														</a>
+													</td>
+													<td>
+														<a href="/customers/{{ $invoice->customer->id }}">
+															{{ $invoice->customer->company }}
+														</a>
+													</td>
 													<td>{{ $invoice->term->name }}</td>
 													<td>{{ $invoice->due }}</td>
 													<td>{{ $invoice->created_at->format('d-m-y') }}</td>
 													<td>{{ $invoice->user->name }}</td>
 													<td>${{ $invoice->total }}</td>
-													<td><a href="/invoices/{{  $invoice->inv_number  }}">View</a> | <a href="/invoices/{{  $invoice->inv_number  }}/edit">Edit</a></td>
+													<td><a href="/invoices/{{  $invoice->inv_number  }}">View</a> | <a href="/invoices/{{  $invoice->inv_number  }}/edit"><i class="fa fa-pencil"></i></a></td>
 												</tr>
 											@endforeach
 								        </tbody>

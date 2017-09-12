@@ -77,21 +77,44 @@
 													<td>{{ $product->short_descript }}</td>
 
 													<td>
+														@if($product->active == 0)
+															<form action="/products" method="POST" class="pull-left">
+																{{ method_field('DELETE') }}
+																{{ csrf_field() }}
+																<input type="hidden" name="active" value="0">
+																<button class="btn btn-link btn-xs" type="submit" name="submit" value="delete" style="padding:0;margin:-4px 0 0 0;">
+																    <i style="color:red;" class="fa fa-lg fa-eye-slash"></i>
+																</button>
+																{{-- <input class="fa fa-lg" type="submit" name="submit" style="color:red" value="&#xf070;"> --}} |
+															</form>
+														@else
+															<form action="/products" method="POST" class="pull-left">
+																{{ method_field('DELETE') }}
+																{{ csrf_field() }}
+																<input type="hidden" name="active" value="1">
+																<button class="btn btn-link btn-xs" type="submit" name="submit" value="delete" style="padding:0;margin:-4px 0 0 0;">
+																    <i style="color:green;" class="fa fa-lg fa-eye"></i>
+																</button>
+																{{-- <input class="fa fa-lg" type="submit" name="submit" style="color:green;" value="&#xf06e;">--}} | 
+															</form>
+														@endif
+														<a href="/products/{{$product->slug}}">&nbsp;View</a> | 
+														<a href="/products/{{$product->slug}}/edit">Edit</a>
+
 														{{-- <form action="/products/{{ $product->slug }}" method="POST" >
 															{{ method_field('DELETE') }}
 															{{ csrf_field() }}
 															<input type="hidden" name="active" value="0">
-															<input type="submit" name="submit" value="Remove Location" />
+															<input type="submit" name="submit" value="&#xf06e;" />
 														</form> --}}
-														<a href="/products">
+														{{-- <a href="/products">
 															@if($product->active == 0)
 																<i class="fa fa-lg fa-eye-slash" style="color:red"></i>
 															@else
 																<i class="fa fa-lg fa-eye" style="color:green"></i>
 															@endif
-														</a> | 
-														<a href="/products/{{$product->slug}}">View</a> | 
-														<a href="/products/{{$product->slug}}/edit">Edit</a>
+														</a> --}}
+														
 													</td>
 												</tr>
 											@endforeach

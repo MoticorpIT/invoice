@@ -38,21 +38,27 @@
 
                         <fieldset>
                             <div class="row">
-                                <section class="col col-4">
+                                <section class="col col-3">
                                     <label class="input">
                                         <input type="text" name="msrp" placeholder="MSRP*" value="{{ old('msrp') }}">
                                     </label>
                                 </section>
 
-                                <section class="col col-4">
+                                <section class="col col-3">
                                     <label class="input">
                                         <input type="text" name="default_price" placeholder="Price*" value="{{ old('default_price') }}">
                                     </label>
                                 </section>
 
-                                <section class="col col-4">
+                                <section class="col col-3">
                                     <label class="input">
                                         <input type="text" name="pack_size" placeholder="Pack Size" value="{{ old('pack_size') }}">
+                                    </label>
+                                </section>
+
+                                <section class="col col-3">
+                                    <label class="input">
+                                        <input type="text" name="upc" placeholder="UPC" value="{{ old('upc') }}">
                                     </label>
                                 </section>
                             </div>

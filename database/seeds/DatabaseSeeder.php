@@ -23,5 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call(LineItemTableSeeder::class);
         $this->call(ShipMethodTableSeeder::class);
         $this->call(PaymentTableSeeder::class);
+        $this->call(PayTypeTableSeeder::class);
+        $this->call(TrackingNumTableSeeder::class);
+        $this->call(TaxGroupTableSeeder::class);
     }
 }

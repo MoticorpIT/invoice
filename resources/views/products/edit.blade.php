@@ -56,24 +56,31 @@
 
                                 <fieldset>
                                     <div class="row">
-                                        <section class="col col-4">
+                                        <section class="col col-3">
                                             <label class="label">Default Price</label>
                                             <label class="input">
                                                 <input type="text" name="default_price" value="{{ $product->default_price }}">
                                             </label>
                                         </section>
 
-                                        <section class="col col-4">
+                                        <section class="col col-3">
                                             <label class="label">MSRP</label>
                                             <label class="input">
                                                 <input type="text" name="msrp" value="{{ $product->msrp }}">
                                             </label>
                                         </section>
 
-                                        <section class="col col-4">
+                                        <section class="col col-3">
                                             <label class="label">Pack Size</label>
                                             <label class="input">
                                                 <input type="text" name="pack_size" value="{{ $product->pack_size }}">
+                                            </label>
+                                        </section>
+
+                                        <section class="col col-3">
+                                            <label class="label">UPC</label>
+                                            <label class="input">
+                                                <input type="text" name="upc" value="{{ $product->upc }}">
                                             </label>
                                         </section>
                                     </div>

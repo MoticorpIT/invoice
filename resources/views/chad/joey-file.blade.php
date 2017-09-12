@@ -172,7 +172,7 @@
 								</div>
 
 								{{-- NOTES + TALLYS --}}
-								<div class="row" style=" margin:20px 0;">
+								<div class="row" style=" margin:-20px 0;">
 									<div class="col-md-3 col-sm-12 pull-right">
 										<table class="table table-hover">
 											<tbody>
