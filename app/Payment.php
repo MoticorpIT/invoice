@@ -9,4 +9,8 @@ class Payment extends Model
     public function invoice(){
         return $this->belongsTo(Invoice::class);
     }
+
+    public function pay_types(){
+        return $this->belongsTo(PayType::class);
+    }
 }

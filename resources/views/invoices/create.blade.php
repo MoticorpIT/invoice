@@ -16,6 +16,45 @@
                     <fieldset>
                         <div class="row">
 
+                            <section class="col col-3">
+                                <label class="input">
+                                    <input type="text" name="inv_number" value="{{ old('inv_number') }}" placeholder="Invoice No.">
+                                </label>
+                            </section>
+
+                            <section class="col col-3">
+                                <label class="select">
+                                    <select name="status">
+                                        <option value="0" selected="" disabled="">Choose Terms</option>
+                                        @foreach($terms as $term)
+                                        <option value="{{$term->id}}" name="status_id" id="optionsSelects{{$term->id}}">{{ $term->name }}</option>
+                                        @endforeach
+                                    </select> <i></i>
+                                </label>
+                            </section>
+
+                            <section class="col col-3">
+                                <label class="input">
+                                    <input type="text" name="due" value="{{ old('due') }}" placeholder="Due Date">
+                                </label>
+                            </section>
+
+                            <section class="col col-3">
+                                <label class="select">
+                                    <select name="status">
+                                        <option value="0" selected="" disabled="">Choose Status</option>
+                                        @foreach($statuses as $status)
+                                        <option value="{{$status->id}}" name="status_id" id="optionsSelects{{$status->id}}">{{ $status->status }}</option>
+                                        @endforeach
+                                    </select> <i></i>
+                                </label>
+                            </section>
+
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="row">
+
                             <section class="col col-6">
                                 <label class="select">
                                     <select>
@@ -132,65 +171,56 @@
 
                         </div>
                     </fieldset>
+
+                    {{-- LINE ITEMS --}}
                     <fieldset>
                         <div class="row">
-
-                            <section class="col col-3">
-                                <label class="input">
-                                    <input type="text" name="inv_number" value="{{ old('inv_number') }}" placeholder="Invoice No.">
+                            <div class="col col-12 pull-left">
+                                <label class="label" style="font-size:1.25em;margin-bottom:20px;">
+                                    Line Items
                                 </label>
-                            </section>
-
-                            <section class="col col-3">
-                                <label class="select">
-                                    <select name="status">
-                                        <option value="0" selected="" disabled="">Choose Terms</option>
-                                        @foreach($terms as $term)
-                                        <option value="{{$term->id}}" name="status_id" id="optionsSelects{{$term->id}}">{{ $term->name }}</option>
-                                        @endforeach
-                                    </select> <i></i>
-                                </label>
-                            </section>
-
-                            <section class="col col-3">
-                                <label class="input">
-                                    <input type="text" name="due" value="{{ old('due') }}" placeholder="Due Date">
-                                </label>
-                            </section>
-
-                            <section class="col col-3">
-                                <label class="select">
-                                    <select name="status">
-                                        <option value="0" selected="" disabled="">Choose Status</option>
-                                        @foreach($statuses as $status)
-                                        <option value="{{$status->id}}" name="status_id" id="optionsSelects{{$status->id}}">{{ $status->status }}</option>
-                                        @endforeach
-                                    </select> <i></i>
-                                </label>
-                            </section>
-
+                            </div>
                         </div>
-                    </fieldset>
-                    <fieldset>
-
-                        <section>
-                            <label class="input">
-                                <input type="text" name="invoice" placeholder="Line Item 1">
-                            </label>
-                        </section>
-
-                        <section>
-                            <label class="input">
-                                <input type="text" name="invoice" placeholder="Line Item 2">
-                            </label>
-                        </section>
-
-                        <section>
-                            <label class="input">
-                                <input type="text" name="invoice" placeholder="Line Item 3">
-                            </label>
-                        </section>
-
+                        <div class="row">
+                            <section class="col col-1">
+                                <label class="input">
+                                    <input type="text" name="qty" placeholder="QTY" value="{{ old('qty') }}">
+                                </label>
+                            </section>
+                            <section class="col col-3">
+                                <label class="select">
+                                    <select>
+                                        <option value="0">Choose Product</option>
+                                        @foreach($products as $product)
+                                            <option name="name" value="{{ $product->id }}">{{ $product->name }}</option>
+                                        @endforeach
+                                    </select> <i></i>
+                                </label>
+                            </section>
+                            {{-- <section class="col col-3">
+                                <label class="input">
+                                    <input type="text" name="name" placeholder="Product Name" value="{{ old('name') }}">
+                                </label>
+                            </section> --}}
+                            <section class="col col-5">
+                                <label class="input">
+                                    <input type="text" name="description" placeholder="Product Description" value="{{ old('description') }}">
+                                </label>
+                            </section>
+                            <section class="col col-2">
+                                <label class="input">
+                                    <input type="text" name="price" placeholder="Price" value="{{ old('price') }}">
+                                </label>
+                            </section>
+                            <section class="col col-1">
+                                <label class="input">
+                                    <a href="" class="btn btn-primary pull-left" style="width:49%;padding:5px 0;">
+                                        <i class="fa fa-lg fa-plus"></i></a>
+                                    <a href="" class="btn btn-danger disabled" style="width:49%;padding:5px 0;">
+                                    <i class="fa fa-lg fa-trash"></i></a>
+                                </label>
+                            </section>
+                        </div>
                     </fieldset>
                     <fieldset>
                         <div class="row">
@@ -227,7 +257,7 @@
                         <button type="submit" class="btn btn-primary">
                             Submit
                         </button>
-                        <a href="/invoices" class="btn btn-warning">Cancel</a>
+                        <button type="button" class="btn btn-default" onclick="window.history.back();">Cancel</button>
                     </footer>
                     
                 </form>

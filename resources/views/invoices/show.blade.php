@@ -16,28 +16,39 @@
 							{{-- INVOICE TOP BUTTONS --}}
 							<div class="widget-body-toolbar">
 								<div class="row">
+									
+									{{-- INVOICE STATUS --}}
 									<div class="col-sm-2 pull-left">
 										<div class="btn-group">
-											<span class="btn btn-sm btn-primary">{{ $invoice->status->status }}</span>
+											<span 
+												@if($invoice->status->id == 6)
+													class="btn btn-sm bg-danger">
+												@elseif($invoice->status->id == 5 || $invoice->status->id == 4)
+													class="btn btn-sm bg-warning">
+												@elseif($invoice->status->id == 3)
+													class="btn btn-sm bg-default">
+												@else
+													class="btn btn-sm bg-success">
+												@endif
+												{{ $invoice->status->status }}
+											</span>
 										</div>
 									</div>
+
+									{{-- INVOICE CONTROLS --}}
 									<div class="col-sm-10 text-align-right">
 										<div class="btn-group">
 											<a href="/invoices" class="btn btn-sm btn-primary"> <i class="fa fa-arrow-left"></i> Back </a>
 										</div>
-
 										<div class="btn-group">
 											<a href="/invoices/{{ $invoice->inv_number }}" class="btn btn-sm btn-primary"> <i class="fa fa-dollar"></i> Pay </a>
 										</div>
-
 										<div class="btn-group">
 											<a href="/invoices/{{ $invoice->inv_number }}" class="btn btn-sm btn-primary"> <i class="fa fa-send"></i> Send </a>
 										</div>
-	
 										<div class="btn-group">
 											<a href="/invoices/{{ $invoice->inv_number }}/edit" class="btn btn-sm btn-primary"> <i class="fa fa-edit"></i> Edit </a>
 										</div>
-	
 										<div class="btn-group">
 											<a href="/invoices/create" class="btn btn-sm btn-success"> <i class="fa fa-plus"></i> Create New </a>
 										</div>
@@ -57,6 +68,7 @@
 
 								{{-- FIRE WHOLESALE CONTACT + 'INVOICE' --}}
 								<div class="row" style=" margin:20px 0;">
+									
 									{{-- FIRE CONTACT INFO --}}
 									<div class="col-md-9 col-sm-12" style="margin-bottom:20px">
 										<address style="font-size:1.3em;margin-bottom:0;">
@@ -69,6 +81,7 @@
 											<abbr title="Phone">P:</abbr> (843) 481-3473
 										</address>
 									</div>
+									
 									{{-- INVOICE + NUMBER --}}
 									<div class="col-md-3 col-sm-12">
 										<h1 class="font-400" style="margin:-10px 0px">invoice</h1>
@@ -82,6 +95,7 @@
 
 								{{-- CUSTOMER CONTACT + INVOICE DETAILS --}}
 								<div class="row" style=" margin:20px 0;">
+									
 									{{-- CUSTOMER CONTACT INFO --}}
 									<div class="col-md-9 col-sm-12">
 										<address style="font-size:1.3em;margin-bottom:0;">
@@ -137,7 +151,7 @@
 								</div>
 
 								{{-- LINE ITEMS TABLE --}}
-								<div class="row" style=" margin:20px 0;">
+								<div class="row" style="margin:20px 0;">
 									<div class="col-md-12">
 										<table class="table table-hover">
 											<thead>
@@ -172,8 +186,10 @@
 									</div>
 								</div>
 
-								{{-- NOTES + TALLYS --}}
+								{{-- TALLYS + NOTES --}}
 								<div class="row" style=" margin:-20px 0;">
+
+									{{-- TALLYS --}}
 									<div class="col-md-3 col-sm-12 pull-right">
 										<table class="table table-hover">
 											<tbody>
@@ -199,13 +215,11 @@
 														</td>
 													</tr>
 												@endforeach
-												<tr class="well well-sm bg-color-darken txt-color-white no-border">
-													<td colspan="4" class="text-right fa-lg">Balance:</td>
-													<td class="text-right fa-lg">${{ number_format($invoice->shipping, 2, ".", ",") }}</td>
-												</tr>
 											</tbody>
 										</table>
 									</div>
+
+									{{-- NOTES --}}
 									<div class="col-md-9 col-sm-12 pull-left">
 										<div class="payment-methods">
 											<h5>Notes:</h5>
@@ -218,13 +232,23 @@
 									</div>
 								</div>
 
-								{{-- TRACKING INFO --}}
+								{{-- INVOICE FINAL TOTAL --}}
+								<div class="row" style=" margin:20px 0;">
+									<div class="col-md-12">
+										<div class="invoice-sum-total pull-right">
+											<h3><strong>Total: <span class="text-success">${{ number_format($invoice->shipping, 2, ".", ",") }}</span></strong></h3>
+										</div>
+									</div>
+								</div>
+
+								{{-- TRACKING INFO W TRACKING LINK --}}
 								<div class="row" style=" margin:20px 0;">
 									<div class="col-md-12">
 										<strong>Tracking:</strong>
 										<br>
 										@foreach($invoice->tracking_nums as $tracking)
-											<span> {{$tracking->track_num}} </span>
+											<a href="http://www.fedex.com/Tracking?language=english&cntry_code=us&tracknumbers={{$tracking->track_num}}" target="_blank"> {{$tracking->track_num}} </a>
+											<br>
 										@endforeach
 									</div>
 								</div>
@@ -232,7 +256,7 @@
 								{{-- FINE PRINT --}}
 								<div class="row" style=" margin:20px 0;">
 									<div class="col-md-12">
-										<p class="note">**To avoid any excess penalty charges, please make payments within 30 days of the due date. There will be a 2% interest charge per month on all late invoices.</p>
+										<p class="note">**To avoid any excess penalty charges, please make payments within {{$invoice->term->name}} of the due date. There will be a 2% interest charge per month on all late invoices.</p>
 									</div>
 								</div>
 							</div>

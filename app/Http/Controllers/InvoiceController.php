@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Invoice;
 use App\Customer;
+use App\Product;
 use App\Term;
 use App\Status;
 use App\ShipMethod;
@@ -38,13 +39,14 @@ class InvoiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Invoice $invoice)
     {
         $locations = Location::where('active', '=', 1)->get();
         $customers = Customer::where('active', '=', 1)->get();
+        $products = Product::where('active', '=', 1)->get();
         $statuses = Status::all();
         $terms = Term::all();
-        return view('invoices.create', compact('customers', 'locations', 'statuses', 'terms'));
+        return view('invoices.create', compact('invoice', 'customers', 'locations', 'products', 'statuses', 'terms'));
     }
 
     /**
@@ -67,7 +69,7 @@ class InvoiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Invoice $invoice)
-    {
+    {   
         return view('invoices.show', compact('invoice'));
     }
 

@@ -367,11 +367,29 @@
 						<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
 						<ul>
 							<li class="active">
+								<a href="/customers">Customers - View</a>
+							</li>
+							<li class="">
+								<a href="/customers/create">Customers - Add</a>
+							</li>
+							<li class="">
+								<a href="/products">Products - View</a>
+							</li>
+							<li class="">
+								<a href="/products/create">Products - Add</a>
+							</li>
+							<li class="">
+								<a href="/invoices">Invoices - View</a>
+							</li>
+							<li class="">
+								<a href="/invoices/create">Invoices - Add</a>
+							</li>
+							{{-- <li class="">
 								<a href="index.html" title="Dashboard"><span class="menu-item-parent">Analytics Dashboard</span></a>
 							</li>
 							<li class="">
 								<a href="dashboard-social.html" title="Dashboard"><span class="menu-item-parent">Social Wall</span></a>
-							</li>
+							</li> --}}
 						</ul>
 					</li>
 					<li class="top-menu-invisible">
