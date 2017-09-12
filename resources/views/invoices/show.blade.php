@@ -222,10 +222,22 @@
 									{{-- NOTES --}}
 									<div class="col-md-9 col-sm-12 pull-left">
 										<div class="payment-methods">
-											<h5>Notes:</h5>
+											<h5>Invoice Notes:</h5>
 											<ul class="list-unstyled">
 												@foreach($invoice->notes as $note)
 													<li>{{ $note->note }}</li>
+												@endforeach
+											</ul>
+										</div>
+										<div class="payment-methods">
+											<h5>Payment Notes:</h5>
+											<ul class="list-unstyled">
+												@foreach($payment->notes as $payNote)
+													<li>
+														{{ $payNote->created_at->diffForHumans() }}
+														|
+														{{ $payNote->note }}
+													</li>
 												@endforeach
 											</ul>
 										</div>

@@ -18,6 +18,7 @@ class CreateNotesTable extends Migration
             $table->string('note');
             $table->integer('customer_id')->nullable();
             $table->integer('invoice_id')->nullable();
+            $table->integer('payment_id')->nullable();
             $table->integer('user_id');
             $table->timestamps();
         });
