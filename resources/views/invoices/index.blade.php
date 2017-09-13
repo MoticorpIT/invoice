@@ -90,7 +90,23 @@
 								            @foreach($invoices as $invoice)
 												<tr>
 													<td
-														@if($invoice->status->id == 6)
+														@php
+															switch ($invoice->status->id) {
+															case 6:
+														    	echo 'class="bg-danger">';
+														    	break;
+															case 5:
+															case 4:
+														    	echo 'class="bg-warning">';
+														    	break;
+														    case 3:
+														    	echo 'class="bg-default">';
+														    	break;
+														    default:
+														    	echo 'class="bg-success">';
+															}
+														@endphp
+														{{-- @if($invoice->status->id == 6)
 															class="bg-danger">
 														@elseif($invoice->status->id == 5 || $invoice->status->id == 4)
 															class="bg-warning">
@@ -98,7 +114,7 @@
 															class="bg-default">
 														@else
 															class="bg-success">
-														@endif
+														@endif --}}
 														{{ $invoice->status->status }}
 													</td>
 													<td>
@@ -113,9 +129,9 @@
 													</td>
 													<td>{{ $invoice->term->name }}</td>
 													<td>{{ $invoice->due }}</td>
-													<td>{{ $invoice->created_at->format('d-m-y') }}</td>
+													<td>{{ format_date($invoice->created_at) }}</td>
 													<td>{{ $invoice->user->name }}</td>
-													<td>${{ $invoice->total }}</td>
+													<td>{{ format_price($invoice->total) }}</td>
 													<td><a href="/invoices/{{  $invoice->inv_number  }}">View</a> | <a href="/invoices/{{  $invoice->inv_number  }}/edit"><i class="fa fa-pencil"></i></a></td>
 												</tr>
 											@endforeach

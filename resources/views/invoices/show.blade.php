@@ -21,7 +21,24 @@
 									<div class="col-sm-2 pull-left">
 										<div class="btn-group">
 											<span 
-												@if($invoice->status->id == 6)
+												@php
+													switch ($invoice->status->id) {
+													case 6:
+												    	echo 'class="btn btn-sm bg-danger">';
+												    	break;
+													case 5:
+													case 4:
+												    	echo 'class="btn btn-sm bg-warning">';
+												    	break;
+												    case 3:
+												    	echo 'class="btn btn-sm bg-default">';
+												    	break;
+												    default:
+												    	echo 'class="btn btn-sm bg-success">';
+													}
+												@endphp
+
+												{{-- @if($invoice->status->id == 6)
 													class="btn btn-sm bg-danger">
 												@elseif($invoice->status->id == 5 || $invoice->status->id == 4)
 													class="btn btn-sm bg-warning">
@@ -29,7 +46,7 @@
 													class="btn btn-sm bg-default">
 												@else
 													class="btn btn-sm bg-success">
-												@endif
+												@endif --}}
 												{{ $invoice->status->status }}
 											</span>
 										</div>
@@ -125,13 +142,16 @@
 										<div>
 											<div class="font-md">
 												<strong>Created:</strong>
-												<span class="pull-right"> {{ $invoice->created_at->format('d-m-y') }} </span>
+												<span class="pull-right"> {{ format_date($invoice->created_at) }} </span>
 											</div>
 										</div>
 										<div>
 											<div class="font-md">
 												<strong>Due:</strong>
-												<span class="pull-right"> {{$invoice->due}} </span>
+												<span class="pull-right"> {{ $invoice->due }} </span>
+												{{-- BREAKS PAGE - AS VALUE IS CURRENTLY A STRING
+												<span class="pull-right"> {{ format_date($invoice->due) }} </span>
+												--}}
 											</div>
 										</div>
 										<div>
@@ -144,7 +164,7 @@
 										<div class="well well-sm bg-color-darken txt-color-white no-border">
 											<div class="fa-lg">
 												Due:
-												<span class="pull-right"> ${{ number_format($invoice->total, 2, ".", ",") }} </span>
+												<span class="pull-right"> {{ format_price($invoice->total) }} </span>
 											</div>
 										</div>
 									</div>
@@ -177,7 +197,7 @@
 														</td>
 														<td class="text-right">${{ $line->price }}</td>
 														<td class="text-right">
-															${{ number_format($line->price * $line->qty, 2, ".", ",") }}
+															{{ format_price($line->price * $line->qty) }}
 														</td>
 													</tr>
 												@endforeach
@@ -195,22 +215,22 @@
 											<tbody>
 												<tr>
 													<td colspan="4" class="text-right"><strong>Subtotal:</strong></td>
-													<td class="text-right"><strong>${{ number_format($invoice->subtotal, 2, ".", ",") }}</strong></td>
+													<td class="text-right"><strong>{{ format_price($invoice->subtotal) }}</strong></td>
 												</tr>
 												<tr>
 													<td colspan="4" class="text-right"><strong>Shipping:</strong></td>
-													<td class="text-right"><strong>${{ number_format($invoice->shipping, 2, ".", ",") }}</strong></td>
+													<td class="text-right"><strong>{{ format_price($invoice->shipping) }}</strong></td>
 												</tr>
 												<tr>
 													<td colspan="4" class="text-right"><strong>Tax:</strong></td>
-													<td class="text-right"><strong>${{ number_format($invoice->shipping, 2, ".", ",") }}</strong></td>
+													<td class="text-right"><strong>{{ format_price($invoice->shipping) }}</strong></td>
 												</tr>
 												@foreach($invoice->payments as $payment)
 													<tr>
 														<td colspan="4" class="text-right"><strong>Payment:</strong></td>
 														<td class="text-right">
 															<strong style="color:red;">
-																(${{ number_format($payment->amount, 2, ".", ",") }})
+																({{ format_price($payment->amount) }})
 															</strong>
 														</td>
 													</tr>
@@ -248,7 +268,11 @@
 								<div class="row" style=" margin:20px 0;">
 									<div class="col-md-12">
 										<div class="invoice-sum-total pull-right">
-											<h3><strong>Total: <span class="text-success">${{ number_format($invoice->shipping, 2, ".", ",") }}</span></strong></h3>
+											<h3>
+												<strong>Total: 
+													<span class="text-success">{{ format_price($invoice->total) }}</span>
+												</strong>
+											</h3>
 										</div>
 									</div>
 								</div>

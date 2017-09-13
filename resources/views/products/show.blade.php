@@ -69,13 +69,13 @@
 													<ul>
 														<li class="col-md-4">
 															<a href="javascript:void(0);">
-																<h3 class="price-container text-center">${{ $product->default_price }}</h3>
+																<h3 class="price-container text-center">{{ format_price($product->default_price) }}</h3>
 																<span>Retailer</span>
 															</a>
 														</li>
 														<li class="col-md-4">
 															<a href="javascript:void(0);">
-																<h3 class="price-container text-center">${{ $product->msrp }}</h3>
+																<h3 class="price-container text-center">{{ format_price($product->msrp) }}</h3>
 																<span>MSRP</span>
 															</a>
 														</li>
