@@ -11,8 +11,8 @@ function format_date($date) {
 	return $formatted_date;
 }
 
-function format_phone($phone) {
-	$stripped_phone = preg_replace("/[^a-zA-Z0-9]/", "", $phone);
-	$formatted_phone = '('.substr($stripped_phone, 0, 3).') '.substr($stripped_phone, 3, 3).'-'.substr($stripped_phone,6);
+function format_phone($dirty_phone) {
+	$cleaned_phone = preg_replace("/[^a-zA-Z0-9]/", "", $dirty_phone);
+	$formatted_phone = '('.substr($cleaned_phone, 0, 3).') '.substr($cleaned_phone, 3, 3).'-'.substr($cleaned_phone,6);
 	return $formatted_phone;
 }

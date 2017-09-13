@@ -1,6 +1,12 @@
 @extends('layout.master')
 
 @section('body')
+	<style type="text/css">
+		.bg-1, .bg-2 { background-color: #dff0d8; }
+		.bg-3 { background-color: #dddddd; }
+		.bg-4, .bg-5 { background-color: #fcf8e3; }
+		.bg-6 { background-color: #f2dede; }
+	</style>
 
 	{{-- widget grid --}}
 	<section id="widget-grid" class="">
@@ -10,7 +16,6 @@
 				<div class="jarviswidget well jarviswidget-color-darken" id="wid-id-0" data-widget-sortable="false" data-widget-deletebutton="false" data-widget-editbutton="false" data-widget-colorbutton="false">
 					
 					<div>
-
 						<div class="widget-body ">
 
 							{{-- INVOICE TOP BUTTONS --}}
@@ -20,33 +25,7 @@
 									{{-- INVOICE STATUS --}}
 									<div class="col-sm-2 pull-left">
 										<div class="btn-group">
-											<span 
-												@php
-													switch ($invoice->status->id) {
-													case 6:
-												    	echo 'class="btn btn-sm bg-danger">';
-												    	break;
-													case 5:
-													case 4:
-												    	echo 'class="btn btn-sm bg-warning">';
-												    	break;
-												    case 3:
-												    	echo 'class="btn btn-sm bg-default">';
-												    	break;
-												    default:
-												    	echo 'class="btn btn-sm bg-success">';
-													}
-												@endphp
-
-												{{-- @if($invoice->status->id == 6)
-													class="btn btn-sm bg-danger">
-												@elseif($invoice->status->id == 5 || $invoice->status->id == 4)
-													class="btn btn-sm bg-warning">
-												@elseif($invoice->status->id == 3)
-													class="btn btn-sm bg-default">
-												@else
-													class="btn btn-sm bg-success">
-												@endif --}}
+											<span class="btn btn-sm bg-{{$invoice->status->id}}">
 												{{ $invoice->status->status }}
 											</span>
 										</div>
@@ -249,18 +228,19 @@
 												@endforeach
 											</ul>
 										</div>
-										<div class="payment-methods">
-											<h5>Payment Notes:</h5>
-											<ul class="list-unstyled">
-												@foreach($payment->notes as $payNote)
-													<li>
-														{{ $payNote->created_at->diffForHumans() }}
-														|
-														{{ $payNote->note }}
-													</li>
-												@endforeach
-											</ul>
-										</div>
+
+										@empty($payment->notes)
+											<div class="payment-methods">
+												<h5>Payment Notes:</h5>
+												<ul class="list-unstyled">
+													@foreach($payment->notes as $payNote)
+														<li>
+															{{ $payNote->note }}
+														</li>
+													@endforeach
+												</ul>
+											</div>
+										@endempty
 									</div>
 								</div>
 

@@ -14,6 +14,10 @@
 	.color-match .nav-tabs li:not(.active) a, .color-match>header>.jarviswidget-ctrls a {
 	    color: #fff!important;
 	}
+	.bg-1, .bg-2 { background-color: #dff0d8; }
+	.bg-3 { background-color: #dddddd; }
+	.bg-4, .bg-5 { background-color: #fcf8e3; }
+	.bg-6 { background-color: #f2dede; }
 	</style>
 
 	{{-- widget grid --}}
@@ -89,32 +93,7 @@
 								        <tbody>
 								            @foreach($invoices as $invoice)
 												<tr>
-													<td
-														@php
-															switch ($invoice->status->id) {
-															case 6:
-														    	echo 'class="bg-danger">';
-														    	break;
-															case 5:
-															case 4:
-														    	echo 'class="bg-warning">';
-														    	break;
-														    case 3:
-														    	echo 'class="bg-default">';
-														    	break;
-														    default:
-														    	echo 'class="bg-success">';
-															}
-														@endphp
-														{{-- @if($invoice->status->id == 6)
-															class="bg-danger">
-														@elseif($invoice->status->id == 5 || $invoice->status->id == 4)
-															class="bg-warning">
-														@elseif($invoice->status->id == 3)
-															class="bg-default">
-														@else
-															class="bg-success">
-														@endif --}}
+													<td class="bg-{{$invoice->status->id}}">
 														{{ $invoice->status->status }}
 													</td>
 													<td>
