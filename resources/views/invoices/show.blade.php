@@ -126,7 +126,7 @@
 												{{ $location->city }}, {{ $location->state }} {{ $location->zip }}
 												<br>
 											@endforeach
-											<abbr title="Phone">P:</abbr> {{ $invoice->customer->phone1 }}
+											<abbr title="Phone">P:</abbr> {{ format_phone($invoice->customer->phone1) }}
 											{{-- {{substr_replace(substr_replace($invoice->customer->phone1,'-',3,0),'-',7,0)}} --}}
 										</address>
 									</div>

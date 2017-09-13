@@ -6,9 +6,9 @@
 		<li>company: {{ $customer->company }}</li>
 		<li>contact_first: {{ $customer->contact_first }}</li>
 		<li>contact_last: {{ $customer->contact_last }}</li>
-		<li>phone1: {{ $customer->phone1 }}</li>
-		<li>phone2: {{ $customer->phone2 }}</li>
-		<li>fax: {{ $customer->fax }}</li>
+		<li>phone1: {{ format_phone($customer->phone1) }}</li>
+		<li>phone2: @if($customer->phone2) {{ format_phone($customer->phone2) }} @endif </li>
+		<li>fax: @if($customer->fax) {{ format_phone($customer->fax) }} @endif </li>
 		<li>email: {{ $customer->email }}</li>
 		<li>active: {{ $customer->active }}</li>
 		<li><h3>Locations:</h3>
@@ -21,7 +21,7 @@
 				<li>city: {{ $location->city }}</li>
 				<li>state: {{ $location->state }}</li>
 				<li>zip: {{ $location->zip }}</li>
-				<li>phone: {{ $location->phone }}</li>
+				<li>phone: {{ format_phone($location->phone) }}</li>
 				<li>contact_name: {{ $location->contact_name }}</li>
 				<li>
 					<form action="/customers/{{ $customer->id  }}/locations/{{  $location->id  }}" method="POST" >
