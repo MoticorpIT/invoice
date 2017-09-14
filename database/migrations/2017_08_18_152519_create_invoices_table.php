@@ -21,7 +21,8 @@ class CreateInvoicesTable extends Migration
             $table->integer('term_id');
             $table->integer('ship_method_id');
             $table->integer('status_id')->default(1);
-            $table->integer('customer_id');
+            $table->integer('customer_id');;
+            $table->integer('location_id');
             $table->decimal('subtotal');
             $table->decimal('shipping');
             $table->decimal('total');

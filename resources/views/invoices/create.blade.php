@@ -67,48 +67,6 @@
                             </section>
 
                             <section class="col col-6">
-                                <label class="input"> <i class="icon-prepend fa fa-user"></i>
-                                    <input type="text" name="contact_first" value="{{ old('contact_first') }}" placeholder="Contact Name">
-                                </label>
-                            </section>
-
-                        </div>
-                        <div class="row">
-
-                            <section class="col col-6">
-                                <label class="input"> <i class="icon-prepend fa fa-phone"></i>
-                                    <input type="tel" name="phone1" value="{{ old('phone1')}}" placeholder="Phone" data-mask="(999) 999-9999">
-                                </label>
-                            </section>
-
-                            <section class="col col-6">
-                                <label class="input"> <i class="icon-prepend fa fa-phone"></i>
-                                    <input type="tel" name="phone2" value="{{ old('phone2')}}" placeholder="Phone 2" data-mask="(999) 999-9999">
-                                </label>
-                            </section>
-
-                        </div>
-                        <div class="row">
-
-                            <section class="col col-6">
-                                <label class="input"> <i class="icon-prepend fa fa-envelope-o"></i>
-                                    <input type="email" name="email" value="{{ old('email')}}" placeholder="E-mail">
-                                </label>
-                            </section>
-
-                            <section class="col col-6">
-                                <label class="input"> <i class="icon-prepend fa fa-phone"></i>
-                                    <input type="tel" name="fax" value="{{ old('fax')}}" placeholder="Fax" data-mask="(999) 999-9999">
-                                </label>
-                            </section>
-
-                        </div>
-                    </fieldset>
-
-                    <fieldset>
-                        <div class="row">
-
-                            <section class="col col-4">
                                 <label class="select">
                                     <select name="location">
                                         <option value="0">Choose Location</option>
@@ -119,57 +77,8 @@
                                 </label>
                             </section>
 
-                            <section class="col col-4">
-                                <label class="input">
-                                    <input type="text" name="contact_name" value="{{ old('contact_name') }}" placeholder="Name">
-                                </label>
-                            </section>
-
-                            <section class="col col-4">
-                                <label class="input">
-                                    <input type="text" name="phone" value="{{ old('phone') }}" placeholder="Phone">
-                                </label>
-                            </section>
-
                         </div>
-
-                        <div class="row">
-
-                            <section class="col col-6">
-                                <label class="input">
-                                    <input type="text" name="address" value="{{ old('address') }}" placeholder="Address 1">
-                                </label>
-                            </section>
-
-                            <section class="col col-6">
-                                <label class="input">
-                                    <input type="text" name="address2" value="{{ old('address2') }}" placeholder="Address 2">
-                                </label>
-                            </section>
-
-                        </div>
-
-                        <div class="row">
-
-                            <section class="col col-4">
-                                <label class="input">
-                                    <input type="text" name="city" value="{{ old('city') }}" placeholder="City">
-                                </label>
-                            </section>
-
-                            <section class="col col-4">
-                                <label class="input">
-                                    <input type="text" name="state" value="{{ old('state') }}" placeholder="State">
-                                </label>
-                            </section>
-
-                            <section class="col col-4">
-                                <label class="input">
-                                    <input type="text" name="zip" value="{{ old('zip') }}" placeholder="Zip Code">
-                                </label>
-                            </section>
-
-                        </div>
+                        
                     </fieldset>
 
                     {{-- LINE ITEMS --}}
@@ -197,11 +106,6 @@
                                     </select> <i></i>
                                 </label>
                             </section>
-                            {{-- <section class="col col-3">
-                                <label class="input">
-                                    <input type="text" name="name" placeholder="Product Name" value="{{ old('name') }}">
-                                </label>
-                            </section> --}}
                             <section class="col col-5">
                                 <label class="input">
                                     <input type="text" name="description" placeholder="Product Description" value="{{ old('description') }}">
