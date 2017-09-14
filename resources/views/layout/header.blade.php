@@ -574,7 +574,7 @@
 							</li>
 						</ul>
 					</li>
-					<li>
+					{{-- <li>
 						<a href="widgets.html"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span class="menu-item-parent">Widgets</span></a>
 					</li>
 					<li>
@@ -666,7 +666,6 @@
 						<a href="#"><i class="fa fa-lg fa-fw fa-comment-o"><em class="bg-color-pink flash animated">!</em></i> <span class="menu-item-parent">Smart Chat API <sup>beta</sup></span></a>
 						<ul>
 							<li>
-								{{-- DISPLAY USERS --}}
 								<div class="display-users">
 
 									<input class="form-control chat-user-filter" placeholder="Filter" type="text">
@@ -798,10 +797,9 @@
 									<a href="ajax/chat.html" class="btn btn-xs btn-default btn-block sa-chat-learnmore-btn">About the API</a>
 
 								</div>
-								{{-- END DISPLAY USERS --}}
 							</li>
 						</ul>
-					</li>
+					</li> --}}
 				</ul>
 			</nav>
 

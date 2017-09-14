@@ -71,8 +71,8 @@
 															{{ $category->name }}
 														@endforeach
 													</td>
-													<td>${{ $product->default_price }}</td>
-													<td>${{ $product->msrp }}</td>
+													<td>{{ format_price($product->default_price) }}</td>
+													<td>{{ format_price($product->msrp) }}</td>
 													<td>{{ $product->pack_size }} /pk</td>
 													<td>{{ $product->short_descript }}</td>
 

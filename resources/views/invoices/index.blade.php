@@ -14,6 +14,10 @@
 	.color-match .nav-tabs li:not(.active) a, .color-match>header>.jarviswidget-ctrls a {
 	    color: #fff!important;
 	}
+	.bg-1, .bg-2 { background-color: #dff0d8; }
+	.bg-3 { background-color: #dddddd; }
+	.bg-4, .bg-5 { background-color: #fcf8e3; }
+	.bg-6 { background-color: #f2dede; }
 	</style>
 
 	{{-- widget grid --}}
@@ -89,16 +93,7 @@
 								        <tbody>
 								            @foreach($invoices as $invoice)
 												<tr>
-													<td
-														@if($invoice->status->id == 6)
-															class="bg-danger">
-														@elseif($invoice->status->id == 5 || $invoice->status->id == 4)
-															class="bg-warning">
-														@elseif($invoice->status->id == 3)
-															class="bg-default">
-														@else
-															class="bg-success">
-														@endif
+													<td class="bg-{{$invoice->status->id}}">
 														{{ $invoice->status->status }}
 													</td>
 													<td>
@@ -113,9 +108,9 @@
 													</td>
 													<td>{{ $invoice->term->name }}</td>
 													<td>{{ $invoice->due }}</td>
-													<td>{{ $invoice->created_at->format('d-m-y') }}</td>
+													<td>{{ format_date($invoice->created_at) }}</td>
 													<td>{{ $invoice->user->name }}</td>
-													<td>${{ $invoice->total }}</td>
+													<td>{{ format_price($invoice->total) }}</td>
 													<td><a href="/invoices/{{  $invoice->inv_number  }}">View</a> | <a href="/invoices/{{  $invoice->inv_number  }}/edit"><i class="fa fa-pencil"></i></a></td>
 												</tr>
 											@endforeach
