@@ -6,6 +6,7 @@ use App\Invoice;
 use App\Customer;
 use App\Product;
 use App\Term;
+use App\Category;
 use App\Status;
 use App\ShipMethod;
 use App\Payment;
@@ -44,9 +45,10 @@ class InvoiceController extends Controller
         $locations = Location::where('active', '=', 1)->get();
         $customers = Customer::where('active', '=', 1)->get();
         $products = Product::where('active', '=', 1)->get();
+        $categories = Category::where('active', '=', 1)->get();
         $statuses = Status::all();
         $terms = Term::all();
-        return view('invoices.create', compact('invoice', 'customers', 'locations', 'products', 'statuses', 'terms'));
+        return view('invoices.create', compact('invoice', 'customers', 'locations', 'products', 'statuses', 'terms', 'categories'));
     }
 
     /**
@@ -68,9 +70,9 @@ class InvoiceController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Invoice $invoice)
+    public function show(Invoice $invoice, Payment $payment)
     {   
-        return view('invoices.show', compact('invoice'));
+        return view('invoices.show', compact('invoice', 'payment'));
     }
 
     /**

@@ -27,7 +27,7 @@
                                     <select name="status">
                                         <option value="0" selected="" disabled="">Choose Terms</option>
                                         @foreach($terms as $term)
-                                        <option value="{{$term->id}}" name="status_id" id="optionsSelects{{$term->id}}">{{ $term->name }}</option>
+                                            <option value="{{$term->id}}" name="status_id" id="optionsSelects{{$term->id}}">{{ $term->name }}</option>
                                         @endforeach
                                     </select> <i></i>
                                 </label>
@@ -35,7 +35,7 @@
 
                             <section class="col col-3">
                                 <label class="input">
-                                    <input type="text" name="due" value="{{ old('due') }}" placeholder="Due Date">
+                                    <input type="text" name="due" value="{{ old('due') }}" placeholder="Due Date" class="form-control datepicker" data-dateformat="mm-dd-yy">
                                 </label>
                             </section>
 
@@ -96,8 +96,19 @@
                                     <input type="text" name="qty" placeholder="QTY" value="{{ old('qty') }}">
                                 </label>
                             </section>
-                            <section class="col col-3">
+
+                            <section class="col col-10">
                                 <label class="select">
+                                    {{-- <select name="company" class="select2">
+                                        <option value="0" selected="" disabled="">Choose Product</option>
+                                        @foreach($products as $product)
+                                            @foreach($product->categories as $category)
+                                                <optgroup label="{{$category->name}}">
+                                            @endforeach
+                                                <option name="name" value="{{$product->id}}">{{$product->name}}</option>
+                                            </optgroup>
+                                        @endforeach
+                                    </select> --}}
                                     <select>
                                         <option value="0">Choose Product</option>
                                         @foreach($products as $product)
@@ -106,16 +117,22 @@
                                     </select> <i></i>
                                 </label>
                             </section>
-                            <section class="col col-5">
+
+                            {{-- <section class="col col-5">
                                 <label class="input">
                                     <input type="text" name="description" placeholder="Product Description" value="{{ old('description') }}">
                                 </label>
-                            </section>
-                            <section class="col col-2">
+                            </section> --}}
+                            {{-- <section class="col col-2">
                                 <label class="input">
-                                    <input type="text" name="price" placeholder="Price" value="{{ old('price') }}">
+                                    <input type="text" name="price" placeholder="Item Price" value="{{ old('price') }}">
                                 </label>
-                            </section>
+                            </section> --}}
+                            {{-- <section class="col col-2">
+                                <label class="input">
+                                    <input type="text" name="total" placeholder="Line Total" value="{{ old('total') }}">
+                                </label>
+                            </section> --}}
                             <section class="col col-1">
                                 <label class="input">
                                     <a href="" class="btn btn-primary pull-left" style="width:49%;padding:5px 0;">
@@ -131,13 +148,13 @@
 
                             <section class="col col-4">
                                 <label class="input">
-                                    <input type="text" name="shipping" value="{{ old('shipping') }}" placeholder="Shipping">
+                                    <input type="text" name="subtotal" value="{{ old('subtotal') }}" placeholder="Subtotal">
                                 </label>
                             </section>
 
                             <section class="col col-4">
                                 <label class="input">
-                                    <input type="text" name="subtotal" value="{{ old('subtotal') }}" placeholder="Subtotal">
+                                    <input type="text" name="shipping" value="{{ old('shipping') }}" placeholder="Shipping">
                                 </label>
                             </section>
 
@@ -168,7 +185,42 @@
             </div>
         </div>
     </div>
-
+    <div class="jarviswidget" id="wid-id-2">
+        <div class="row">
+            <div class="col col-12">
+                <p>FORM NOTES</p>
+                <ol>
+                    <li>Make invoice number prefill (++last)</li>
+                    <li>Make choosing terms, automatically set due date based on terms</li>
+                        <ul>
+                            <li>14 days = 14 days from current</li>
+                            <li>30 days = 30 days from current</li>
+                            <li>COD || Prepay || Due Now = Today</li>
+                        </ul>
+                    <li>Limit choices of statuses avialbale - ex: no need for past due</li>
+                    <li>Make customer fuzzy search text field</li>
+                        <ul>
+                            <li>Give option to add new customer</li>
+                        </ul>
+                    <li>Limit available location options based on Customer chosen (same form)</li>
+                        <ul>
+                            <li>Give option to add new customer location</li>
+                        </ul>
+                    <li>Line Items</li>
+                        <ul>
+                            <li>Make product fuzzy search text field</li>
+                            <li>Figure out how to save line_item to line_item table</li>
+                                <ul>
+                                    <li>Make it so product short_descript, price + invoice_num get sent to table (hidden field?)</li>
+                                </ul>
+                            <li>Make + at end of line add a new line (row)</li>
+                            <li>Make - at end of line remove the line (row)</li>
+                            <li>Make the first row's - button inactive (must be 1 row) and active on all others</li>
+                        </ul>
+                </ol>
+            </div>
+        </div>
+    </div>
 	@include('layout.validate')
 
 @endsection

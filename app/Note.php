@@ -10,6 +10,10 @@ class Note extends ModelBase
     	return $this->belongsTo(User::class);
     }
 
+    public function invoice(){
+    	return $this->belongsTo(Invoice::class);
+    }
+
     public function payments(){
     	return $this->belongsTo(Payment::class);
     }
