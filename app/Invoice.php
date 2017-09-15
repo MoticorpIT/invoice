@@ -6,9 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends ModelBase
 {
-    // 
+    
     public function customer() {
     	return $this->belongsTo(Customer::class);
+    }
+
+    public function locations() {
+        return $this->belongsTo(Location::class);
     }
 
     public function status() {

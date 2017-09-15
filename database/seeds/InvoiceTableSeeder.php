@@ -24,6 +24,7 @@ class InvoiceTableSeeder extends Seeder
 					'ship_method_id' => "3",
 					'status_id' => '1',
 					'customer_id' => '1',
+					'location_id' => '3',
 					'created_at' => date("Y-m-d H:i:s")
 				],
 				[
@@ -37,6 +38,7 @@ class InvoiceTableSeeder extends Seeder
 					'ship_method_id' => "2",
 					'status_id' => '2',
 					'customer_id' => '3',
+					'location_id' => '1',
 					'created_at' => date("Y-m-d H:i:s")
 				],
 				[
@@ -50,6 +52,7 @@ class InvoiceTableSeeder extends Seeder
 					'ship_method_id' => "3",
 					'status_id' => '3',
 					'customer_id' => '3',
+					'location_id' => '2',
 					'created_at' => date("Y-m-d H:i:s")
 				],[
 					'due' => '10-07-17',
@@ -60,8 +63,9 @@ class InvoiceTableSeeder extends Seeder
 					'user_id' => '1',
 					'term_id' => '3',
 					'ship_method_id' => "1",
-					'status_id' => '2',
+					'status_id' => '6',
 					'customer_id' => '1',
+					'location_id' => '3',
 					'created_at' => date("Y-m-d H:i:s")
 				],
 	        ]

@@ -10,4 +10,9 @@ class Location extends ModelBase
     {
         return $this->belongsTo(TaxGroup::class);
     }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }

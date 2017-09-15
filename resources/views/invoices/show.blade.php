@@ -106,7 +106,6 @@
 												<br>
 											@endforeach
 											<abbr title="Phone">P:</abbr> {{ format_phone($invoice->customer->phone1) }}
-											{{-- {{substr_replace(substr_replace($invoice->customer->phone1,'-',3,0),'-',7,0)}} --}}
 										</address>
 									</div>
 
@@ -220,16 +219,18 @@
 
 									{{-- NOTES --}}
 									<div class="col-md-9 col-sm-12 pull-left">
-										<div class="payment-methods">
-											<h5>Invoice Notes:</h5>
-											<ul class="list-unstyled">
-												@foreach($invoice->notes as $note)
-													<li>{{ $note->note }}</li>
-												@endforeach
-											</ul>
-										</div>
+										@if (count($invoice->notes) >= 1)
+											<div class="payment-methods">
+												<h5>Invoice Notes:</h5>
+												<ul class="list-unstyled">
+													@foreach($invoice->notes as $note)
+														<li>{{ $note->note }}</li>
+													@endforeach
+												</ul>
+											</div>
+										@endif
 
-										@empty($payment->notes)
+										@if (count($payment->notes) >= 1)
 											<div class="payment-methods">
 												<h5>Payment Notes:</h5>
 												<ul class="list-unstyled">
@@ -240,7 +241,7 @@
 													@endforeach
 												</ul>
 											</div>
-										@endempty
+										@endif
 									</div>
 								</div>
 
